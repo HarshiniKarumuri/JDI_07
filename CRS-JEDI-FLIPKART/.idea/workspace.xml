@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2e5ba0c-fd2f-4177-ae67-17f275d1bfa5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CRS-JEDI-FLIPKART.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/business/CourseCatalogInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/business/CourseCatalogOperations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/business/StudentInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/business/StudentOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/Admin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/Course.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/Professor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/Student.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/AdminClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/ProefessorClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/StudentClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/UserClient.class" beforeDir="false" />
+    <list default="true" id="e2e5ba0c-fd2f-4177-ae67-17f275d1bfa5" name="Default Changelist" comment="crs-saurav branch created">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +20,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -74,6 +55,14 @@
       <option name="presentableId" value="Default" />
       <updated>1611057673098</updated>
     </task>
+    <task id="LOCAL-00001" summary="crs-saurav branch created">
+      <created>1611058199727</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1611058199727</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -116,5 +105,9 @@
         <entry key="1" value="TOOL_WINDOW" />
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="crs-saurav branch created" />
+    <option name="LAST_COMMIT_MESSAGE" value="crs-saurav branch created" />
   </component>
 </project>
