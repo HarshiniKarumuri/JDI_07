@@ -1,17 +1,20 @@
+/**
+ * 
+ */
 package com.flipkart.bean;
 
 /**
- * Student bean class
+ * @author mayan
+ *
  */
 public class Student extends User{
 
-	private int studentId;
-	private String name;
-	private String branch;
-	private boolean hasScholarship;
-	private String gender;
-	private int isRegistered;
-
+	int studentId;
+	String name;
+	String branch;
+	boolean hasScholarship;
+	String gender;
+	int isRegistered;
 	public int getStudentId() {
 		return studentId;
 	}
