@@ -3,11 +3,14 @@
  */
 package com.flipkart.client;
 
+import org.apache.log4j.Logger;
+
 /**
  * @author mayan
  *
  */
 public class UserClient {
+	
 
 	/**
 	 * @param args
