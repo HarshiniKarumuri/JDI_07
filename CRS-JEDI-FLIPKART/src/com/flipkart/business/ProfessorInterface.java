@@ -11,5 +11,5 @@ public interface ProfessorInterface {
 
 	public void viewStudentRegisteredInParticularCourse(int courseId);
 
-	void gradeStudent(Professor professor, int studentId, int courseId, int grade);
+	public void gradeStudent(Professor professor, int studentId, int courseId, int grade);
 }
