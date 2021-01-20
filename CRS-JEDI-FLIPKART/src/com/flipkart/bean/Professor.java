@@ -6,8 +6,8 @@ package com.flipkart.bean;
 public class Professor extends User{
 
 	private int professorId;
+	private String professorName;
 	private String email;
-	private String name;
 
 	/**
 	 * @return the professorId
@@ -40,15 +40,15 @@ public class Professor extends User{
 	/**
 	 * @return the name
 	 */
-	public String getName() {
-		return name;
+	public String getProfessorName() {
+		return professorName;
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param professorName the name to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setProfessorName(String professorName) {
+		this.professorName = professorName;
 	}
 
 }

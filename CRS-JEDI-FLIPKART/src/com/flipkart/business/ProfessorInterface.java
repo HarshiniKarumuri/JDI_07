@@ -1,34 +1,31 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.Professor;
-
 /**
  * Professor business interface
  */
-interface ProfessorInterface {
+public interface ProfessorInterface {
 
 	/**
-	 * To view course catalog in CRS
-	 * @param professorId
+	 * To view courses in CRS taught by the professor
+	 * @param professorId unique identifier of the professor
 	 */
 	void viewAssignedCourses(int professorId);
 
 	/**
-	 * To view students registered in a course in CRS
+	 * To view students enrolled in a course in CRS taught by professor
 	 *
-	 * @param professorId
-	 * @param courseId unique identifier of the course to view
-	 *
+	 * @param professorId unique identifier of the professor of course
+	 * @param courseId unique identifier of the course to view enrolled students
 	 */
 	void viewStudentsRegisteredInCourse(int professorId, int courseId);
 
 	/**
-	 * To grade a student in a course
+	 * To grade a student in a course taught by professor
 	 *
-	 * @param professor object of Professor assigning the grade
-	 * @param studentId	unique identifier of Student to whom grade is assigned
-	 * @param courseId	unique identifier of Course for which Student is graded
-	 * @param grade grade assigned to Student in a Course by the Professor
+	 * @param professorId unique identifier of the professor grading the course
+	 * @param courseId unique identifier of course for which student is graded
+	 * @param grade grade assigned to student in a course by the professor
+	 * @param studentId unique identifier of student to whom grade is assigned
 	 */
-	void gradeStudent(Professor professor, int studentId, int courseId, int grade);
+	void gradeStudent(int professorId, int courseId, String grade, int studentId);
 }

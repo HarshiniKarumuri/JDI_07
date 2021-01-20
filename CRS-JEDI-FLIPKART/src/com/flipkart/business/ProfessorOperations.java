@@ -1,8 +1,10 @@
 package com.flipkart.business;
 
 import com.flipkart.bean.Course;
-import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
+import com.flipkart.constants.UIConstants;
+import com.flipkart.dao.ProfessorDAOInterface;
+import com.flipkart.dao.ProfessorDAOOperations;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -12,16 +14,16 @@ import java.util.logging.Logger;
  */
 public class ProfessorOperations implements ProfessorInterface {
 
-	private ProfessorDaoInterface professorDao = new ProfessorDaoOperations();
-	private static Logger logger = Logger.getLogger(ProfessorOperations.class.getName());
+	private final ProfessorDAOInterface professorDao = new ProfessorDAOOperations();
+	private static final Logger logger = Logger.getLogger(ProfessorOperations.class.getName());
 
 	@Override
 	public void viewAssignedCourses(int professorId) {
 		logger.info("-------------- Assigned Courses --------------\n");
-		logger.info(String.format("%-10s%-10s%-10s", "Course Id", "Course Name", "Course Description"));
+		logger.info(String.format("%-15s%-15s%-15s", "Course Id", "Course Name", "Course Description"));
 		List<Course> coursesList = professorDao.getAssignedCourses(professorId);
 		if(coursesList.size() == 0) {
-			logger.info("No courses assigned");
+			logger.info(UIConstants.NO_COURSE_ASSIGNED_MESSAGE);
 		} else {
 			coursesList.forEach(course ->
 					logger.info(String.format("%-10s%-10s%-10s", course.getCourseId(), course.getCourseName(), course.getDescription()))
@@ -32,22 +34,43 @@ public class ProfessorOperations implements ProfessorInterface {
 
 	@Override
 	public void viewStudentsRegisteredInCourse(int professorId, int courseId) {
-		logger.info("-------------- Registered Students in Course --------------\n");
-		logger.info(String.format("Course ID : %s\n", courseId));
-		logger.info(String.format("%-10s%-10s%-10s", "Course Id", "Course Name", "Course Description"));
-		List<Student> studentsList = professorDao.getStudentsRegisteredInCourse(professorId, courseId);
-		if(studentsList.size() == 0) {
-			logger.info("No students registered in this course");
+		if(professorDao.checkCanGradeCourse(professorId, courseId)) {
+
+			logger.info("-------------- Registered Students in Course --------------\n");
+			logger.info(String.format("Course ID : %s\n", courseId));
+			logger.info(String.format("%-15s%-15s%-15s", "Course Id", "Course Name", "Course Description"));
+			List<Student> studentsList = professorDao.getRegisteredStudentsInCourse(professorId, courseId);
+			if(studentsList.size() == 0) {
+				logger.info(UIConstants.NO_STUDENT_REGISTERED_MESSAGE);
+			} else {
+				studentsList.forEach(student ->
+						logger.info(String.format("%-10s%-10s%-10s", student.getStudentId(), student.getStudentName(), student.getBranch()))
+				);
+			}
+			logger.info("\n-----------------------------------------------------\n");
+
 		} else {
-			studentsList.forEach(student ->
-					logger.info(String.format("%-10s%-10s%-10s", student.getStudentId(), student.getStudentName(), student.getBranch()))
-			);
+			logger.info(UIConstants.COURSE_NOT_TAUGHT_MESSAGE);
+			logger.info("\n");
 		}
-		logger.info("\n----------------------------------------\n");
 	}
 
 	@Override
-	public void gradeStudent(Professor professor, int studentId, int courseId, int grade) {
-		professorDao.gradeStudent(professor, studentId, courseId, grade);
+	public void gradeStudent(int professorId, int courseId, String grade, int studentId) {
+		if(professorDao.checkCanGradeCourse(professorId, courseId)) {
+
+			if(professorDao.checkCanGradeStudent(studentId, courseId)) {
+
+				professorDao.gradeStudent(courseId, studentId, grade);
+				logger.info(UIConstants.SUCCESS_STUDENT_GRADED_MESSAGE);
+
+			} else {
+				logger.info(UIConstants.STUDENT_NOT_REGISTERED_MESSAGE);
+				logger.info("\n");
+			}
+		} else {
+			logger.info(UIConstants.COURSE_NOT_TAUGHT_MESSAGE);
+			logger.info("\n");
+		}
 	}
 }

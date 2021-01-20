@@ -3,11 +3,10 @@ package com.flipkart.bean;
 /**
  * Admin bean class
  */
-
 public class Admin extends User {
 
 	private int adminId;
-	private String name;
+	private String adminName;
 
 	/**
 	 * @return the adminId
@@ -27,15 +26,15 @@ public class Admin extends User {
 	/**
 	 * @return the name
 	 */
-	public String getName() {
-		return name;
+	public String getAdminName() {
+		return adminName;
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param adminName the name to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
 	}
 
 }
