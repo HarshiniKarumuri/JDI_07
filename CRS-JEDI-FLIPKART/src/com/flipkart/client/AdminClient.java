@@ -1,11 +1,7 @@
-/**
- * 
- */
 package com.flipkart.client;
 
 /**
- * @author mayan
- *
+ * Admin main class (user interface)
  */
 public class AdminClient {
 

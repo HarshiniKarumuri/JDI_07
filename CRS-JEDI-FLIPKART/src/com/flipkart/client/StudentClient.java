@@ -1,11 +1,7 @@
-/**
- * 
- */
 package com.flipkart.client;
 
 /**
- * @author mayan
- *
+ * Student main class (user interface)
  */
 public class StudentClient {
 

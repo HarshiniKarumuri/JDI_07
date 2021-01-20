@@ -1,15 +1,13 @@
-/**
- * 
- */
 package com.flipkart.bean;
 
 /**
- * @author mayan
- *
+ * Admin bean class
  */
 public class Admin extends User{
-	int adminId;
-	String name;
+
+	private int adminId;
+	private String name;
+
 	public int getAdminId() {
 		return adminId;
 	}
