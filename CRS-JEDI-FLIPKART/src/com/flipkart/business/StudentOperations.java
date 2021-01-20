@@ -3,6 +3,9 @@ package com.flipkart.business;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
 
+/**
+ * Student business class
+ */
 public class StudentOperations implements StudentInterface {
 	
 	public Course viewCourse(int courseId) {

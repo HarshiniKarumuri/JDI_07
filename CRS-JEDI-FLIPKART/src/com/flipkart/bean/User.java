@@ -1,16 +1,13 @@
-/**
- * 
- */
 package com.flipkart.bean;
 
 /**
- * @author mayan
- *
+ * User bean class
  */
 public class User {
 
-	int userId;
-	String username;
+	private int userId;
+	private String username;
+
 	public int getUserId() {
 		return userId;
 	}

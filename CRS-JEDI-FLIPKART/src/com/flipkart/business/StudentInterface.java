@@ -3,6 +3,9 @@ package com.flipkart.business;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
 
+/**
+ * Student business interface
+ */
 public interface StudentInterface {
 	
 	public Course viewCourse(int courseId);
@@ -14,6 +17,5 @@ public interface StudentInterface {
 	public void  viewRegisteredCourse(Student student);
 	
 	public void viewGrades(Student student);
-	
-	
+
 }

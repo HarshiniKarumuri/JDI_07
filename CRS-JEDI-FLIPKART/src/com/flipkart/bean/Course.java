@@ -1,18 +1,15 @@
-/**
- * 
- */
 package com.flipkart.bean;
 
 /**
- * @author mayan
- *
+ * Course bean class
  */
 public class Course {
 
-	int courseId;
-	String courseName;
-	String description;
-	int fees;
+	private int courseId;
+	private String courseName;
+	private String description;
+	private int fees;
+
 	public int getCourseId() {
 		return courseId;
 	}

@@ -1,18 +1,15 @@
-/**
- * 
- */
 package com.flipkart.bean;
 
 /**
- * @author mayan
- *
+ * Professor bean class
  */
 public class Professor extends User{
 
-	int professorId;
-	String email;
-	String name;
-	int courseId;
+	private int professorId;
+	private String email;
+	private String name;
+	private int courseId;
+
 	public int getProfessorId() {
 		return professorId;
 	}
