@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 /**
  * User main class (user interface)
  */
-public class UserClient {
+public class UserCRSMenu {
 
 	/**
 	 * CRS start execution method
