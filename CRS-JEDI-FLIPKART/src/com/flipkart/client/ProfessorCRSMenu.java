@@ -5,31 +5,38 @@ import java.util.*;
 import org.apache.log4j.Logger;
 
 import com.flipkart.bean.Professor;
+import com.flipkart.business.ProfessorInterface;
+import com.flipkart.business.ProfessorOperations;
 
 /**
  * Professor main class (user interface)
  */
 public class ProfessorCRSMenu {
 	
-	private static Logger logger = Logger.getLogger(ProfessorCRSMenu.class);
-	ProfessorInterface professorOperation = new ProfessorOperation();
-	Scanner sc = new Scanner(System.in);
+	public static Logger logger = Logger.getLogger(ProfessorCRSMenu.class);
+	ProfessorInterface professorOperation = new ProfessorOperations();
+	public Scanner sc = new Scanner(System.in);
 	
+	//Display Professor's Menu
 	public void displayMenu(Professor professor) {
-		int choice;
-		while(UserCRSMenu.loggedIn()){
+		int choice = 0;
+		while(UserCRSMenu.loggedIn){
 			//Logging statements
+			try {
 			logger.info("Enter your choice:");
 			logger.info("0. To logout");
 			logger.info("1. To view courses taught");
 			logger.info("2. To view students in a course");
 			logger.info("3. To add Grades of a student");
-			choice = sc.nextInt();
-			sc.nextLine();
+			choice = Integer.parseInt(sc.nextLine());
+			} catch(Exception e) {
+				logger.error(e.getMessage());
+			};
 			
 			switch(choice) 
 			{
 				case 1:
+					//logger.info("in course taught");
 					professorOperation.getCourseTaught(professor);
 					break;
 				case 2:
@@ -41,7 +48,7 @@ public class ProfessorCRSMenu {
 					
 					//if Professor teaches that course
 					
-					if(ProfessorDaoImpl.checkValidCourseForProfessor(professor, courseId)) 
+					/*if(ProfessorDaoImpl.checkValidCourseForProfessor(professor, courseId)) 
 					{
 						logger.info("Enter student id: ");
 						int studentId = sc.nextInt();
@@ -63,13 +70,14 @@ public class ProfessorCRSMenu {
 					else 
 					{
 						logger.info("This course is not taught by you.");
-					}
+					}*/
 					
 					break;
 				case 0:
 					UserCRSMenu.logout();
 					break;
 			}
+			
 			
 		}
 		sc.close();

@@ -3,7 +3,7 @@ package com.flipkart.business;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
-import com.sun.istack.internal.logging.Logger;
+import org.apache.log4j.Logger;
 
 /**
  * Student business class

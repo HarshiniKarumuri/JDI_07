@@ -1,7 +1,7 @@
 package com.flipkart.business;
 
 import com.flipkart.bean.Course;
-import com.sun.istack.internal.logging.Logger;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 

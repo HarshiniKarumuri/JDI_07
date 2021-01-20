@@ -2,7 +2,7 @@ package com.flipkart.business;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
-import com.sun.istack.internal.logging.Logger;
+import org.apache.log4j.Logger;
 
 /**
  * Admin business class
@@ -16,9 +16,9 @@ public class AdminOperations implements AdminInterface {
 		return;
 	}
 	
-	public String addCourseIntoCatalouge(Course course) {
+	public String addCourseIntoCatalog(Course course) {
 		logger.info("In add Course Into Catalouge");
-		return "";
+		return null;
 	}
 
 	public void deleteCourse(int courseId) {
@@ -40,6 +40,8 @@ public class AdminOperations implements AdminInterface {
 		logger.info("In delete User");
 		
 	}
+
+	
 
 
 }
