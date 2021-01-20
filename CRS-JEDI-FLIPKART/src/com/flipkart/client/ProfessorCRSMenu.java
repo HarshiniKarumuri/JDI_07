@@ -1,10 +1,10 @@
 package com.flipkart.client;
 
-import java.util.*;
-
-import org.apache.log4j.Logger;
+import java.util.Scanner;
+import java.util.logging.Logger;
 
 import com.flipkart.bean.Professor;
+import com.flipkart.business.ProfessorOperations;
 
 /**
  * Professor main class (user interface)
@@ -12,7 +12,7 @@ import com.flipkart.bean.Professor;
 public class ProfessorCRSMenu {
 	
 	private static Logger logger = Logger.getLogger(ProfessorCRSMenu.class);
-	ProfessorInterface professorOperation = new ProfessorOperation();
+	ProfessorOperations professorOperation = new ProfessorOperations();
 	Scanner sc = new Scanner(System.in);
 	
 	public void displayMenu(Professor professor) {
@@ -30,7 +30,7 @@ public class ProfessorCRSMenu {
 			switch(choice) 
 			{
 				case 1:
-					professorOperation.getCourseTaught(professor);
+					professorOperation.getCoursesTaught(professor);
 					break;
 				case 2:
 					professorOperation.viewStudents(professor);
