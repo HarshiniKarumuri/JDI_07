@@ -8,7 +8,6 @@ public class Professor extends User{
 	private int professorId;
 	private String email;
 	private String name;
-	private int courseId;
 
 	public int getProfessorId() {
 		return professorId;
@@ -27,12 +26,6 @@ public class Professor extends User{
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public int getCourseId() {
-		return courseId;
-	}
-	public void setCourseId(int courseId) {
-		this.courseId = courseId;
 	}
 	
 }

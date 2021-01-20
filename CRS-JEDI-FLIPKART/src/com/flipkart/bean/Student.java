@@ -6,7 +6,7 @@ package com.flipkart.bean;
 public class Student extends User{
 
 	private int studentId;
-	private String name;
+	private String studentName;
 	private String branch;
 	private boolean hasScholarship;
 	private String gender;
@@ -18,11 +18,11 @@ public class Student extends User{
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
-	public String getName() {
-		return name;
+	public String getStudentName() {
+		return studentName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
 	}
 	public String getBranch() {
 		return branch;
