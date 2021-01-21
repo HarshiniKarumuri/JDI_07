@@ -43,7 +43,6 @@ public class UserCRSMenu {
 				logger.info("Enter 2 to register as a student");
 				logger.info("Enter any other number to exit");
 				
-				while(scanner.hasNext()) scanner.next();
 				choice = scanner.nextInt();
 
 			} catch (Exception e) {
