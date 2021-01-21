@@ -59,9 +59,11 @@ public class StudentCRSMenu {
 				case 4: studentOperations.viewRegisteredCourse(student);
 						break;
 						
-				case 5: logger.info("Available payment methods: \n");
+				case 5: logger.info(UIConstants.SELECT_CORRECT_OPTION_MESSAGE);
 						logger.info("1. Cash \n 2. Card \n 3. Net Banking \n");
-						studentOperations.makePayment(student);
+						choice = sc.nextInt();
+						int fees = studentOperations.calculateFees(student);
+						studentOperations.makePayment(student, choice, fees);
 						break;
 				
 				case 6: studentOperations.viewGrades(student);
