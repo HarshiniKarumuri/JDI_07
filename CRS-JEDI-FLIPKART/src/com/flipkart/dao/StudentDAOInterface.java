@@ -33,7 +33,7 @@ public interface StudentDAOInterface {
      * @param student
      * @param courseId
      */
-    public void addCourse(Student student, int courseId);
+    public void chooseCourse(Student student, int courseId);
 
     /**
      *

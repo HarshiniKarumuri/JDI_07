@@ -24,7 +24,9 @@ public class StudentOperations implements StudentInterface {
      */
     @Override
     public void viewCourseCatalog() {
-
+        ArrayList<Course> courses = studentDao.viewCourseCatalog();
+        logger.info("Course Id\tCourse Name");
+        courses.forEach(course -> logger.info(course.getCourseId() + "\t\t " + course.getCourseName()));
     }
 
     //function to add Course to a particular student
@@ -34,10 +36,10 @@ public class StudentOperations implements StudentInterface {
      * @param courseId
      */
     @Override
-    public void addCourse(Student student, int courseId) {
+    public void chooseCourse(Student student, int courseId) {
 
         //TODO:  Exception handling
-        studentDao.addCourse(student, courseId);
+        studentDao.chooseCourse(student, courseId);
     }
 
     /**
@@ -50,6 +52,7 @@ public class StudentOperations implements StudentInterface {
 
         //TODO:  Exception handling
         studentDao.dropCourse(student, courseId);
+        logger.info(UIConstants.COURSE_DROP_MESSAGE);
     }
 
     /**
@@ -76,6 +79,6 @@ public class StudentOperations implements StudentInterface {
 
     @Override
     public void makePayment(Student student, int paymentMethod, int fees) {
-
+        logger.info(studentDao.makePayment(student, paymentMethod, fees));
     }
 }

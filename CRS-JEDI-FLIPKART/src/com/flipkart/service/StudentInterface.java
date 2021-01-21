@@ -10,7 +10,7 @@ public interface StudentInterface {
 	
 	void viewCourseCatalog();
 	
-	void addCourse(Student student,int courseId);
+	void chooseCourse(Student student, int courseId);
 	
 	void dropCourse(Student student,int courseId);
 	

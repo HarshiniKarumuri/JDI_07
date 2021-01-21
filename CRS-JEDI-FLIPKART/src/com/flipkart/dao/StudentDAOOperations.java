@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.flipkart.bean.Student;
-import com.flipkart.constants.UIConstants;
 import com.flipkart.bean.Course;
 import com.flipkart.service.StudentOperations;
 import org.apache.log4j.Logger;
@@ -62,8 +61,8 @@ public class StudentDAOOperations implements StudentDAOInterface {
      * @param student
      * @param courseId
      */
-    public void addCourse(Student student, int courseId) {
-        studentDao.addCourse(student, courseId);
+    public void chooseCourse(Student student, int courseId) {
+        studentDao.chooseCourse(student, courseId);
     }
 
     /**
@@ -73,7 +72,6 @@ public class StudentDAOOperations implements StudentDAOInterface {
      */
     public void dropCourse(Student student, int courseId) {
         studentDao.dropCourse(student, courseId);
-        logger.info(UIConstants.COURSE_DROP_MESSAGE);
     }
 
     /**
