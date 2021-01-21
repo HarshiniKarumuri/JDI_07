@@ -63,6 +63,7 @@ public class ProfessorOperations implements ProfessorInterface {
 
 				professorDao.gradeStudent(courseId, studentId, grade);
 				logger.info(UIConstants.SUCCESS_STUDENT_GRADED_MESSAGE);
+				logger.info("\n");
 
 			} else {
 				logger.info(UIConstants.STUDENT_NOT_REGISTERED_MESSAGE);
