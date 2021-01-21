@@ -42,7 +42,7 @@ public class UserCRSMenu {
 				logger.info("Enter 2 to register as a student");
 				logger.info("Enter any other number to exit");
 				
-				choice = scanner.nextInt();
+				choice = Integer.parseInt(scanner.nextLine());
 
 			} catch (Exception e) {
 				logger.info(e.getMessage());
