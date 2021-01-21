@@ -83,7 +83,21 @@ public class StudentDAOOperations implements StudentDAOInterface {
         Map<String, String> reports = new HashMap<String, String>();
         return reports;
     }
+    
+    /**
+     * @param student
+     * @return
+     */
+    public int calculateTotalFees(Student student) {
+    	return 0;
+    }
 
+    /**
+     * @param student
+     * @param paymentMethod
+     * @param fees
+     * @return
+     */
     @Override
     public String makePayment(Student student, int paymentMethod, int fees) {
         return null;

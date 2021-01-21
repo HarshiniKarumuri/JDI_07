@@ -47,6 +47,18 @@ public interface StudentDAOInterface {
      * @return
      */
     public Map<String, String> viewGrades(Student student);
+    
+    /**
+     * @param student
+     * @return
+     */
+    public int calculateTotalFees(Student student);
 
+    /**
+     * @param student
+     * @param paymentMethod
+     * @param fees
+     * @return
+     */
     public String makePayment(Student student, int paymentMethod, int fees);
 }
