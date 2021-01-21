@@ -11,7 +11,7 @@ import com.flipkart.dao.StudentDAOInterface;
 import com.flipkart.dao.StudentDAOOperations;
 
 /**
- * Student business class
+ * Student service class
  */
 public class StudentOperations implements StudentInterface {
 
@@ -76,7 +76,19 @@ public class StudentOperations implements StudentInterface {
     public void viewGrades(Student student) {
         studentDao.viewGrades(student).forEach((k, v) -> logger.info(k + "\t" + v));
     }
-
+    
+    /**
+     * @param student
+     */
+    @Override
+    public int calculateFees(Student student) {
+    	return studentDao.calculateTotalFees(student);
+    }
+    /**
+     * @param student
+     * @param paymentMethod
+     * @param fees
+     */
     @Override
     public void makePayment(Student student, int paymentMethod, int fees) {
         logger.info(studentDao.makePayment(student, paymentMethod, fees));

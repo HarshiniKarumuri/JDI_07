@@ -17,6 +17,8 @@ public interface StudentInterface {
 	void  viewRegisteredCourse(Student student);
 	
 	void viewGrades(Student student);
+	
+	int calculateFees(Student student);
 
 	void makePayment(Student student, int paymentMethod, int fees);
 }
