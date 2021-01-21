@@ -2,6 +2,7 @@ package com.flipkart.dao;
 
 import java.util.ArrayList;
 
+import com.flipkart.bean.Admin;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.User;
@@ -20,8 +21,8 @@ public class AdminDAOOperations implements AdminDAOInterface{
 		l1.add(u1);
 		
 		User u2 = new User();
-		u1.setUserId(1);
-		u1.setUsername("Rahul Gandhi");
+		u2.setUserId(1);
+		u2.setUsername("Rahul Gandhi");
 		l1.add(u2);
 		
 		return l1;
@@ -40,7 +41,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	}
 
 	@Override
-	public void addProfessor(Professor professor) {
+	public void addProfessor(Professor professor,String password) {
 		// TODO Auto-generated method stub
 		
 		
@@ -56,6 +57,23 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	public void deleteUser(int userId) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void addAdmin(Admin admin, String password) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Admin getAdminDetails(String username) {
+		// TODO Auto-generated method stub
+		
+		Admin admin = new Admin();
+		admin.setAdminId(0);
+		admin.setAdminName("Arvind Kejriwal");
+		admin.setUsername(username);
+		return admin;
 	}
 
 }

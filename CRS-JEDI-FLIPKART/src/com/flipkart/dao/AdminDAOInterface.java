@@ -2,6 +2,7 @@ package com.flipkart.dao;
 
 import java.util.ArrayList;
 
+import com.flipkart.bean.Admin;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.User;
@@ -35,8 +36,9 @@ public interface AdminDAOInterface {
 	/**
 	 * 
 	 * @param professor represents a new professor to be added into DB
+	 * @param password password for professor account
 	 */
-	public void addProfessor(Professor professor);
+	public void addProfessor(Professor professor,String password);
 
 	
 	
@@ -55,5 +57,21 @@ public interface AdminDAOInterface {
 	 */
 	public void deleteUser(int userId);
 	
+	
+	
+	/**
+	 * 
+	 * @param admin admin object which is added into DB
+	 * @param password password for professor account
+	 */
+	public void addAdmin(Admin admin,String password);
+	
+	
+	/**
+	 * 
+	 * @param username unique identifier of the user
+	 * @return returns the admin object whose username matches the input
+	 */
+	public Admin getAdminDetails(String username);
 	
 }

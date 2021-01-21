@@ -1,7 +1,9 @@
 package com.flipkart.client;
 
+import com.flipkart.bean.Admin;
 import com.flipkart.bean.Professor;
 import com.flipkart.constants.UIConstants;
+import com.flipkart.dao.AdminDAOOperations;
 import com.flipkart.dao.LoginDAOInterface;
 import com.flipkart.dao.LoginDAOOperations;
 import com.flipkart.dao.ProfessorDAOOperations;
@@ -86,6 +88,10 @@ public class UserCRSMenu {
 
 			case "Admin":
 				logger.info("User logged in as " + role);
+				AdminCRSMenu adminCRSMenu = new AdminCRSMenu();
+				AdminDAOOperations adminDAOOperations = new AdminDAOOperations();
+				Admin admin = adminDAOOperations.getAdminDetails(username);
+				adminCRSMenu.displayMenu(admin);
 				break;
 				
 			default:
