@@ -7,7 +7,8 @@ import com.flipkart.dao.ProfessorDAOInterface;
 import com.flipkart.dao.ProfessorDAOOperations;
 
 import java.util.List;
-import java.util.logging.Logger;
+
+import org.apache.log4j.Logger;
 
 /**
  * Professor business class implements ProfessorInterface
@@ -15,7 +16,7 @@ import java.util.logging.Logger;
 public class ProfessorOperations implements ProfessorInterface {
 
 	private final ProfessorDAOInterface professorDao = new ProfessorDAOOperations();
-	private static final Logger logger = Logger.getLogger(ProfessorOperations.class.getName());
+	private static final Logger logger = Logger.getLogger(ProfessorOperations.class);
 
 	@Override
 	public void viewAssignedCourses(int professorId) {

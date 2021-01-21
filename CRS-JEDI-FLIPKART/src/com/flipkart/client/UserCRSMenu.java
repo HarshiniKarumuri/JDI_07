@@ -8,18 +8,19 @@ import com.flipkart.dao.LoginDAOOperations;
 import com.flipkart.dao.ProfessorDAOOperations;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
+
+import org.apache.log4j.Logger;
 
 /**
  * User main class (user interface)
  */
 public class UserCRSMenu {
 
-	private static final Logger logger = Logger.getLogger(UserCRSMenu.class.getName());
+	private static final Logger logger = Logger.getLogger(UserCRSMenu.class);
 	public static Scanner scanner = new Scanner(System.in);
 
 	// To maintain logged in/out state of the user
-	static boolean loggedIn;
+	public static boolean loggedIn;
 
 	/**
 	 * CRS start execution method
@@ -37,13 +38,13 @@ public class UserCRSMenu {
 		boolean showingMenu = true;
 		int choice = 0;
 		while(showingMenu) {
-
 			try {
 				logger.info("Enter 1 to login");
 				logger.info("Enter 2 to register as a student");
 				logger.info("Enter any other number to exit");
-
-				choice = Integer.parseInt(scanner.nextLine());
+				
+				while(scanner.hasNext()) scanner.next();
+				choice = scanner.nextInt();
 
 			} catch (Exception e) {
 				logger.info(e.getMessage());
