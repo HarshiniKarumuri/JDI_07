@@ -23,6 +23,7 @@ public class UserCRSMenu {
 
 	/**
 	 * CRS start execution method
+	 *
 	 * @param args command line input to program
 	 */
 	public static void main(String[] args) {
@@ -41,7 +42,7 @@ public class UserCRSMenu {
 				logger.info("Enter 1 to login");
 				logger.info("Enter 2 to register as a student");
 				logger.info("Enter any other number to exit");
-				
+
 				choice = Integer.parseInt(scanner.nextLine());
 
 			} catch (Exception e) {
@@ -60,7 +61,9 @@ public class UserCRSMenu {
 		}
 	}
 
-	//To login User
+	/**
+	 * To login user in CRS
+	 */
 	public static void login() {
 		logger.info("Enter Username");
 		String username = scanner.nextLine();
@@ -100,6 +103,7 @@ public class UserCRSMenu {
 	 */
 	public static void logout() {
 		loggedIn = false;
-		logger.info("User logged out");
+		logger.info(UIConstants.SUCCESSFUL_LOGOUT_MESSAGE);
+		logger.info("\n");
 	}
 }
