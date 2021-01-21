@@ -1,7 +1,9 @@
 package com.flipkart.client;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
+
+import org.apache.log4j.Logger;
+
 import com.flipkart.bean.Professor;
 import com.flipkart.business.ProfessorOperations;
 import com.flipkart.constants.UIConstants;
@@ -11,7 +13,7 @@ import com.flipkart.constants.UIConstants;
  */
 public class ProfessorCRSMenu {
 	
-	private static final Logger logger = Logger.getLogger(ProfessorCRSMenu.class.getName());
+	private static final Logger logger = Logger.getLogger(ProfessorCRSMenu.class);
 	ProfessorOperations professorOperation = new ProfessorOperations();
 	Scanner sc = new Scanner(System.in);
 	

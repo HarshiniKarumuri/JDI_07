@@ -1,0 +1,365 @@
+10:19:50,760  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:19:50,773  INFO UserCRSMenu,main:43 - Enter 1 to login
+10:19:50,774  INFO UserCRSMenu,main:44 - Enter 2 to register as a student
+10:19:50,774  INFO UserCRSMenu,main:45 - Enter any other number to exit
+10:21:45,856  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:21:45,862  INFO UserCRSMenu,main:43 - Enter 1 to login
+10:21:45,863  INFO UserCRSMenu,main:44 - Enter 2 to register as a student
+10:21:45,863  INFO UserCRSMenu,main:45 - Enter any other number to exit
+10:21:50,990  INFO UserCRSMenu,main:67 - Enter Username
+10:21:53,351  INFO UserCRSMenu,main:69 - Enter Password
+10:21:56,325  INFO UserCRSMenu,main:94 - Please Enter correct login credentials
+10:21:56,326  INFO UserCRSMenu,main:43 - Enter 1 to login
+10:21:56,327  INFO UserCRSMenu,main:44 - Enter 2 to register as a student
+10:21:56,327  INFO UserCRSMenu,main:45 - Enter any other number to exit
+10:22:01,120  INFO UserCRSMenu,main:67 - Enter Username
+10:22:03,008  INFO UserCRSMenu,main:69 - Enter Password
+10:22:04,150  INFO UserCRSMenu,main:78 - User logged in as Professor
+10:22:04,200  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:22:04,201  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:22:04,202  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:22:04,203  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:22:04,203  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:22:04,204  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:22:25,945  INFO ProfessorCRSMenu,main:38 - 
+
+10:22:25,946  INFO ProfessorOperations,main:23 - -------------- Assigned Courses --------------
+
+10:22:25,949  INFO ProfessorOperations,main:24 - Course Id      Course Name    Course Description
+10:22:25,953  INFO ProfessorOperations,main:30 - 1         Java      Programming Language
+10:22:25,954  INFO ProfessorOperations,main:30 - 2         ML        A good course
+10:22:25,954  INFO ProfessorOperations,main:33 - 
+--------------------------------------------------
+
+10:22:25,955  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:22:25,955  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:22:25,955  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:22:25,956  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:22:25,956  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:22:25,957  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:22:32,477  INFO ProfessorCRSMenu,main:38 - 
+
+10:22:32,478  INFO ProfessorCRSMenu,main:48 - Enter course ID: 
+10:22:39,029  INFO ProfessorOperations,main:40 - -------------- Registered Students in Course --------------
+
+10:22:39,031  INFO ProfessorOperations,main:41 - Course ID : 123
+
+10:22:39,033  INFO ProfessorOperations,main:42 - Course Id      Course Name    Course Description
+10:22:39,036  INFO ProfessorOperations,main:48 - 101       Harry     CSE       
+10:22:39,038  INFO ProfessorOperations,main:48 - 102       Hermonie  ECE       
+10:22:39,038  INFO ProfessorOperations,main:51 - 
+-----------------------------------------------------
+
+10:22:39,038  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:22:39,040  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:22:39,040  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:22:39,040  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:22:39,041  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:22:39,042  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:22:45,987  INFO ProfessorCRSMenu,main:38 - 
+
+10:22:45,988  INFO ProfessorCRSMenu,main:55 - Enter course ID: 
+10:22:49,061  INFO ProfessorCRSMenu,main:57 - Enter student ID: 
+10:22:50,191  INFO ProfessorCRSMenu,main:60 - Enter student's course grade: 
+10:22:52,642  INFO ProfessorOperations,main:66 - Student graded for the course successfully
+10:22:52,643  INFO ProfessorOperations,main:67 - 
+
+10:22:52,643  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:22:52,644  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:22:52,644  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:22:52,645  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:22:52,645  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:22:52,646  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:26:00,697  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:26:00,703  INFO UserCRSMenu,main:43 - Enter 1 to login
+10:26:00,703  INFO UserCRSMenu,main:44 - Enter 2 to register as a student
+10:26:00,704  INFO UserCRSMenu,main:45 - Enter any other number to exit
+10:26:38,511  INFO UserCRSMenu,main:67 - Enter Username
+10:27:01,269  INFO UserCRSMenu,main:69 - Enter Password
+10:27:03,101  INFO UserCRSMenu,main:78 - User logged in as Professor
+10:27:03,159  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:27:03,159  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:27:03,160  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:27:03,161  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:27:03,162  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:27:03,162  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:28:16,408  INFO ProfessorCRSMenu,main:38 - 
+
+10:28:16,409  INFO ProfessorOperations,main:23 - -------------- Assigned Courses --------------
+
+10:28:16,416  INFO ProfessorOperations,main:24 - Course Id      Course Name    Course Description
+10:28:16,421  INFO ProfessorOperations,main:30 - 1         Java      Programming Language
+10:28:16,423  INFO ProfessorOperations,main:30 - 2         ML        A good course
+10:28:16,424  INFO ProfessorOperations,main:33 - 
+--------------------------------------------------
+
+10:28:16,424  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:28:16,425  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:28:16,426  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:28:16,426  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:28:16,427  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:28:16,428  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:29:07,488  INFO ProfessorCRSMenu,main:38 - 
+
+10:29:07,489  INFO ProfessorCRSMenu,main:48 - Enter course ID: 
+10:29:09,592  INFO ProfessorOperations,main:40 - -------------- Registered Students in Course --------------
+
+10:29:09,594  INFO ProfessorOperations,main:41 - Course ID : 1
+
+10:29:09,594  INFO ProfessorOperations,main:42 - Course Id      Course Name    Course Description
+10:29:09,597  INFO ProfessorOperations,main:48 - 101       Harry     CSE       
+10:29:09,597  INFO ProfessorOperations,main:48 - 102       Hermonie  ECE       
+10:29:09,599  INFO ProfessorOperations,main:51 - 
+-----------------------------------------------------
+
+10:29:09,599  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:29:09,599  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:29:09,599  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:29:09,599  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:29:09,599  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:29:09,600  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:30:24,220  INFO ProfessorCRSMenu,main:38 - 
+
+10:30:24,221  INFO ProfessorCRSMenu,main:55 - Enter course ID: 
+10:30:26,168  INFO ProfessorCRSMenu,main:57 - Enter student ID: 
+10:30:27,366  INFO ProfessorCRSMenu,main:60 - Enter student's course grade: 
+10:30:29,338  INFO ProfessorOperations,main:66 - Student graded for the course successfully
+10:30:29,339  INFO ProfessorOperations,main:67 - 
+
+10:30:29,339  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:30:29,340  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:30:29,340  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:30:29,340  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:30:29,341  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:30:29,341  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:30:36,047  INFO ProfessorCRSMenu,main:38 - 
+
+10:30:36,048  INFO UserCRSMenu,main:105 - User logged out
+10:30:36,048  INFO UserCRSMenu,main:43 - Enter 1 to login
+10:30:36,048  INFO UserCRSMenu,main:44 - Enter 2 to register as a student
+10:30:36,049  INFO UserCRSMenu,main:45 - Enter any other number to exit
+10:30:36,050  INFO UserCRSMenu,main:50 - No line found
+10:30:36,050  INFO UserCRSMenu,main:67 - Enter Username
+10:32:16,232  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:32:16,237  INFO UserCRSMenu,main:43 - Enter 1 to login
+10:32:16,238  INFO UserCRSMenu,main:44 - Enter 2 to register as a student
+10:32:16,239  INFO UserCRSMenu,main:45 - Enter any other number to exit
+10:32:19,680  INFO UserCRSMenu,main:67 - Enter Username
+10:32:21,243  INFO UserCRSMenu,main:69 - Enter Password
+10:32:22,440  INFO UserCRSMenu,main:78 - User logged in as Professor
+10:32:22,482  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:32:22,483  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:32:22,483  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:32:22,484  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:32:22,484  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:32:22,485  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:32:25,846  INFO ProfessorCRSMenu,main:38 - 
+
+10:32:25,846  INFO UserCRSMenu,main:105 - User logged out
+10:32:25,847  INFO UserCRSMenu,main:43 - Enter 1 to login
+10:32:25,847  INFO UserCRSMenu,main:44 - Enter 2 to register as a student
+10:32:25,848  INFO UserCRSMenu,main:45 - Enter any other number to exit
+10:32:25,849  INFO UserCRSMenu,main:50 - No line found
+10:32:25,850  INFO UserCRSMenu,main:67 - Enter Username
+10:35:40,707  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:35:40,716  INFO UserCRSMenu,main:45 - Enter 1 to login
+10:35:40,717  INFO UserCRSMenu,main:46 - Enter 2 to register as a student
+10:35:40,717  INFO UserCRSMenu,main:47 - Enter any other number to exit
+10:35:45,387  INFO UserCRSMenu,main:69 - Enter Username
+10:35:47,328  INFO UserCRSMenu,main:71 - Enter Password
+10:35:48,278  INFO UserCRSMenu,main:80 - User logged in as Professor
+10:35:48,323  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:35:48,323  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:35:48,324  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:35:48,324  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:35:48,324  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:35:48,325  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:35:50,894  INFO ProfessorCRSMenu,main:38 - 
+
+10:35:50,894  INFO UserCRSMenu,main:107 - User logged out
+10:35:50,894  INFO UserCRSMenu,main:45 - Enter 1 to login
+10:35:50,894  INFO UserCRSMenu,main:46 - Enter 2 to register as a student
+10:35:50,896  INFO UserCRSMenu,main:47 - Enter any other number to exit
+10:35:50,897  INFO UserCRSMenu,main:52 - No line found
+10:35:50,897  INFO UserCRSMenu,main:32 - Thank you for using CRS
+10:38:55,003  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:39:15,948  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:39:37,317  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:39:37,321  INFO UserCRSMenu,main:42 - Enter 1 to login
+10:39:37,322  INFO UserCRSMenu,main:43 - Enter 2 to register as a student
+10:39:37,322  INFO UserCRSMenu,main:44 - Enter any other number to exit
+10:39:39,816  INFO UserCRSMenu,main:66 - Enter Username
+10:39:39,818  INFO UserCRSMenu,main:68 - Enter Password
+10:39:42,018  INFO UserCRSMenu,main:93 - Please Enter correct login credentials
+10:39:42,018  INFO UserCRSMenu,main:42 - Enter 1 to login
+10:39:42,019  INFO UserCRSMenu,main:43 - Enter 2 to register as a student
+10:39:42,019  INFO UserCRSMenu,main:44 - Enter any other number to exit
+10:39:43,163  INFO UserCRSMenu,main:49 - 
+10:39:43,164  INFO UserCRSMenu,main:42 - Enter 1 to login
+10:39:43,164  INFO UserCRSMenu,main:43 - Enter 2 to register as a student
+10:39:43,164  INFO UserCRSMenu,main:44 - Enter any other number to exit
+10:39:43,165  INFO UserCRSMenu,main:49 - 
+10:39:43,165  INFO UserCRSMenu,main:66 - Enter Username
+10:39:43,165  INFO UserCRSMenu,main:68 - Enter Password
+10:40:00,782  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:40:00,786  INFO UserCRSMenu,main:42 - Enter 1 to login
+10:40:00,787  INFO UserCRSMenu,main:43 - Enter 2 to register as a student
+10:40:00,787  INFO UserCRSMenu,main:44 - Enter any other number to exit
+10:40:03,803  INFO UserCRSMenu,main:66 - Enter Username
+10:40:03,805  INFO UserCRSMenu,main:68 - Enter Password
+10:41:08,126  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:41:08,132  INFO UserCRSMenu,main:42 - Enter 1 to login
+10:41:08,132  INFO UserCRSMenu,main:43 - Enter 2 to register as a student
+10:41:08,133  INFO UserCRSMenu,main:44 - Enter any other number to exit
+10:41:09,877  INFO UserCRSMenu,main:67 - Enter Username
+10:41:11,658  INFO UserCRSMenu,main:69 - Enter Password
+10:41:13,320  INFO UserCRSMenu,main:94 - Please Enter correct login credentials
+10:41:13,321  INFO UserCRSMenu,main:42 - Enter 1 to login
+10:41:13,321  INFO UserCRSMenu,main:43 - Enter 2 to register as a student
+10:41:13,321  INFO UserCRSMenu,main:44 - Enter any other number to exit
+10:41:14,872  INFO UserCRSMenu,main:67 - Enter Username
+10:41:16,476  INFO UserCRSMenu,main:69 - Enter Password
+10:41:17,749  INFO UserCRSMenu,main:78 - User logged in as Professor
+10:41:17,775  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:41:17,775  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:41:17,775  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:41:17,775  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:41:17,776  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:41:17,776  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:41:20,088  INFO ProfessorCRSMenu,main:38 - 
+
+10:41:20,089  INFO UserCRSMenu,main:105 - User logged out
+10:41:20,089  INFO UserCRSMenu,main:42 - Enter 1 to login
+10:41:20,089  INFO UserCRSMenu,main:43 - Enter 2 to register as a student
+10:41:20,089  INFO UserCRSMenu,main:44 - Enter any other number to exit
+10:41:20,089  INFO UserCRSMenu,main:67 - Enter Username
+10:42:32,605  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:42:32,609  INFO UserCRSMenu,main:42 - Enter 1 to login
+10:42:32,609  INFO UserCRSMenu,main:43 - Enter 2 to register as a student
+10:42:32,610  INFO UserCRSMenu,main:44 - Enter any other number to exit
+10:42:37,562  INFO UserCRSMenu,main:50 - For input string: ""
+10:42:37,562  INFO UserCRSMenu,main:32 - Thank you for using CRS
+10:46:55,773  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:46:55,779  INFO UserCRSMenu,main:42 - Enter 1 to login
+10:46:55,780  INFO UserCRSMenu,main:43 - Enter 2 to register as a student
+10:46:55,780  INFO UserCRSMenu,main:44 - Enter any other number to exit
+10:46:58,788  INFO UserCRSMenu,main:68 - Enter Username
+10:47:00,380  INFO UserCRSMenu,main:70 - Enter Password
+10:47:01,933  INFO UserCRSMenu,main:79 - User logged in as Professor
+10:47:01,954  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:47:01,954  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:47:01,954  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:47:01,954  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:47:01,955  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:47:01,955  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:47:05,499  INFO ProfessorCRSMenu,main:38 - 
+
+10:47:05,499  INFO ProfessorOperations,main:23 - -------------- Assigned Courses --------------
+
+10:47:05,502  INFO ProfessorOperations,main:24 - Course Id      Course Name    Course Description
+10:47:05,506  INFO ProfessorOperations,main:30 - 1         Java      Programming Language
+10:47:05,507  INFO ProfessorOperations,main:30 - 2         ML        A good course
+10:47:05,507  INFO ProfessorOperations,main:33 - 
+--------------------------------------------------
+
+10:47:05,507  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:47:05,508  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:47:05,508  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:47:05,508  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:47:05,508  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:47:05,509  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:47:08,708  INFO ProfessorCRSMenu,main:38 - 
+
+10:47:08,708  INFO ProfessorCRSMenu,main:48 - Enter course ID: 
+10:47:12,386  INFO ProfessorOperations,main:40 - -------------- Registered Students in Course --------------
+
+10:47:12,386  INFO ProfessorOperations,main:41 - Course ID : 123
+
+10:47:12,386  INFO ProfessorOperations,main:42 - Course Id      Course Name    Course Description
+10:47:12,388  INFO ProfessorOperations,main:48 - 101       Harry     CSE       
+10:47:12,388  INFO ProfessorOperations,main:48 - 102       Hermonie  ECE       
+10:47:12,388  INFO ProfessorOperations,main:51 - 
+-----------------------------------------------------
+
+10:47:12,388  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:47:12,388  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:47:12,389  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:47:12,389  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:47:12,389  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:47:12,389  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:49:28,148  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:49:28,155  INFO UserCRSMenu,main:42 - Enter 1 to login
+10:49:28,156  INFO UserCRSMenu,main:43 - Enter 2 to register as a student
+10:49:28,156  INFO UserCRSMenu,main:44 - Enter any other number to exit
+10:49:30,984  INFO UserCRSMenu,main:67 - Enter Username
+10:49:34,452  INFO UserCRSMenu,main:69 - Enter Password
+10:49:35,496  INFO UserCRSMenu,main:78 - User logged in as Professor
+10:49:35,520  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:49:35,520  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:49:35,521  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:49:35,521  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:49:35,521  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:49:35,522  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:49:38,000  INFO ProfessorCRSMenu,main:38 - 
+
+10:49:38,001  INFO ProfessorOperations,main:23 - -------------- Assigned Courses --------------
+
+10:49:38,004  INFO ProfessorOperations,main:24 - Course Id      Course Name    Course Description
+10:49:38,007  INFO ProfessorOperations,main:30 - 1         Java      Programming Language
+10:49:38,008  INFO ProfessorOperations,main:30 - 2         ML        A good course
+10:49:38,009  INFO ProfessorOperations,main:33 - 
+--------------------------------------------------
+
+10:49:38,009  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:49:38,009  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:49:38,010  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:49:38,010  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:49:38,010  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:49:38,010  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:49:39,113  INFO ProfessorCRSMenu,main:38 - 
+
+10:49:39,113  INFO ProfessorCRSMenu,main:48 - Enter course ID: 
+10:49:40,897  INFO ProfessorOperations,main:40 - -------------- Registered Students in Course --------------
+
+10:49:40,897  INFO ProfessorOperations,main:41 - Course ID : 123
+
+10:49:40,897  INFO ProfessorOperations,main:42 - Course Id      Course Name    Course Description
+10:49:40,899  INFO ProfessorOperations,main:48 - 101       Harry     CSE       
+10:49:40,899  INFO ProfessorOperations,main:48 - 102       Hermonie  ECE       
+10:49:40,900  INFO ProfessorOperations,main:51 - 
+-----------------------------------------------------
+
+10:49:40,900  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:49:40,900  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:49:40,901  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:49:40,901  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:49:40,901  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:49:40,902  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:49:46,458  INFO ProfessorCRSMenu,main:38 - 
+
+10:49:46,458  INFO ProfessorCRSMenu,main:55 - Enter course ID: 
+10:49:48,080  INFO ProfessorCRSMenu,main:57 - Enter student ID: 
+10:49:48,943  INFO ProfessorCRSMenu,main:60 - Enter student's course grade: 
+10:49:49,747  INFO ProfessorOperations,main:66 - Student graded for the course successfully
+10:49:49,747  INFO ProfessorOperations,main:67 - 
+
+10:49:49,747  INFO ProfessorCRSMenu,main:30 - -----------------------Enter your choice:------------------------
+10:49:49,747  INFO ProfessorCRSMenu,main:31 - 0. To logout and return to main menu
+10:49:49,747  INFO ProfessorCRSMenu,main:32 - 1. To view courses assigned to you
+10:49:49,747  INFO ProfessorCRSMenu,main:33 - 2. To view students in a course
+10:49:49,748  INFO ProfessorCRSMenu,main:34 - 3. To add or update grade of a student in a course
+10:49:49,748  INFO ProfessorCRSMenu,main:35 - ------------------------------------------------------------------
+10:49:52,575  INFO ProfessorCRSMenu,main:38 - 
+
+10:49:52,575  INFO UserCRSMenu,main:105 - User logged out
+10:49:52,575  INFO UserCRSMenu,main:42 - Enter 1 to login
+10:49:52,575  INFO UserCRSMenu,main:43 - Enter 2 to register as a student
+10:49:52,575  INFO UserCRSMenu,main:44 - Enter any other number to exit
+10:49:52,576  INFO UserCRSMenu,main:50 - 
+10:49:52,576  INFO UserCRSMenu,main:67 - Enter Username
+10:52:23,236  INFO UserCRSMenu,main:30 - Welcome to Course Registration System!
+10:52:23,240  INFO UserCRSMenu,main:42 - Enter 1 to login
+10:52:23,241  INFO UserCRSMenu,main:43 - Enter 2 to register as a student
+10:52:23,241  INFO UserCRSMenu,main:44 - Enter any other number to exit
+10:52:43,683  INFO UserCRSMenu,main:50 - 
+10:52:43,684  INFO UserCRSMenu,main:32 - Thank you for using CRS
