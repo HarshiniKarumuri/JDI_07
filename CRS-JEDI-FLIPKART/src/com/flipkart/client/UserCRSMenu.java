@@ -1,7 +1,6 @@
 package com.flipkart.client;
 
 import com.flipkart.bean.Professor;
-import com.flipkart.business.ProfessorOperations;
 import com.flipkart.constants.UIConstants;
 import com.flipkart.dao.LoginDAOInterface;
 import com.flipkart.dao.LoginDAOOperations;

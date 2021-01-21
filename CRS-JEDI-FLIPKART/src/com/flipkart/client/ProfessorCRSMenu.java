@@ -5,7 +5,7 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 import com.flipkart.bean.Professor;
-import com.flipkart.business.ProfessorOperations;
+import com.flipkart.service.ProfessorOperations;
 import com.flipkart.constants.UIConstants;
 
 /**
