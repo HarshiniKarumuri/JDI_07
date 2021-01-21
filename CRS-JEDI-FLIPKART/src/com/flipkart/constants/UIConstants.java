@@ -14,4 +14,10 @@ public class UIConstants {
     public static final String SUCCESS_STUDENT_GRADED_MESSAGE = "Student graded for the course successfully";
     public static final String EXIT_MESSAGE = "Thank you for using CRS";
     public static final String SUCCESSFUL_LOGOUT_MESSAGE = "Logged out successfully";
+    public static final String COURSE_DROP_MESSAGE = "Course is dropped successfully";
+    public static final String PAYMENT_SUCCESSFUL_MESSAGE = "Payment is successful";
+    public static final String ENTER_CHOICES_MESSAGE = "-----------------------Enter your choice:------------------------";
+    public static final String DASHED_LINE = "------------------------------------------------------------------";
+    public static final String VIEW_COURSES_MESSAGE = "These are the available courses:\n";
+    public static final String VIEW_REG_COURSES_MESSAGE = "These are the registered courses \n";
 }
