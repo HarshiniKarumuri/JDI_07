@@ -55,5 +55,11 @@ public interface ProfessorDAOInterface {
 	 */
 	boolean checkCanGradeStudent(int studentId, int courseID);
 
+	/**
+	 * gets the details of the professor using username required at login
+	 *
+	 * @param username username used for logging in the system
+	 * @return
+	 */
 	Professor getProfessorDetails(String username);
 }
