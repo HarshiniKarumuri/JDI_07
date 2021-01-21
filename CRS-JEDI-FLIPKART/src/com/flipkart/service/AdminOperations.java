@@ -2,6 +2,11 @@ package com.flipkart.service;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.User;
+import com.flipkart.dao.AdminDAOOperations;
+
+import java.util.ArrayList;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -10,15 +15,21 @@ import org.apache.log4j.Logger;
 public class AdminOperations implements AdminInterface {
 	
 	private static Logger logger = Logger.getLogger(AdminOperations.class);
+	private final AdminDAOOperations adminDAOOperations = new AdminDAOOperations();
 
-	public void viewCourse() {
-		logger.info("In view Courses");
-		return;
+	public void viewUser() {
+		logger.info("In viewUser");
+		
+		ArrayList<User> users = adminDAOOperations.viewUser();
+		
+		for(User user:users) {
+			logger.info(String.format("UserName = %s, UserId = %d", user.getUsername(),user.getUserId()));
+		}
 	}
 	
-	public String addCourseIntoCatalog(Course course) {
+	public void addCourseIntoCatalog(Course course) {
 		logger.info("In add Course Into Catalouge");
-		return null;
+		
 	}
 
 	public void deleteCourse(int courseId) {
@@ -26,14 +37,12 @@ public class AdminOperations implements AdminInterface {
 		
 	}
 
-	public String addProfessor(Professor professor) {
+	public void addProfessor(Professor professor) {
 		logger.info("In add Professor");
-		return "";
 	}
 	
-	public String assignProfessor(Professor professor,int courseId) {
+	public void assignProfessor(Professor professor,int courseId) {
 		logger.info("In assign Professor");
-		return "";
 	}
 
 	public void deleteUser(int userId) {

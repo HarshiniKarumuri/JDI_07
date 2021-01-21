@@ -9,5 +9,5 @@ public interface LoginDAOInterface {
      * @param password
      * @return
      */
-    String login(String username,String password);
+    public String login(String username,String password);
 }

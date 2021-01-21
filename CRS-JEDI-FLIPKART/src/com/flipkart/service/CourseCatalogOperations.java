@@ -12,9 +12,8 @@ public class CourseCatalogOperations implements CourseCatalogInterface{
 	
 	private static Logger logger = Logger.getLogger(CourseCatalogOperations.class);
 	
-	public ArrayList<Course> fetchCatalogDetails() {
+	public void viewCatalog() {
 		logger.info("In fetch Catalog Details");
-		return null;
 	}
 
 	public void viewCourse(int courseId) {

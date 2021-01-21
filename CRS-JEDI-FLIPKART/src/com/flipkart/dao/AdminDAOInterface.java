@@ -1,17 +1,18 @@
-package com.flipkart.service;
+package com.flipkart.dao;
+
+import java.util.ArrayList;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.User;
 
-/**
- * Admin business interface
- */
-public interface AdminInterface {
+public interface AdminDAOInterface {
+	
 
 	/**
 	 * To see the List of Users
 	 */
-	public void viewUser();
+	public ArrayList<User> viewUser();
 
 	
 	
@@ -53,5 +54,6 @@ public interface AdminInterface {
 	 * @param userId unique identifier of user to be deleted
 	 */
 	public void deleteUser(int userId);
-
+	
+	
 }
