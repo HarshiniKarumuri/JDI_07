@@ -38,7 +38,7 @@ public class ProfessorOperations implements ProfessorInterface {
 
 			logger.info("-------------- Registered Students in Course --------------\n");
 			logger.info(String.format("Course ID : %s\n", courseId));
-			logger.info(String.format("%-15s%-15s%-15s", "Course Id", "Course Name", "Course Description"));
+			logger.info(String.format("%-15s%-15s%-15s", "Student Id", "Student Name", "Course"));
 			List<Student> studentsList = professorDao.getRegisteredStudentsInCourse(professorId, courseId);
 			if(studentsList.size() == 0) {
 				logger.info(UIConstants.NO_STUDENT_REGISTERED_MESSAGE);
