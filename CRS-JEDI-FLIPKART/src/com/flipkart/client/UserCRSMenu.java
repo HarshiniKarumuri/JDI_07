@@ -1,7 +1,6 @@
 package com.flipkart.client;
 
 import com.flipkart.bean.Professor;
-import com.flipkart.business.ProfessorOperations;
 import com.flipkart.constants.UIConstants;
 import com.flipkart.dao.LoginDAOInterface;
 import com.flipkart.dao.LoginDAOOperations;
@@ -43,8 +42,7 @@ public class UserCRSMenu {
 				logger.info("Enter 2 to register as a student");
 				logger.info("Enter any other number to exit");
 				
-				while(scanner.hasNext()) scanner.next();
-				choice = scanner.nextInt();
+				choice = Integer.parseInt(scanner.nextLine());
 
 			} catch (Exception e) {
 				logger.info(e.getMessage());
