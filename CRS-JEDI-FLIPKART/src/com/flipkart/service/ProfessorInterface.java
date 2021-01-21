@@ -1,4 +1,4 @@
-package com.flipkart.business;
+package com.flipkart.service;
 
 /**
  * Professor business interface
