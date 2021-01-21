@@ -3,7 +3,6 @@ package com.flipkart.bean;
 /**
  * User bean class
  */
-
 public class User {
 
 	int userId;

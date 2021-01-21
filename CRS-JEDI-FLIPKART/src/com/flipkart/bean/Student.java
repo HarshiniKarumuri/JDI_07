@@ -3,11 +3,10 @@ package com.flipkart.bean;
 /**
  * Student bean class
  */
-
-public class Student extends User {
+public class Student extends User{
 
 	private int studentId;
-	private String name;
+	private String studentName;
 	private String branch;
 	private boolean hasScholarship;
 	private String gender;
@@ -30,15 +29,15 @@ public class Student extends User {
 	/**
 	 * @return the name
 	 */
-	public String getName() {
-		return name;
+	public String getStudentName() {
+		return studentName;
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param studentName the name to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
 	}
 
 	/**

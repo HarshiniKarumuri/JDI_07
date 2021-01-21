@@ -3,7 +3,6 @@ package com.flipkart.bean;
 /**
  * Course bean class
  */
-
 public class Course {
 
 	private int courseId;
