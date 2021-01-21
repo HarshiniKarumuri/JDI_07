@@ -11,4 +11,5 @@ public class UIConstants {
     public static final String STUDENT_NOT_REGISTERED_MESSAGE = "Student has not registered for this course";
     public static final String COURSE_NOT_TAUGHT_MESSAGE = "This course is not taught by you.";
     public static final String SUCCESS_STUDENT_GRADED_MESSAGE = "Student graded for the course successfully";
+    public static final String EXIT_MESSAGE = "Thank you for using CRS";
 }

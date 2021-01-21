@@ -54,6 +54,7 @@ public class ProfessorCRSMenu {
 					courseId = sc.nextInt();
 					logger.info(UIConstants.REQUEST_STUDENT_ID_MESSAGE);
 					studentId = sc.nextInt();
+					sc.nextLine();
 					logger.info(UIConstants.REQUEST_STUDENT_GRADE_MESSAGE);
 					grade = sc.nextLine();
 

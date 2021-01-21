@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.flipkart.bean.Course;
+import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 
 public class ProfessorDAOOperations implements ProfessorDAOInterface {
@@ -64,14 +65,31 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 	//TODO: implement data fetch using SQL queries
 	public void gradeStudent(int courseId, int studentId, String grade) {}
 
+	//TODO: implement data fetch using SQL queries
 	@Override
 	public boolean checkCanGradeCourse(int professorId, int courseId) {
 		return true;
 	}
 
+	//TODO: implement data fetch using SQL queries
 	@Override
 	public boolean checkCanGradeStudent(int studentId, int courseId) {
 		return true;
+	}
+
+	//TODO: implement data fetch using SQL queries
+	@Override
+	public Professor getProfessorDetails(String username) {
+
+		// dummy professor
+		Professor professor = new Professor();
+		professor.setProfessorName("Mr. Aman");
+		professor.setProfessorId(2223423);
+		professor.setUserId(1233334);
+		professor.setUsername("aman.rocks");
+		professor.setEmail("aman.rocks@crshome.com");
+
+		return professor;
 	}
 
 	/*For debugging purposes
