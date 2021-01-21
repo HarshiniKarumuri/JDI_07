@@ -8,9 +8,9 @@ import com.flipkart.bean.Student;
  */
 public interface StudentInterface {
 	
-	Course viewCourse(int courseId);
+	void viewCourseCatalog();
 	
-	void addCourse(Student student,int courseId);
+	void chooseCourse(Student student, int courseId);
 	
 	void dropCourse(Student student,int courseId);
 	
@@ -18,4 +18,5 @@ public interface StudentInterface {
 	
 	void viewGrades(Student student);
 
+	void makePayment(Student student, int paymentMethod, int fees);
 }

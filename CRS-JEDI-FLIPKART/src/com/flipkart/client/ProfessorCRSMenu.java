@@ -73,6 +73,9 @@ public class ProfessorCRSMenu {
 			}
 			
 		}
+		
+		// closing input stream of program
+		//sc.close();
 	}
 
 }
