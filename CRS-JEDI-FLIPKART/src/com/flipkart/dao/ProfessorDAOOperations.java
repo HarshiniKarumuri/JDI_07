@@ -5,18 +5,21 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.flipkart.bean.Course;
-import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 
-public class ProfessorDAOImpl implements ProfessorDAO{
-	private static Logger logger = Logger.getLogger(ProfessorDaoImpl.class);
-	
-	public void viewStudents(Professor professor) {
+public class ProfessorDAOOperations implements ProfessorDAOInterface {
+
+	private static final Logger logger = Logger.getLogger(ProfessorDAOOperations.class.getName());
+
+	//TODO: implement data fetch using SQL queries
+	public List<Student> getRegisteredStudentsInCourse(int professorId, int courseId) {
+
+		// dummy students data
 		List<Student> students = new ArrayList<Student>();
-		
+
 		Student student1 = new Student();
 		student1.setStudentId(101);
-		student1.setName("Harry");
+		student1.setStudentName("Harry");
 		student1.setBranch("CSE");
 		student1.setGender("Male");
 		student1.setHasScholarship(true);
@@ -25,22 +28,21 @@ public class ProfessorDAOImpl implements ProfessorDAO{
 		
 		Student student2 = new Student();
 		student2.setStudentId(102);
-		student2.setName("Hermonie");
+		student2.setStudentName("Hermonie");
 		student2.setBranch("ECE");
 		student2.setGender("Female");
 		student2.setHasScholarship(false);
 		student2.setIsRegistered(1);
 		students.add(student2);
-		
-		for(Student stud: students) {
-			logger.info(stud.getStudentId()+stud.getName());
-		}
-		
+
+		return students;
 	}
-	
-	// View courses taught
-	public List<Course> getCourses(Professor professor){ 
-		List<Course> courses = new ArrayList<Course>();
+
+	//TODO: implement data fetch using SQL queries
+	public List<Course> getAssignedCourses(int professorId){
+
+		// dummy courses data
+		List<Course> courses = new ArrayList<>();
 		
 		Course course1 = new Course();
 		course1.setCourseId(1);
@@ -56,12 +58,22 @@ public class ProfessorDAOImpl implements ProfessorDAO{
 		course2.setFees(200000);
 		courses.add(course2);
 		
-		return courses; }
-	
-	// Grade Student
-	public void gradeStudent(Professor professor, int courseId, int studentId, String grade ) {}
-	
-	
+		return courses;
+	}
+
+	//TODO: implement data fetch using SQL queries
+	public void gradeStudent(int courseId, int studentId, String grade) {}
+
+	@Override
+	public boolean checkCanGradeCourse(int professorId, int courseId) {
+		return true;
+	}
+
+	@Override
+	public boolean checkCanGradeStudent(int studentId, int courseId) {
+		return true;
+	}
+
 	/*For debugging purposes
 	public static void main(String[] args) {
 		
@@ -76,5 +88,4 @@ public class ProfessorDAOImpl implements ProfessorDAO{
 		}
 		
 	}*/
-
 }
