@@ -1,21 +1,21 @@
 package com.flipkart.client;
 
+import java.util.Scanner;
+import java.util.logging.Logger;
+
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.Student;
 import com.flipkart.constants.UIConstants;
 import com.flipkart.dao.LoginDAOInterface;
 import com.flipkart.dao.LoginDAOOperations;
 import com.flipkart.dao.ProfessorDAOOperations;
-
-import java.util.Scanner;
-
-import org.apache.log4j.Logger;
 
 /**
  * User main class (user interface)
  */
 public class UserCRSMenu {
 
-	private static final Logger logger = Logger.getLogger(UserCRSMenu.class);
+	private static final Logger logger = Logger.getLogger(UserCRSMenu.class.getName());
 	public static Scanner scanner = new Scanner(System.in);
 
 	// To maintain logged in/out state of the user
@@ -85,6 +85,10 @@ public class UserCRSMenu {
 
 			case "Student":
 				logger.info("User logged in as " + role);
+				StudentCRSMenu studentCrsMenu = new StudentCRSMenu();
+				StudentDAOOperations studentDAOOperations = new StudentDAOOperations();
+				Student student = studentDAOOperations.getStudentDetails(username);
+				studentCrsMenu.displayMenu(student);
 				break;
 
 			case "Admin":
