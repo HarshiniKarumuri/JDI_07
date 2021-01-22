@@ -111,9 +111,9 @@ public class StudentDAOOperations implements StudentDAOInterface {
 		student.setBranch("CS");
 		student.setGender("Male");
 		student.setHasScholarship(false);
-		student.setIsRegistered(0);
+		student.setIsApproved(0);
 		student.setStudentId(1111);
-		student.setStudentName("abcd");
+		student.setUsername("abcd");
 		student.setUserId(1234);
 		student.setUsername(username);
 		

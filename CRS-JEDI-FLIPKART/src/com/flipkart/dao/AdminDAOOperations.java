@@ -71,7 +71,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 		
 		Admin admin = new Admin();
 		admin.setAdminId(0);
-		admin.setAdminName("Arvind Kejriwal");
+		admin.setUsername("Arvind Kejriwal");
 		admin.setUsername(username);
 		return admin;
 	}
