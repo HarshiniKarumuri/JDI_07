@@ -1,23 +1,22 @@
 package com.flipkart.client;
 
-import com.flipkart.bean.Admin;
+import java.util.Scanner;
+import java.util.logging.Logger;
+
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.Student;
 import com.flipkart.constants.UIConstants;
 import com.flipkart.dao.AdminDAOOperations;
 import com.flipkart.dao.LoginDAOInterface;
 import com.flipkart.dao.LoginDAOOperations;
 import com.flipkart.dao.ProfessorDAOOperations;
 
-import java.util.Scanner;
-
-import org.apache.log4j.Logger;
-
 /**
  * User main class (user interface)
  */
 public class UserCRSMenu {
 
-	private static final Logger logger = Logger.getLogger(UserCRSMenu.class);
+	private static final Logger logger = Logger.getLogger(UserCRSMenu.class.getName());
 	public static Scanner scanner = new Scanner(System.in);
 
 	// To maintain logged in/out state of the user
@@ -25,6 +24,7 @@ public class UserCRSMenu {
 
 	/**
 	 * CRS start execution method
+	 *
 	 * @param args command line input to program
 	 */
 	public static void main(String[] args) {
@@ -43,7 +43,7 @@ public class UserCRSMenu {
 				logger.info("Enter 1 to login");
 				logger.info("Enter 2 to register as a student");
 				logger.info("Enter any other number to exit");
-				
+
 				choice = Integer.parseInt(scanner.nextLine());
 
 			} catch (Exception e) {
@@ -62,7 +62,9 @@ public class UserCRSMenu {
 		}
 	}
 
-	//To login User
+	/**
+	 * To login user in CRS
+	 */
 	public static void login() {
 		logger.info("Enter Username");
 		String username = scanner.nextLine();
@@ -84,6 +86,10 @@ public class UserCRSMenu {
 
 			case "Student":
 				logger.info("User logged in as " + role);
+				StudentCRSMenu studentCrsMenu = new StudentCRSMenu();
+				StudentDAOOperations studentDAOOperations = new StudentDAOOperations();
+				Student student = studentDAOOperations.getStudentDetails(username);
+				studentCrsMenu.displayMenu(student);
 				break;
 
 			case "Admin":
@@ -106,6 +112,7 @@ public class UserCRSMenu {
 	 */
 	public static void logout() {
 		loggedIn = false;
-		logger.info("User logged out");
+		logger.info(UIConstants.SUCCESSFUL_LOGOUT_MESSAGE);
+		logger.info("\n");
 	}
 }

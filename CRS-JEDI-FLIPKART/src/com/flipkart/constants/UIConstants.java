@@ -3,6 +3,7 @@ package com.flipkart.constants;
 public class UIConstants {
     public static final String WELCOME_MESSAGE = "Welcome to Course Registration System!";
     public static final String NO_STUDENT_REGISTERED_MESSAGE = "No students registered in this course";
+    public static final String NO_COURSE_REGISTERED_MESSAGE = "No course registered by this student";
     public static final String NO_COURSE_ASSIGNED_MESSAGE = "No students registered in this course";
     public static final String REQUEST_COURSE_ID_MESSAGE = "Enter course ID: ";
     public static final String REQUEST_STUDENT_ID_MESSAGE = "Enter student ID: ";
@@ -15,4 +16,11 @@ public class UIConstants {
     public static final String REQUEST_COURSE_NAME_MESSAGE="Enter course Name";
     public static final String REQUEST_COURSE_DESCRIPTION_MESSAGE="Enter Course Description";
     public static final String REQUEST_COURSE_FEE_MESSAGE="Enter fee for the course";
+    public static final String SUCCESSFUL_LOGOUT_MESSAGE = "Logged out successfully";
+    public static final String COURSE_DROP_MESSAGE = "Course is dropped successfully";
+    public static final String PAYMENT_SUCCESSFUL_MESSAGE = "Payment is successful";
+    public static final String ENTER_CHOICES_MESSAGE = "-----------------------Enter your choice:------------------------";
+    public static final String DASHED_LINE = "------------------------------------------------------------------";
+    public static final String VIEW_COURSES_MESSAGE = "These are the available courses:\n";
+    public static final String VIEW_REG_COURSES_MESSAGE = "These are the registered courses \n";
 }
