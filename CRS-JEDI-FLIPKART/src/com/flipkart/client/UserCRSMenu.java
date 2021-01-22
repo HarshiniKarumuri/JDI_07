@@ -6,8 +6,12 @@ import com.flipkart.dao.LoginDAOInterface;
 import com.flipkart.dao.LoginDAOOperations;
 import com.flipkart.dao.ProfessorDAOOperations;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Scanner;
 
+import com.flipkart.utils.DBUtils;
 import org.apache.log4j.Logger;
 
 /**
@@ -16,16 +20,12 @@ import org.apache.log4j.Logger;
 public class UserCRSMenu {
 
 	private static final Logger logger = Logger.getLogger(UserCRSMenu.class);
-	public static Scanner scanner = new Scanner(System.in);
+	static Scanner scanner = new Scanner(System.in);
 
 	// To maintain logged in/out state of the user
 	public static boolean loggedIn;
 
-	/**
-	 * CRS start execution method
-	 *
-	 * @param args command line input to program
-	 */
+	// CRS start execution method
 	public static void main(String[] args) {
 		logger.info(UIConstants.WELCOME_MESSAGE);
 		UserCRSMenu.showMenu();
@@ -35,8 +35,10 @@ public class UserCRSMenu {
 
 	//Show Menu to User
 	public static void showMenu() {
+
 		boolean showingMenu = true;
 		int choice = 0;
+
 		while(showingMenu) {
 			try {
 				logger.info("Enter 1 to login");
@@ -61,18 +63,19 @@ public class UserCRSMenu {
 		}
 	}
 
-	/**
-	 * To login user in CRS
-	 */
+	// To login user in CRS
 	public static void login() {
-		logger.info("Enter Username");
-		String username = scanner.nextLine();
-		logger.info("Enter Password");
-		String password = scanner.nextLine();
+
+		String username, password, role;
+
+		logger.info(UIConstants.REQUEST_USERNAME_MESSAGE);
+		username = scanner.nextLine();
+		logger.info(UIConstants.REQUEST_PASSWORD_MESSAGE) ;
+		password = scanner.nextLine();
 
 		loggedIn = true;
 		LoginDAOInterface loginDAOOperations = new LoginDAOOperations();
-		String role = loginDAOOperations.login(username, password);
+		role = loginDAOOperations.login(username, password);
 
 		switch(role) {
 			case "Professor":
@@ -97,10 +100,10 @@ public class UserCRSMenu {
 		}
 	}
 
-	/**
-	 * To logout user from the corresponding profile and redirect to user menu
-	 * Flips boolean state of loggedIn variable in UserCRSMenu
-	 */
+	/*
+	* To logout user from the corresponding profile and redirect to user menu
+	* Flips boolean state of loggedIn variable in UserCRSMenu
+	*/
 	public static void logout() {
 		loggedIn = false;
 		logger.info(UIConstants.SUCCESSFUL_LOGOUT_MESSAGE);

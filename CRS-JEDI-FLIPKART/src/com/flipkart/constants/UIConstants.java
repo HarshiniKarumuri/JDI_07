@@ -6,6 +6,8 @@ public class UIConstants {
     public static final String NO_COURSE_ASSIGNED_MESSAGE = "No students registered in this course";
     public static final String REQUEST_COURSE_ID_MESSAGE = "Enter course ID: ";
     public static final String REQUEST_STUDENT_ID_MESSAGE = "Enter student ID: ";
+    public static final String REQUEST_USERNAME_MESSAGE = "Enter username: ";
+    public static final String REQUEST_PASSWORD_MESSAGE = "Enter password: ";
     public static final String REQUEST_STUDENT_GRADE_MESSAGE = "Enter student's course grade: ";
     public static final String SELECT_CORRECT_OPTION_MESSAGE = "Please select from provided options";
     public static final String STUDENT_NOT_REGISTERED_MESSAGE = "Student has not registered for this course";
@@ -13,4 +15,6 @@ public class UIConstants {
     public static final String SUCCESS_STUDENT_GRADED_MESSAGE = "Student graded for the course successfully";
     public static final String EXIT_MESSAGE = "Thank you for using CRS";
     public static final String SUCCESSFUL_LOGOUT_MESSAGE = "Logged out successfully";
+    public static final String SUCCESS_DB_CONNECT_MESSAGE = "Connected to CRS database successfully";
+    public static final String SUCCESS_DB_DISCONNECT_MESSAGE = "Disconnected CRS database successfully";
 }
