@@ -11,6 +11,7 @@ import com.flipkart.dao.AdminDAOOperations;
 import com.flipkart.dao.LoginDAOInterface;
 import com.flipkart.dao.LoginDAOOperations;
 import com.flipkart.dao.ProfessorDAOOperations;
+;
 import com.flipkart.dao.StudentDAOOperations;
 
 /**
@@ -18,8 +19,8 @@ import com.flipkart.dao.StudentDAOOperations;
  */
 public class UserCRSMenu {
 
-	private static final Logger logger = Logger.getLogger(UserCRSMenu.class.getName());
-	public static Scanner scanner = new Scanner(System.in);
+	private static final Logger logger = Logger.getLogger(UserCRSMenu.class);
+	static Scanner scanner = new Scanner(System.in);
 
 	// To maintain logged in/out state of the user
 	public static boolean loggedIn;
@@ -38,8 +39,10 @@ public class UserCRSMenu {
 
 	//Show Menu to User
 	public static void showMenu() {
+
 		boolean showingMenu = true;
 		int choice = 0;
+
 		while(showingMenu) {
 			try {
 				logger.info("Enter 1 to login");
@@ -68,14 +71,17 @@ public class UserCRSMenu {
 	 * To login user in CRS
 	 */
 	public static void login() {
-		logger.info("Enter Username");
-		String username = scanner.nextLine();
-		logger.info("Enter Password");
-		String password = scanner.nextLine();
+
+		String username, password, role;
+
+		logger.info(UIConstants.REQUEST_USERNAME_MESSAGE);
+		username = scanner.nextLine();
+		logger.info(UIConstants.REQUEST_PASSWORD_MESSAGE) ;
+		password = scanner.nextLine();
 
 		loggedIn = true;
 		LoginDAOInterface loginDAOOperations = new LoginDAOOperations();
-		String role = loginDAOOperations.login(username, password);
+		role = loginDAOOperations.login(username, password);
 
 		switch(role) {
 			case "Professor":
