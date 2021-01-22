@@ -12,14 +12,12 @@ public interface CourseCatalogInterface {
 	/**
 	 * to see the list of courses in the catalog 
 	 */
-	public void viewCatalog();
+	void viewCatalog();
 
-	
-	
 	/**
 	 * 
 	 * @param courseId unique course identifier 
 	 * method used to see the course details
 	 */
-	public void viewCourse(int courseId);
+	void viewCourse(int courseId);
 }

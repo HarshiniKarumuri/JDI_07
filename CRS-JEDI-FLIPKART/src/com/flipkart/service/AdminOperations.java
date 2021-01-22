@@ -8,6 +8,7 @@ import com.flipkart.dao.AdminDAOOperations;
 import com.flipkart.dao.CatalogDAOOperations;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -33,14 +34,14 @@ public class AdminOperations implements AdminInterface {
 	}
 	
 	@Override
-	public void addCourseIntoCatalog(Course course) {
+	public void addCourseToOffer(Course course) {
 		// TODO Auto-generated method stub
 		logger.info("In add Course Into Catalouge");
 		
 	}
 
 	@Override
-	public void deleteCourse(int courseId) {
+	public void removeOfferedCourse(int courseId) {
 		// TODO Auto-generated method stub
 		logger.info("In delete Course");
 		
@@ -53,7 +54,7 @@ public class AdminOperations implements AdminInterface {
 	}
 	
 	@Override
-	public void assignProfessor(Professor professor,int courseId) {
+	public void assignProfessorToCourse(Professor professor, int courseId) {
 		// TODO Auto-generated method stub
 		logger.info("In assign Professor");
 	}
@@ -72,9 +73,9 @@ public class AdminOperations implements AdminInterface {
 	}
 
 	@Override
-	public void viewCatalog() {
+	public void viewCoursesOffered() {
 		// TODO Auto-generated method stub
-		ArrayList<Course> courses = new ArrayList<Course>();
+		List<Course> courses;
 		courses = catalogDAOOperations.viewCatalog();
 		
 		logger.info(String.format("%-15s", "Course Names"));

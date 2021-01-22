@@ -7,6 +7,7 @@ public class Professor extends User{
 
 	private int professorId;
 	private String department;
+
 	/**
 	 * @return the professorId
 	 */

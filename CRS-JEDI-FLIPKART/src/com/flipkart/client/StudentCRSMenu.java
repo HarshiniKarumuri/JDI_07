@@ -19,9 +19,10 @@ public class StudentCRSMenu {
 		// input variables
 		int courseId, choice;
 		
-		//check if user is logged in
+		// check if user is logged in
 		while(UserCRSMenu.loggedIn) {
-			// options available for student
+
+			// Options available for student
 			logger.info(UIConstants.ENTER_CHOICES_MESSAGE);
 			logger.info("0. To logout and return to main menu");
 			logger.info("1. View available courses");
@@ -36,7 +37,6 @@ public class StudentCRSMenu {
 			logger.info("\n");
 			
 			//switch to the selected choice
-			
 			switch(choice) 
 			{
 				case 1: studentOperations.viewCourseCatalog();
@@ -77,14 +77,12 @@ public class StudentCRSMenu {
 						
 			}
 		}
-		
-		
 	}
+
 	/* // for debugging purposes
 	public static void main(String[] args) {
 		Student st = new Student();
 		StudentCRSMenu scm = new StudentCRSMenu();
 		scm.displayMenu(st);
 	} */
-
 }
