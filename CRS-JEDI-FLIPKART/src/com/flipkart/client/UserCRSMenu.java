@@ -1,8 +1,9 @@
 package com.flipkart.client;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
+import com.flipkart.bean.Admin;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.constants.UIConstants;
@@ -10,6 +11,7 @@ import com.flipkart.dao.AdminDAOOperations;
 import com.flipkart.dao.LoginDAOInterface;
 import com.flipkart.dao.LoginDAOOperations;
 import com.flipkart.dao.ProfessorDAOOperations;
+import com.flipkart.dao.StudentDAOOperations;
 
 /**
  * User main class (user interface)

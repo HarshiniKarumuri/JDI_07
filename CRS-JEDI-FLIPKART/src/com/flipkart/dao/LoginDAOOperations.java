@@ -12,6 +12,9 @@ public class LoginDAOOperations implements LoginDAOInterface{
         else if(username.equals("virat")) {
         	return "Admin";
         }
+        else if(username.equals("sachin")) {
+        	return "Student";
+        }
         else
             return " ";
     }
