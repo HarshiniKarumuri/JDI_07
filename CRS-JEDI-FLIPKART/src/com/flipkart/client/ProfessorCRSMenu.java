@@ -17,6 +17,7 @@ public class ProfessorCRSMenu {
 	ProfessorOperations professorOperation = new ProfessorOperations();
 	Scanner sc = new Scanner(System.in);
 	
+	//Display Professor's Menu
 	public void displayMenu(Professor professor) {
 
 		// user input variables
@@ -72,7 +73,11 @@ public class ProfessorCRSMenu {
 					logger.info("\n");
 			}
 			
+			
 		}
+		
+		// closing input stream of program
+		//sc.close();
 	}
 
 }

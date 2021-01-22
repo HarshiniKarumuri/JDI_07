@@ -20,20 +20,20 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 
 		Student student1 = new Student();
 		student1.setStudentId(101);
-		student1.setStudentName("Harry");
+		student1.setUsername("Harry");
 		student1.setBranch("CSE");
 		student1.setGender("Male");
 		student1.setHasScholarship(true);
-		student1.setIsRegistered(0);
+		student1.setIsApproved(0);
 		students.add(student1);
 		
 		Student student2 = new Student();
 		student2.setStudentId(102);
-		student2.setStudentName("Hermonie");
+		student2.setUsername("Hermonie");
 		student2.setBranch("ECE");
 		student2.setGender("Female");
 		student2.setHasScholarship(false);
-		student2.setIsRegistered(1);
+		student2.setIsApproved(1);
 		students.add(student2);
 
 		return students;
@@ -83,7 +83,7 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 
 		// dummy professor
 		Professor professor = new Professor();
-		professor.setProfessorName("Mr. Aman");
+		professor.setUsername("Mr. Aman");
 		professor.setProfessorId(2223423);
 		professor.setUserId(1233334);
 		professor.setUsername("aman.rocks");

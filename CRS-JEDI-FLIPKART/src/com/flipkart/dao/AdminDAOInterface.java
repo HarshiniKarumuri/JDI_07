@@ -1,18 +1,19 @@
-package com.flipkart.service;
+package com.flipkart.dao;
+
+import java.util.ArrayList;
 
 import com.flipkart.bean.Admin;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.User;
 
-/**
- * Admin business interface
- */
-public interface AdminInterface {
+public interface AdminDAOInterface {
+	
 
 	/**
 	 * To see the List of Users
 	 */
-	public void viewUser();
+	public ArrayList<User> viewUser();
 
 	
 	
@@ -57,6 +58,7 @@ public interface AdminInterface {
 	public void deleteUser(int userId);
 	
 	
+	
 	/**
 	 * 
 	 * @param admin admin object which is added into DB
@@ -64,9 +66,12 @@ public interface AdminInterface {
 	 */
 	public void addAdmin(Admin admin,String password);
 	
+	
 	/**
-	 * To view the course catalog
+	 * 
+	 * @param username unique identifier of the user
+	 * @return returns the admin object whose username matches the input
 	 */
-	public void viewCatalog();
-
+	public Admin getAdminDetails(String username);
+	
 }

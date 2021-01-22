@@ -9,6 +9,23 @@ public class Course {
 	private String courseName;
 	private String description;
 	private int fees;
+	private int capacity;
+	
+	
+
+	/**
+	 * @return the capacity
+	 */
+	public int getCapacity() {
+		return capacity;
+	}
+
+	/**
+	 * @param capacity the capacity to set
+	 */
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
 
 	/**
 	 * @return the courseId

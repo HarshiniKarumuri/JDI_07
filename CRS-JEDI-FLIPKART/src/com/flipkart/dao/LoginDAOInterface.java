@@ -9,5 +9,5 @@ public interface LoginDAOInterface {
      * @param password password of the user CRS credentials
      * @return role of the user admin or student or professor
      */
-    String login(String username,String password);
+    public String login(String username,String password);
 }
