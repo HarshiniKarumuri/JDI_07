@@ -135,7 +135,7 @@ public class AdminCRSMenu {
 				logger.info("Enter admin id:");
 				admin.setAdminId(Integer.parseInt(sc.nextLine()));
 				logger.info("Enter admin name:");
-				admin.setAdminName(sc.nextLine());
+				admin.setUsername(sc.nextLine());
 				logger.info("Enter password");
 				String password = sc.nextLine();
 				adminOperation.addAdmin(admin, password);
@@ -146,7 +146,7 @@ public class AdminCRSMenu {
 				logger.info("Enter professor id:");
 				professor.setProfessorId(Integer.parseInt(sc.nextLine()));
 				logger.info("Enter professor name:");
-				professor.setProfessorName(sc.nextLine());
+				professor.setUsername(sc.nextLine());
 				logger.info("Enter password");
 				password = sc.nextLine();
 				adminOperation.addProfessor(professor, password);

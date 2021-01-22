@@ -45,7 +45,7 @@ public class ProfessorOperations implements ProfessorInterface {
 				logger.info(UIConstants.NO_STUDENT_REGISTERED_MESSAGE);
 			} else {
 				studentsList.forEach(student ->
-						logger.info(String.format("%-10s%-10s%-10s", student.getStudentId(), student.getStudentName(), student.getBranch()))
+						logger.info(String.format("%-10s%-10s%-10s", student.getStudentId(), student.getUsername(), student.getBranch()))
 				);
 			}
 			logger.info("\n-----------------------------------------------------\n");
