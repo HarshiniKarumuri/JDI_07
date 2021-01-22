@@ -9,7 +9,17 @@ import java.util.ArrayList;
  */
 public interface CourseCatalogInterface {
 
-	public ArrayList<Course> fetchCatalogDetails();
+	/**
+	 * to see the list of courses in the catalog 
+	 */
+	public void viewCatalog();
 
+	
+	
+	/**
+	 * 
+	 * @param courseId unique course identifier 
+	 * method used to see the course details
+	 */
 	public void viewCourse(int courseId);
 }

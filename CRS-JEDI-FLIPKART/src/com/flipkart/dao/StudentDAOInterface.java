@@ -61,4 +61,12 @@ public interface StudentDAOInterface {
      * @return
      */
     public String makePayment(Student student, int paymentMethod, int fees);
+    
+    /**
+     * Fetches the student details based on username
+     * 
+     * @param username unique identifier for user
+     * @return
+     */
+    public Student getStudentDetails(String username);
 }

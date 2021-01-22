@@ -17,6 +17,7 @@ public class ProfessorCRSMenu {
 	ProfessorOperations professorOperation = new ProfessorOperations();
 	Scanner sc = new Scanner(System.in);
 	
+	//Display Professor's Menu
 	public void displayMenu(Professor professor) {
 
 		// user input variables
@@ -71,6 +72,7 @@ public class ProfessorCRSMenu {
 					logger.info(UIConstants.SELECT_CORRECT_OPTION_MESSAGE);
 					logger.info("\n");
 			}
+			
 			
 		}
 		

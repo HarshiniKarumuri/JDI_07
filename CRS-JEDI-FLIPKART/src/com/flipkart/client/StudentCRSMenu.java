@@ -1,7 +1,7 @@
 package com.flipkart.client;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 import com.flipkart.bean.Student;
 import com.flipkart.constants.UIConstants;

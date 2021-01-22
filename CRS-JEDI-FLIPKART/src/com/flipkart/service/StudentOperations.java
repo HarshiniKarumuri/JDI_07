@@ -26,7 +26,7 @@ public class StudentOperations implements StudentInterface {
     public void viewCourseCatalog() {
         ArrayList<Course> courses = studentDao.viewCourseCatalog();
         logger.info("Course Id\tCourse Name");
-        courses.forEach(course -> logger.info(course.getCourseId() + "\t\t " + course.getCourseName()));
+        //courses.forEach(course -> logger.info(course.getCourseId() + "\t\t " + course.getCourseName()));
     }
 
     //function to add Course to a particular student

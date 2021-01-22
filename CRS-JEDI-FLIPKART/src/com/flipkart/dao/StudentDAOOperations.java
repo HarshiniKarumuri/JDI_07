@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
  */
 public class StudentDAOOperations implements StudentDAOInterface {
 
-    private final StudentDAOInterface studentDao = new StudentDAOOperations();
+    //private final StudentDAOInterface studentDao = new StudentDAOOperations();
     private static final Logger logger = Logger.getLogger(StudentOperations.class);
 
     /**
@@ -62,7 +62,7 @@ public class StudentDAOOperations implements StudentDAOInterface {
      * @param courseId
      */
     public void chooseCourse(Student student, int courseId) {
-        studentDao.chooseCourse(student, courseId);
+        //studentDao.chooseCourse(student, courseId);
     }
 
     /**
@@ -71,7 +71,7 @@ public class StudentDAOOperations implements StudentDAOInterface {
      * @param courseId
      */
     public void dropCourse(Student student, int courseId) {
-        studentDao.dropCourse(student, courseId);
+        //studentDao.dropCourse(student, courseId);
     }
 
     /**
@@ -102,4 +102,21 @@ public class StudentDAOOperations implements StudentDAOInterface {
     public String makePayment(Student student, int paymentMethod, int fees) {
         return null;
     }
+
+	@Override
+	public Student getStudentDetails(String username) {
+		// TODO Auto-generated method stub
+		
+		Student student = new Student();
+		student.setBranch("CS");
+		student.setGender("Male");
+		student.setHasScholarship(false);
+		student.setIsRegistered(0);
+		student.setStudentId(1111);
+		student.setStudentName("abcd");
+		student.setUserId(1234);
+		student.setUsername(username);
+		
+		return student;
+	}
 }
