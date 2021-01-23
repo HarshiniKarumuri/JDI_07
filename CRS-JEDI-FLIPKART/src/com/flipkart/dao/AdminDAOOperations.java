@@ -12,7 +12,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	@Override
 	public ArrayList<User> viewUser() {
 		// TODO Auto-generated method stub
-		ArrayList<User> l1 = new ArrayList<User>();
+		ArrayList<User> l1 = new ArrayList<>();
 		
 		//Dummy data
 		User u1 = new User();
@@ -29,13 +29,13 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	}
 
 	@Override
-	public void addCourseIntoCatalog(Course course) {
+	public void addCourseToOffer(Course course) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteCourse(int courseId) {
+	public void removeOfferedCourse(int courseId) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -48,7 +48,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	}
 
 	@Override
-	public void assignProfessor(Professor professor, int courseId) {
+	public void assignProfessorToCourse(Professor professor, int courseId) {
 		// TODO Auto-generated method stub
 		
 	}
