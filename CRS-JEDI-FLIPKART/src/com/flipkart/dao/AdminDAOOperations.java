@@ -66,12 +66,13 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	}
 
 	@Override
-	public Admin getAdminDetails(int userId) {
+	public Admin getAdminDetails(String username) {
 		// TODO Auto-generated method stub
 		
 		Admin admin = new Admin();
-		admin.setAdminId(userId);
+		admin.setAdminId(0);
 		admin.setUsername("Arvind Kejriwal");
+		admin.setUsername(username);
 		return admin;
 	}
 

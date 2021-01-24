@@ -104,7 +104,7 @@ public class StudentDAOOperations implements StudentDAOInterface {
     }
 
 	@Override
-	public Student getStudentDetails(int userId) {
+	public Student getStudentDetails(String username) {
 		// TODO Auto-generated method stub
 		
 		Student student = new Student();
@@ -112,9 +112,11 @@ public class StudentDAOOperations implements StudentDAOInterface {
 		student.setGender("Male");
 		student.setHasScholarship(false);
 		student.setIsApproved(0);
-		student.setStudentId(userId);
+		student.setStudentId(1111);
 		student.setUsername("abcd");
-		student.setUsername("AAAAAAAAAA");
+		student.setUserId(1234);
+		student.setUsername(username);
+		
 		return student;
 	}
 }

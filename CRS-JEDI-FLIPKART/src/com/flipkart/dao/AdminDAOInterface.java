@@ -65,5 +65,5 @@ public interface AdminDAOInterface {
 	 * @param username unique identifier of the admin user
 	 * @return admin object whose username matches the input
 	 */
-	Admin getAdminDetails(int userId);
+	Admin getAdminDetails(String username);
 }
