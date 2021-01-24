@@ -11,7 +11,6 @@ import com.flipkart.dao.AdminDAOOperations;
 import com.flipkart.dao.LoginDAOInterface;
 import com.flipkart.dao.LoginDAOOperations;
 import com.flipkart.dao.ProfessorDAOOperations;
-;
 import com.flipkart.dao.StudentDAOOperations;
 
 /**
@@ -19,11 +18,11 @@ import com.flipkart.dao.StudentDAOOperations;
  */
 public class UserCRSMenu {
 
-	private static final Logger logger = Logger.getLogger(UserCRSMenu.class);
-	static Scanner scanner = new Scanner(System.in);
+	private static final Logger logger = Logger.getLogger(UserCRSMenu.class.getName());
+	public static Scanner scanner = new Scanner(System.in);
 
 	// To maintain logged in/out state of the user
-	public static boolean loggedIn;
+	public static boolean loggedIn = false;
 
 	/**
 	 * CRS start execution method
@@ -39,10 +38,8 @@ public class UserCRSMenu {
 
 	//Show Menu to User
 	public static void showMenu() {
-
 		boolean showingMenu = true;
 		int choice = 0;
-
 		while(showingMenu) {
 			try {
 				logger.info("Enter 1 to login");
@@ -71,24 +68,21 @@ public class UserCRSMenu {
 	 * To login user in CRS
 	 */
 	public static void login() {
+		logger.info("Enter Userid");
+		int userid = scanner.nextInt();
+		logger.info("Enter Password");
+		String password = scanner.nextLine();
 
-		String username, password, role;
-
-		logger.info(UIConstants.REQUEST_USERNAME_MESSAGE);
-		username = scanner.nextLine();
-		logger.info(UIConstants.REQUEST_PASSWORD_MESSAGE) ;
-		password = scanner.nextLine();
-
-		loggedIn = true;
 		LoginDAOInterface loginDAOOperations = new LoginDAOOperations();
-		role = loginDAOOperations.login(username, password);
+		loggedIn = loginDAOOperations.checkCredentials(userid, password);
+		String role = loginDAOOperations.login(userid, password);
 
 		switch(role) {
 			case "Professor":
 				logger.info("User logged in as " + role);
 				ProfessorCRSMenu professorCrsMenu = new ProfessorCRSMenu();
 				ProfessorDAOOperations professorDAOOperations = new ProfessorDAOOperations();
-				Professor professor = professorDAOOperations.getProfessorDetails(username);
+				Professor professor = professorDAOOperations.getProfessorDetails(userid);
 				professorCrsMenu.displayMenu(professor);
 				break;
 
@@ -96,7 +90,7 @@ public class UserCRSMenu {
 				logger.info("User logged in as " + role);
 				StudentCRSMenu studentCrsMenu = new StudentCRSMenu();
 				StudentDAOOperations studentDAOOperations = new StudentDAOOperations();
-				Student student = studentDAOOperations.getStudentDetails(username);
+				Student student = studentDAOOperations.getStudentDetails(userid);
 				studentCrsMenu.displayMenu(student);
 				break;
 
@@ -104,7 +98,7 @@ public class UserCRSMenu {
 				logger.info("User logged in as " + role);
 				AdminCRSMenu adminCRSMenu = new AdminCRSMenu();
 				AdminDAOOperations adminDAOOperations = new AdminDAOOperations();
-				Admin admin = adminDAOOperations.getAdminDetails(username);
+				Admin admin = adminDAOOperations.getAdminDetails(userid);
 				adminCRSMenu.displayMenu(admin);
 				break;
 				
