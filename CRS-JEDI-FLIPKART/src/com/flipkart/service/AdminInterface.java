@@ -12,21 +12,7 @@ public interface AdminInterface {
 	/**
 	 * To see the list of users in CRS
 	 */
-	void viewUser();
-
-	/**
-	 * Remove an offered course
-	 *
-	 * @param course a new course to add into offered courses list
-	 */
-	void addCourseToOffer(Course course);
-
-	/**
-	 * Add course to offered courses from courses catalog
-	 *
-	 * @param courseId unique identifier of the course to be removed from offered courses
-	 */
-	void removeOfferedCourse(int courseId);
+	public void viewUser();
 	
 	/**
 	 * Register a professor user into CRS
@@ -34,7 +20,7 @@ public interface AdminInterface {
 	 * @param professor represents a new professor to be added into DB
 	 * @param password password for professor account
 	 */
-	void addProfessor(Professor professor,String password);
+	public void addProfessor(Professor professor,String password);
 
 	/**
 	 * Assign a professor to a course offered
@@ -42,26 +28,72 @@ public interface AdminInterface {
 	 * @param professor professor object who is assigned a course
 	 * @param courseId unique identifier of course
 	 */
-	void assignProfessorToCourse(Professor professor, int courseId);
-
-	/**
-	 * Delete an existing account of a user in CRS
-	 *
-	 * @param userId unique identifier of user to be deleted
-	 */
-	void deleteUser(int userId);
-
+	public void assignProfessorToCourse(int professorId, int courseId);
+	
 	/**
 	 * Register a admin user in CRS
 	 *
 	 * @param admin admin object which is added into DB
 	 * @param password password for professor account
 	 */
-	void addAdmin(Admin admin,String password);
-	
+	public void addAdmin(Admin admin,String password);
+
+	/**
+	 * Delete an existing account of a user in CRS
+	 *
+	 * @param userId unique identifier of user to be deleted
+	 */
+	public void deleteUser(int userId);
+
 	/**
 	 * To view the offered courses from courses catalog
 	 */
-	void viewCoursesOffered();
+	public void viewCoursesOffered();
 
+	/**
+	 * Adds a new catalog 
+	 * 
+	 * @param catlogId unique identifier of catalog
+	 * @param catalogName catalog name
+	 */
+	public void addCatalog(int catlogId,String catalogName);
+	
+	/**
+	 * 
+	 * @param catalogId unique catalog identifier
+	 */
+	public void removeCatalog(int catalogId);
+	
+	/**
+	 * Adds a new course into catalog
+	 * 
+	 * @param course a new course to add into catalog
+	 * @param catalogId unique catalog identifier
+	 */
+	public void addCourseIntoCatalog(Course course,int catalogId);
+	
+	/**
+	 * Removes a course from catalog
+	 * 
+	 * @param courseId a unique course identifier
+	 * @param catalogId unique catalog identifier
+	 */
+	public void removeCourseFromCatalog(int courseId);
+	
+	/**
+	 * Remove an offered course
+	 *
+	 * @param course course to add into offered Courses 
+	 */
+	public void addCourseToOffer(int courseId,int catalogId);
+
+	/**
+	 * Add course to offered courses from courses catalog
+	 *
+	 * @param courseId unique identifier of the course to be removed from offered courses 
+	 */
+	public void removeOfferedCourse(int courseId,int catalogId);
+
+	
+	public void approveStudent(int studentId);
 }

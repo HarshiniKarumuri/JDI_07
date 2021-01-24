@@ -3,13 +3,50 @@
  */
 package com.flipkart.bean;
 
+import java.sql.Timestamp;
+
 /**
  * @author harshini
  *
  */
 public class Notification {
+	
 	private int notificationId;
 	private String description;
+	private int userId;
+	private Timestamp timestamp;
+	
+	/**
+	 * 
+	 * @return returns time stamp of the notification
+	 */
+	public Timestamp getTimestamp() {
+		return timestamp;
+	}
+
+	/**
+	 * 
+	 * @param timestamp time stamp of notification
+	 */
+	public void setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	/**
+	 * 
+	 * @return return user id
+	 */
+	public int getUserId() {
+		return userId;
+	}
+	
+	/**
+	 * 
+	 * @param userId the user id to set
+	 */
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 	/**
 	 * @return the notificationId
 	 */
