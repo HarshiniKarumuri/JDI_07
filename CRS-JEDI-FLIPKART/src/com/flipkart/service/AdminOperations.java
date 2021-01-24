@@ -21,10 +21,26 @@ import org.apache.log4j.Logger;
 public class AdminOperations implements AdminInterface {
 	
 	private static Logger logger = Logger.getLogger(AdminOperations.class);
-	private final AdminDAOOperations adminDAOOperations = new AdminDAOOperations();
-	private final CatalogDAOOperations catalogDAOOperations = new CatalogDAOOperations();
-	private final NotificationDAOOperation notificationDAOOperation = new NotificationDAOOperation();
+	private static final AdminDAOOperations adminDAOOperations = AdminDAOOperations.getInstance();
+	private static final CatalogDAOOperations catalogDAOOperations = new CatalogDAOOperations();
+	private static final NotificationDAOOperation notificationDAOOperation = NotificationDAOOperation.getInstance();
 
+	private static volatile AdminOperations instance = null;
+	 
+    // private constructor
+    private AdminOperations() {
+    }
+ 
+    public static AdminOperations getInstance() {
+        if (instance == null) {
+        	// This is a synchronized block, when multiple threads will access this instance
+            synchronized (AdminOperations.class) {
+                instance = new AdminOperations();
+            }
+        }
+        return instance;
+    }
+	
 	@Override
 	public void viewUser() {
 		// TODO Auto-generated method stub

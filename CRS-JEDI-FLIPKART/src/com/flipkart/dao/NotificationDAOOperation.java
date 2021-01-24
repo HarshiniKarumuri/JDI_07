@@ -12,8 +12,24 @@ import com.flipkart.utils.DBUtils;
 
 public class NotificationDAOOperation implements NotificationDAOInterface{
 	
-	public static Logger logger = Logger.getLogger(AdminDAOOperations.class);
+	public static Logger logger = Logger.getLogger(NotificationDAOOperation.class);
 	Connection connection = DBUtils.getConnection();
+	
+	private static volatile NotificationDAOOperation instance = null;
+	 
+    // private constructor
+    private NotificationDAOOperation() {
+    }
+ 
+    public static NotificationDAOOperation getInstance() {
+        if (instance == null) {
+        	// This is a synchronized block, when multiple threads will access this instance
+            synchronized (NotificationDAOOperation.class) {
+                instance = new NotificationDAOOperation();
+            }
+        }
+        return instance;
+    }
 	
 	@Override
 	public void sendNotification(Notification notification) {

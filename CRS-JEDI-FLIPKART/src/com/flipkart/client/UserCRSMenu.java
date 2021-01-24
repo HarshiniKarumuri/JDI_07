@@ -97,7 +97,7 @@ public class UserCRSMenu {
 			case "Admin":
 				logger.info("User logged in as " + role);
 				AdminCRSMenu adminCRSMenu = new AdminCRSMenu();
-				AdminDAOOperations adminDAOOperations = new AdminDAOOperations();
+				AdminDAOOperations adminDAOOperations = AdminDAOOperations.getInstance();
 				Admin admin = adminDAOOperations.getAdminDetails(userid);
 				//logger.info(admin.getUsername());
 				adminCRSMenu.displayMenu(admin);

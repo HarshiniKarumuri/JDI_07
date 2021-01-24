@@ -14,6 +14,7 @@ import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.User;
 import com.flipkart.constants.SQLQueriesConstants;
+import com.flipkart.service.AdminOperations;
 import com.flipkart.utils.DBUtils;
 
 public class AdminDAOOperations implements AdminDAOInterface{
@@ -21,57 +22,21 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	public static Logger logger = Logger.getLogger(AdminDAOOperations.class);
 	Connection connection = DBUtils.getConnection();
 	
-	/*public static void main(String args[]) {
-		PreparedStatement statement = null;
-		int rows;
-		User user = new User();
-		user.setUserId(0);
-		user.setEmail("nilshah117@gmail.com");
-		user.setPassword("1111");
-		user.setRole("Admin");
-		Connection connection = DBUtils.getConnection();
-		try {
-			
-			statement = connection.prepareStatement(SQLQueriesConstants.VIEW_ADMIN_QUERY);
-			statement.setInt(1, 2);
-			logger.info("hello world");
-			ResultSet rs = statement.executeQuery();
-			rs.next();
-			logger.info(rs.getString(1));
-			ResultSetMetaData rsmd = rs.getMetaData();
-			int columnsNumber = rsmd.getColumnCount();
-			System.out.println("querying SELECT * FROM XXX " + columnsNumber);
-			   
-			   while (rs.next()) {
-			       for (int i = 1; i <= columnsNumber; i++) {
-			           String columnValue = rs.getString(i);
-			           System.out.print(i + " " + columnValue + " " + rsmd.getColumnName(i) +"\n");
-			       }
-			       System.out.println("");
-			   }
-			//statement = connection.prepareStatement(SQLQueriesConstants.ADD_ADMIN_QUERY);
-			//statement.setInt(1, 1); 
-			//statement.setString(2,"m");
-			//statement.setString(3,"nvs"); 
-			//statement.setString(4, "nil"); 
-			//rows = statement.executeUpdate();
-			//logger.info(rows + " added in Admin");
-			 
-			
-			//statement = connection.prepareStatement(SQLQueriesConstants.DELETE_USER_QUERY);
-			//statement.setInt(1,1);
-			//statement.setString(1,user.getEmail());
-			//statement.setString(2,user.getPassword());
-			//statement.setString(3,user.getRole());
-			//rows = statement.executeUpdate();
-			//logger.info(rows + " deleted from User");
-			
-		}catch(SQLException se) {
-			logger.error(se.getMessage());
-		}catch(Exception e) {
-			logger.error(e.getMessage());
-		}
-	}*/
+	private static volatile AdminDAOOperations instance = null;
+	 
+    // private constructor
+    private AdminDAOOperations() {
+    }
+ 
+    public static AdminDAOOperations getInstance() {
+        if (instance == null) {
+        	// This is a synchronized block, when multiple threads will access this instance
+            synchronized (AdminDAOOperations.class) {
+                instance = new AdminDAOOperations();
+            }
+        }
+        return instance;
+    }
 	
 	@Override
 	public ArrayList<User> viewUser() {

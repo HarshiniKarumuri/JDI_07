@@ -17,7 +17,7 @@ import com.flipkart.service.AdminOperations;
 public class AdminCRSMenu {
 
 	private static final Logger logger = Logger.getLogger(AdminCRSMenu.class);
-	AdminOperations adminOperation = new AdminOperations();
+	AdminOperations adminOperation = AdminOperations.getInstance();
 	Scanner sc = new Scanner(System.in);
 
 	/**
