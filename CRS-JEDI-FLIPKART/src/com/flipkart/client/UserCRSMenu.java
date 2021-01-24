@@ -69,7 +69,7 @@ public class UserCRSMenu {
 	 */
 	public static void login() {
 		logger.info("Enter Userid");
-		int userid = scanner.nextInt();
+		int userid = Integer.parseInt(scanner.nextLine());
 		logger.info("Enter Password");
 		String password = scanner.nextLine();
 
@@ -99,6 +99,7 @@ public class UserCRSMenu {
 				AdminCRSMenu adminCRSMenu = new AdminCRSMenu();
 				AdminDAOOperations adminDAOOperations = new AdminDAOOperations();
 				Admin admin = adminDAOOperations.getAdminDetails(userid);
+				//logger.info(admin.getUsername());
 				adminCRSMenu.displayMenu(admin);
 				break;
 				

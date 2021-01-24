@@ -79,7 +79,7 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 
 	//TODO: implement data fetch using SQL queries
 	@Override
-	public Professor getProfessorDetails(String username) {
+	public Professor getProfessorDetails(int userId) {
 
 		// dummy professor
 		Professor professor = new Professor();

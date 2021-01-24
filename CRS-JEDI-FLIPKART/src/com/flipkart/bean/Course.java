@@ -11,8 +11,6 @@ public class Course {
 	private int fees;
 	private int capacity;
 	
-	
-
 	/**
 	 * @return the capacity
 	 */

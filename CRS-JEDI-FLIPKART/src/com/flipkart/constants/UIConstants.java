@@ -27,4 +27,8 @@ public class UIConstants {
     public static final String DASHED_LINE = "------------------------------------------------------------------";
     public static final String VIEW_COURSES_MESSAGE = "These are the available courses:\n";
     public static final String VIEW_REG_COURSES_MESSAGE = "These are the registered courses \n";
+    public static final String ADD_CATALOG_ID_MESSAGE = "Enter Catalog Id\n";
+    public static final String ADD_CATALOG_NAME_MESSAGE = "Enter Catalog Name\n";
+    public static final String ADD_COURSE_NAME_MESSAGE = "Enter Course Name\n";
+    public static final String ENTER_COURSE_CAPACITY = "Enter Maximum number of Student who can take up this course\n";
 }

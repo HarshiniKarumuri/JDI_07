@@ -62,8 +62,8 @@ public interface StudentDAOInterface {
     /**
      * Fetches the student details based on username
      * 
-     * @param username unique identifier for user
+     * @param userId unique identifier for user
      * @return
      */
-    public Student getStudentDetails(String username);
+    public Student getStudentDetails(int userId);
 }
