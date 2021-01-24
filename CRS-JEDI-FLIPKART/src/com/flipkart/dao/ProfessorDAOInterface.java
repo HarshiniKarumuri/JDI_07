@@ -60,5 +60,5 @@ public interface ProfessorDAOInterface {
 	 * @param username unique identifier of the user
 	 * @return returns the professor object whose username matches the input
 	 */
-	Professor getProfessorDetails(int userId);
+	Professor getProfessorDetails(String username);
 }
