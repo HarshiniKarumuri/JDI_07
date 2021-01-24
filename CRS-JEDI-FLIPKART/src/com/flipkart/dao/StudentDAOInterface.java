@@ -65,5 +65,5 @@ public interface StudentDAOInterface {
      * @param username unique identifier for user
      * @return
      */
-    public Student getStudentDetails(String username);
+    public Student getStudentDetails(int userId);
 }
