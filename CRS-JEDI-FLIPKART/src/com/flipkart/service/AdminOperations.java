@@ -4,6 +4,7 @@ import com.flipkart.bean.Admin;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Notification;
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
 import com.flipkart.dao.AdminDAOOperations;
 import com.flipkart.dao.CatalogDAOOperations;
@@ -43,54 +44,61 @@ public class AdminOperations implements AdminInterface {
         }
         return instance;
     }
-
-    @Override
-    public void viewUser() {
-        // TODO Auto-generated method stub
-        logger.info("In viewUser");
-
-        ArrayList<User> users = adminDAOOperations.viewUser();
-
-        logger.info("Admin");
-        for (User user : users) {
-            if (user.getRole().equals("Admin")) {
-                logger.info(String.format("UserEmail = %s, UserId = %d", user.getEmail(), user.getUserId()));
-            }
-        }
-
-        logger.info("Student");
-        for (User user : users) {
-            if (user.getRole().equals("Student")) {
-                logger.info(String.format("UserEmail = %s, UserId = %d", user.getEmail(), user.getUserId()));
-            }
-        }
-
-        logger.info("Professor");
-        for (User user : users) {
-            if (user.getRole().equals("Professor")) {
-                logger.info(String.format("UserEmail = %s, UserId = %d", user.getEmail(), user.getUserId()));
-            }
-        }
-    }
-
-    @Override
-    public void addProfessor(Professor professor, String password) {
-        // TODO Auto-generated method stub
-        logger.info("In add Professor");
-        int professorId = adminDAOOperations.addProfessor(professor, password);
-        if (professorId != -1)
-            logger.info("Your professor Id is" + professorId);
-        else
-            logger.info("Professor registration failed");
-    }
-
-
-    @Override
-    public void assignProfessorToCourse(int professorId, int courseId) {
-        // TODO Auto-generated method stub
-        logger.info("In assign Professor");
-        adminDAOOperations.assignProfessorToCourse(professorId, courseId);
-    }
+	
+	@Override
+	public void viewUser() {
+		// TODO Auto-generated method stub
+		logger.info("In viewUser");
+		
+		ArrayList<User> users = adminDAOOperations.viewUser();
+		
+		logger.info("Admin");
+		for(User user:users) {
+			if(user.getRole().equals("Admin")) {
+				logger.info(String.format("UserEmail = %s, UserId = %d", user.getEmail(),user.getUserId()));
+			}
+		}
+		
+		logger.info("Student");
+		for(User user:users) {
+			if(user.getRole().equals("Student")) {
+				logger.info(String.format("UserEmail = %s, UserId = %d", user.getEmail(),user.getUserId()));
+			}
+		}
+		
+		logger.info("Professor");
+		for(User user:users) {
+			if(user.getRole().equals("Professor")) {
+				logger.info(String.format("UserEmail = %s, UserId = %d", user.getEmail(),user.getUserId()));
+			}
+		}
+	}
+	
+	@Override
+	public void addProfessor(Professor professor,String password) {
+		// TODO Auto-generated method stub
+		logger.info("In add Professor");
+		int professorId = adminDAOOperations.addProfessor(professor, password);
+		if(professorId != -1) {
+			logger.info("Your professor Id is" + professorId);
+			NotificationOperations notificationOperations = NotificationOperations.getInstance();
+			Notification notification = new Notification();
+			notification.setDescription("You are Succesfully registered in system");
+			notification.setUserId(professor.getProfessorId());
+			notificationOperations.sendNotification(notification);
+			notificationOperations.getNotification(professor.getProfessorId());
+		}
+		else {
+			logger.info("Professor registration failed");
+		}
+	}
+	
+	@Override
+	public void assignProfessorToCourse(int professorId, int courseId) {
+		// TODO Auto-generated method stub
+		logger.info("In assign Professor");
+		adminDAOOperations.assignProfessorToCourse(professorId, courseId);
+	}
 
 
     @Override
@@ -100,17 +108,24 @@ public class AdminOperations implements AdminInterface {
         adminDAOOperations.deleteUser(userId);
     }
 
-
-    @Override
-    public void addAdmin(Admin admin, String password) {
-        // TODO Auto-generated method stub
-        logger.info("In add admin");
-        int adminId = adminDAOOperations.addAdmin(admin, password);
-        if (adminId != -1)
-            logger.info("Your Admin Id is" + adminId);
-        else
-            logger.info("Admin registration failed");
-    }
+	@Override
+	public void addAdmin(Admin admin, String password) {
+		// TODO Auto-generated method stub
+		logger.info("In add admin");
+		int adminId = adminDAOOperations.addAdmin(admin, password);
+		if(adminId != -1) {
+			logger.info("Your Admin Id is" + adminId);
+			NotificationOperations notificationOperations = NotificationOperations.getInstance();
+			Notification notification = new Notification();
+			notification.setDescription("You are Succesfully registered in system");
+			notification.setUserId(admin.getAdminId());
+			notificationOperations.sendNotification(notification);
+			notificationOperations.getNotification(admin.getAdminId());
+		}
+		else {
+			logger.info("Admin registration failed");
+		}
+	}
 
 
     @Override
@@ -161,14 +176,26 @@ public class AdminOperations implements AdminInterface {
         adminDAOOperations.removeOfferedCourse(courseId, catalogId);
     }
 
-    @Override
-    public void approveStudent(int studentId) {
-        // TODO Auto-generated method stub
-        adminDAOOperations.approveStudent(studentId);
-        Notification notification = new Notification();
-        notification.setUserId(studentId);
-        notification.setTimestamp(new Timestamp(System.currentTimeMillis()));
-        notification.setDescription(studentId + " profile is approved so kindly verify it.");
-        notificationDAOOperation.sendNotification(notification);
-    }
+	@Override
+	public void approveStudent(int studentId) {
+		// TODO Auto-generated method stub
+		adminDAOOperations.approveStudent(studentId);
+		Notification notification = new Notification();
+		notification.setUserId(studentId);
+		notification.setTimestamp(new Timestamp(System.currentTimeMillis()));
+		notification.setDescription(studentId + " profile is approved so kindly verify it.");
+		notificationDAOOperation.sendNotification(notification);
+	}
+
+	@Override
+	public void viewPendingApprovalStudent() {
+		// TODO Auto-generated method stub
+		ArrayList<Student> list = new ArrayList<Student>();
+		list = adminDAOOperations.viewPendingApprovalStudent();
+		logger.info(list.size() + "StudentId  StudentName");
+		for(Student student:list) {
+			logger.info(student.getStudentId() + " " + student.getUsername());
+		}
+	}
+
 }

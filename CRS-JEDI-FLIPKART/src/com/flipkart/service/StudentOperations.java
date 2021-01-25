@@ -1,6 +1,8 @@
 package com.flipkart.service;
 
 import com.flipkart.bean.Course;
+import com.flipkart.bean.Notification;
+import com.flipkart.bean.Payment;
 import com.flipkart.bean.Student;
 import com.flipkart.constants.UIConstants;
 import com.flipkart.dao.StudentDAOInterface;
@@ -94,22 +96,33 @@ public class StudentOperations implements StudentInterface {
 
     @Override
     public void makePayment(int studentId, int payModeChoice, int fees) {
-        logger.info(studentDAOOperations.makePayment(studentId, payModeChoice, fees).toString());
+    	Payment payment = studentDAOOperations.makePayment(studentId, payModeChoice, fees);
+        logger.info(payment.toString());
+        Notification notification = new Notification();
+        notification.setDescription("You paid " + payment.getFeesPaid() + "/-");
+        notification.setUserId(studentId);
+        notificationOperations.sendNotification(notification);
         notificationOperations.getNotification(studentId);
     }
 
-    @Override
-    public void addStudent(Student student, String password) {
-        // TODO Auto-generated method stub
-        logger.info("in add student");
-        int id = studentDAOOperations.addStudent(student, password);
-        if (id != -1) {
-            logger.info("Your userId is " + id);
-        } else {
-            logger.info("Registration failed");
-        }
-
-    }
+	@Override
+	public void addStudent(Student student, String password) {
+		// TODO Auto-generated method stub
+		logger.info("in add student");
+		int id = studentDAOOperations.addStudent(student, password);
+		if(id != -1) {
+			logger.info("Your userId is " + id);
+			NotificationOperations notificationOperations = NotificationOperations.getInstance();
+			Notification notification = new Notification();
+			notification.setDescription("You are Succesfully registered in system");
+			notification.setUserId(student.getStudentId());
+			notificationOperations.sendNotification(notification);
+			notificationOperations.getNotification(student.getStudentId());
+		}else {
+			logger.info("Registration failed");
+		}
+		
+	}
 
     @Override
     public boolean isStudentProfileApproved(int studentId) {

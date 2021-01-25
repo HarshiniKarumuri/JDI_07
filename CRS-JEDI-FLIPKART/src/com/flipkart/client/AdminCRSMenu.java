@@ -16,10 +16,97 @@ import com.flipkart.service.AdminOperations;
  */
 public class AdminCRSMenu {
 
-    private static final Logger logger = Logger.getLogger(AdminCRSMenu.class);
-    AdminOperations adminOperation = AdminOperations.getInstance();
-    Scanner sc = new Scanner(System.in);
+	private static final Logger logger = Logger.getLogger(AdminCRSMenu.class);
+	AdminOperations adminOperation = AdminOperations.getInstance();
+	NotificationOperations notificationOperations = NotificationOperations.getInstance();
+	Scanner sc = new Scanner(System.in);
 
+	/**
+	 * Displays UI menu for user with admin role
+	 *
+	 * @param admin Admin object entering in CRS
+	 */
+	public void displayMenu(Admin admin) {
+ 
+		// user input variables
+		int choice, courseId, studentId;
+		String grade;
+		System.out.println(UserCRSMenu.loggedIn);
+		// check if user logged in CRS
+		while(UserCRSMenu.loggedIn){
+			
+			// options available for professor
+			logger.info("-----------------------Enter your choice:------------------------");
+			logger.info("0. To logout and return to Main Menu");
+			logger.info("1. To see the List of Users");
+			logger.info("2. To add professor or admin");
+			logger.info("3. To assign Professor");
+			logger.info("4. To delete user");
+			logger.info("5. To view offered Course");
+			logger.info("6. To add catalog");
+			logger.info("7. To remove catalog");
+			logger.info("8. To add course into catalog");
+			logger.info("9. To remove course from catalog");
+			logger.info("10. To add course into offered course");
+			logger.info("11. To remove course from offered course");
+			logger.info("12. To approve student profile");
+			logger.info("13. To see the list of pending approvals");
+			logger.info("------------------------------------------------------------------");
+			choice = sc.nextInt();
+			sc.nextLine();
+			logger.info("\n");
+
+			// switch to the selected choice
+			switch(choice)
+			{
+				case 0:
+					UserCRSMenu.logout();
+					break;
+				case 1:
+					adminOperation.viewUser();
+					break;
+				case 2:
+					addNewUser();
+					break;
+				case 3:
+					assignProfessorToCourse();
+					break;
+				case 4:
+					deleteUser();
+					break;
+				case 5:
+					adminOperation.viewCoursesOffered();
+					break;
+				case 6:
+					addCatalog();
+					break;
+				case 7:
+					removeCatalog();
+					break;
+				case 8:
+					addCourseIntoCatalog();
+					break;
+				case 9:
+					removeCourseFromCatalog();
+					break;
+				case 10:
+					addCourseToOffer();
+					break;
+				case 11:
+					removeOfferedCourse();
+					break;
+				case 12:
+					approveStudentProfile();
+					break;
+				case 13:
+					viewPendingApprovals();
+				default:
+					logger.info(UIConstants.SELECT_CORRECT_OPTION_MESSAGE);
+					logger.info("\n");
+			}
+		}
+	}
+	
     /**
      * Displays UI menu for user with admin role
      *
@@ -102,16 +189,24 @@ public class AdminCRSMenu {
     }
 
 
-    /**
-     * To approve student profile
-     */
-    private void approveStudentProfile() {
-        // TODO Auto-generated method stub
-        logger.info(UIConstants.REQUEST_STUDENT_ID_MESSAGE);
-        int studentId = Integer.parseInt(sc.nextLine());
+	private void viewPendingApprovals() {
+		// TODO Auto-generated method stub
+		logger.info("In pending approvals");
+		adminOperation.viewPendingApprovalStudent();
+	}
 
-        adminOperation.approveStudent(studentId);
-    }
+
+	/**
+	 * To approve student profile
+	 */
+	private void approveStudentProfile() {
+		// TODO Auto-generated method stub
+		logger.info(UIConstants.REQUEST_STUDENT_ID_MESSAGE);
+		int studentId = Integer.parseInt(sc.nextLine());
+
+		adminOperation.approveStudent(studentId);
+		notificationOperations.getNotification(studentId);
+	}
 
     /**
      * Adds catalog into catalog table

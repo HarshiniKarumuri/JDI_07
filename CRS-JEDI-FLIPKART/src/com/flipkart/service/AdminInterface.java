@@ -100,4 +100,9 @@ public interface AdminInterface {
      * @param studentId unique course identifier
      */
     void approveStudent(int studentId);
+
+	/**
+	 * To view students with pending approval from admin
+	 */
+	void viewPendingApprovalStudent();
 }

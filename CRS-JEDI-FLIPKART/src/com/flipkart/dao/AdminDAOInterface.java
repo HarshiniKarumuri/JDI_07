@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.flipkart.bean.Admin;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
 
 public interface AdminDAOInterface {
@@ -104,4 +105,6 @@ public interface AdminDAOInterface {
 	 * @param studentId unique student identifier
 	 */
 	public void approveStudent(int studentId);
+	
+	public ArrayList<Student> viewPendingApprovalStudent();
 }

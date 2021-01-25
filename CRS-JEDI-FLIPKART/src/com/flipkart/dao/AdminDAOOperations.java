@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import com.flipkart.bean.Admin;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
 import com.flipkart.constants.SQLQueriesConstants;
 import com.flipkart.service.AdminOperations;
@@ -317,6 +318,34 @@ public class AdminDAOOperations implements AdminDAOInterface{
 		}catch(Exception e) {
 			logger.error(e.getMessage());
 		}
+	}
+
+	@Override
+	public ArrayList<Student> viewPendingApprovalStudent() {
+		// TODO Auto-generated method stub
+		ArrayList<Student> list = new ArrayList<Student>();
+		PreparedStatement statement = null;
+		try {
+			statement = connection.prepareStatement(SQLQueriesConstants.VIEW_PENDING_APPROVAL_STUDENT);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()) {
+				Student student = new Student();
+				student.setStudentId(rs.getInt(1));
+				student.setBranch(rs.getString(2));
+				student.setHasScholarship(rs.getBoolean(3));
+				student.setIsApproved(rs.getBoolean(4));
+				student.setUsername(rs.getString(5));
+				student.setGender(rs.getString(6));
+				student.setAddress(rs.getString(7));
+				
+				list.add(student);
+			}
+		}catch(SQLException se) {
+			logger.error(se.getMessage());
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return list;
 	}
 	
 }
