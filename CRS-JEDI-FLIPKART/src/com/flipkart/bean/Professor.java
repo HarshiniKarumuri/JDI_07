@@ -9,6 +9,7 @@ public class Professor extends User{
 	private String department;
 
 	/**
+	 * gets the professor Id
 	 * @return the professorId
 	 */
 	public int getProfessorId() {
@@ -16,6 +17,7 @@ public class Professor extends User{
 	}
 
 	/**
+	 * set the professor Id
 	 * @param professorId the professorId to set
 	 */
 	public void setProfessorId(int professorId) {
@@ -23,6 +25,7 @@ public class Professor extends User{
 	}
 
 	/**
+	 * get the department of the professor
 	 * @return the department
 	 */
 	public String getDepartment() {
@@ -30,6 +33,7 @@ public class Professor extends User{
 	}
 
 	/**
+	 * set the department of the professor
 	 * @param department the department to set
 	 */
 	public void setDepartment(String department) {
