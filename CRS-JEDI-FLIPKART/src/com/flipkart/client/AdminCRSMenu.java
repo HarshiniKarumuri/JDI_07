@@ -30,10 +30,10 @@ public class AdminCRSMenu {
 		// user input variables
 		int choice, courseId, studentId;
 		String grade;
- 
+		System.out.println(UserCRSMenu.loggedIn);
 		// check if user logged in CRS
 		while(UserCRSMenu.loggedIn){
- 
+			
 			// options available for professor
 			logger.info("-----------------------Enter your choice:------------------------");
 			logger.info("0. To logout and return to Main Menu");

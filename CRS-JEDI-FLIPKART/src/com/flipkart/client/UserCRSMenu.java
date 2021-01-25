@@ -1,6 +1,7 @@
 package com.flipkart.client;
 
 import java.util.Scanner;
+
 import org.apache.log4j.Logger;
 
 import com.flipkart.bean.Admin;
@@ -69,9 +70,9 @@ public class UserCRSMenu {
 	 */
 	public static void login() {
 		logger.info("Enter Userid");
-		int userid = Integer.parseInt(scanner.nextLine());
+		int userid = scanner.nextInt();
 		logger.info("Enter Password");
-		String password = scanner.nextLine();
+		String password = scanner.next();
 
 		LoginDAOInterface loginDAOOperations = new LoginDAOOperations();
 		loggedIn = loginDAOOperations.checkCredentials(userid, password);
