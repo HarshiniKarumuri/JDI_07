@@ -12,6 +12,7 @@ public class Course {
 	private int capacity;
 	
 	/**
+	 * get the capacity of the course
 	 * @return the capacity
 	 */
 	public int getCapacity() {
@@ -19,6 +20,7 @@ public class Course {
 	}
 
 	/**
+	 * set the capacity of the course
 	 * @param capacity the capacity to set
 	 */
 	public void setCapacity(int capacity) {
@@ -26,6 +28,7 @@ public class Course {
 	}
 
 	/**
+	 * get the Course Id
 	 * @return the courseId
 	 */
 	public int getCourseId() {
@@ -33,6 +36,7 @@ public class Course {
 	}
 
 	/**
+	 * Set the course Id
 	 * @param courseId the courseId to set
 	 */
 	public void setCourseId(int courseId) {
@@ -40,6 +44,7 @@ public class Course {
 	}
 
 	/**
+	 * get the course name
 	 * @return the courseName
 	 */
 	public String getCourseName() {
@@ -47,6 +52,7 @@ public class Course {
 	}
 
 	/**
+	 * set the course name
 	 * @param courseName the courseName to set
 	 */
 	public void setCourseName(String courseName) {
@@ -54,6 +60,7 @@ public class Course {
 	}
 
 	/**
+	 * get the Description of the course
 	 * @return the description
 	 */
 	public String getDescription() {
@@ -61,6 +68,7 @@ public class Course {
 	}
 
 	/**
+	 * sets the description of the course
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
@@ -68,6 +76,7 @@ public class Course {
 	}
 
 	/**
+	 * gets the fees of the course
 	 * @return the fees
 	 */
 	public int getFees() {
@@ -75,6 +84,7 @@ public class Course {
 	}
 
 	/**
+	 * sets the fees of the course
 	 * @param l the fees to set
 	 */
 	public void setFees(int l) {

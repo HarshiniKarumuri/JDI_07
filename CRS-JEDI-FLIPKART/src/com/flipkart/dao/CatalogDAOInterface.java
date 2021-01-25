@@ -8,15 +8,16 @@ public interface CatalogDAOInterface {
 	
 	/**
 	 * to see the list of courses in the catalog 
+	 * @return an Arraylist containing list of courses in the catalog
 	 */
 	public ArrayList<Course> viewCoursesCatalog();
 
 	
 	
 	/**
-	 * 
-	 * @param courseId unique course identifier 
 	 * method used to see the course details
+	 * @return the course having its identifier as courseId
+	 * @param courseId unique course identifier 
 	 */
 	public Course viewCourseDetails(int courseId);
 	

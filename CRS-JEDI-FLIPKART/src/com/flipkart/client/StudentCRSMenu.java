@@ -19,6 +19,11 @@ public class StudentCRSMenu {
     private final StudentOperations studentOperations = StudentOperations.getInstance();
     private final CourseCatalogOperations catalogOperations = CourseCatalogOperations.getInstance();
 
+    /**
+     * Display Student's Menu
+     *
+     * @param student
+     */
     public void displayMenu(Student student) {
         // input variables
         int courseId, choice;
@@ -27,13 +32,13 @@ public class StudentCRSMenu {
         try {
             // check if user is logged in
             while (UserCRSMenu.loggedIn) {
-            	
-            	boolean isApproved = studentOperations.isStudentProfileApproved(student.getStudentId());
-            	if(!isApproved) {
-            		logger.info("Your profile is not approved by admin!!!");
-            		UserCRSMenu.logout();
-            		continue;
-            	}
+
+                boolean isApproved = studentOperations.isStudentProfileApproved(student.getStudentId());
+                if (!isApproved) {
+                    logger.info("Your profile is not approved by admin!!!");
+                    UserCRSMenu.logout();
+                    continue;
+                }
                 // Options available for student
                 logger.info(UIConstants.ENTER_CHOICES_MESSAGE);
                 logger.info("0. To logout and return to main menu");
