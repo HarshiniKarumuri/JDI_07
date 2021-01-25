@@ -1,5 +1,7 @@
 package com.flipkart.dao;
 
+import java.math.BigInteger;
+
 public interface LoginDAOInterface {
 	
 	/**

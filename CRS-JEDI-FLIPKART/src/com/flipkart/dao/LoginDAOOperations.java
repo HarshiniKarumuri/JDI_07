@@ -1,14 +1,52 @@
 package com.flipkart.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.apache.log4j.Logger;
+
+import com.flipkart.constants.SQLQueriesConstants;
+import com.flipkart.utils.DBUtils;
+
 public class LoginDAOOperations implements LoginDAOInterface{
+	
+	private static final Logger logger = Logger.getLogger(LoginDAOOperations.class);
+	Connection connection = DBUtils.getConnection();
 
     //TODO: implement data fetch using SQL queries
     @Override
     public String login(int userid, String password) {
-        return "Admin";
+    	PreparedStatement stmt = null;
+    	String role = "";
+    	try {
+			stmt = connection.prepareStatement(SQLQueriesConstants.LOGIN_QUERY);
+			stmt.setLong(1, userid);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				role = rs.getString("role");
+			}
+		}catch(SQLException se){
+			logger.error(se.getMessage());
+		}
+        return role;
     }
     
     public boolean checkCredentials(int userid, String password) {
-    	return true;
+    	PreparedStatement stmt = null;
+    	String pswd = "";
+    	try {
+    		stmt = connection.prepareStatement(SQLQueriesConstants.CHECK_CREDENTIALS_QUERY);
+    		stmt.setLong(1, userid);
+    		ResultSet rs = stmt.executeQuery();
+		
+    		while(rs.next()) {
+    			pswd = rs.getString("password");
+    		}
+    	} catch(SQLException se) {
+    			logger.error(se.getMessage());
+    	}
+    	return password.equals(pswd);
     }
 }
