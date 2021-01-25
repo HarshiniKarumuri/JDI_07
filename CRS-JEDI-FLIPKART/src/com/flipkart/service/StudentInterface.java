@@ -1,24 +1,25 @@
 package com.flipkart.service;
 
-import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
 
 /**
  * Student business interface
  */
 public interface StudentInterface {
-	
-	void viewCourseCatalog();
-	
-	void chooseCourse(Student student, int courseId);
-	
-	void dropCourse(Student student,int courseId);
-	
-	void  viewRegisteredCourse(Student student);
-	
-	void viewGrades(Student student);
-	
-	int calculateFees(Student student);
 
-	void makePayment(Student student, int paymentMethod, int fees);
+    void registerCourse(int studentId, int courseId);
+
+    void dropCourse(int studentId, int courseId);
+
+    void viewRegisteredCourses(int studentId);
+
+    void viewGrades(int studentId);
+
+    int calculateFees(int studentId);
+
+    void makePayment(int studentId, int payModeChoice, int fees);
+    
+    void addStudent(Student student,String password);
+    
+    boolean isStudentProfileApproved(int studentId);
 }

@@ -10,4 +10,9 @@ public interface NotificationInterface {
 	 */
 	public void sendNotification(Notification notification);
 
+	/**
+	 * 
+	 * @param userId unique identifier of user
+	 */
+	public void getNotification(int userId);
 }

@@ -14,6 +14,22 @@ public class LoginDAOOperations implements LoginDAOInterface{
 	
 	private static final Logger logger = Logger.getLogger(LoginDAOOperations.class);
 	Connection connection = DBUtils.getConnection();
+	
+	private static volatile LoginDAOOperations instance = null;
+	 
+    // private constructor
+    private LoginDAOOperations() {
+    }
+ 
+    public static LoginDAOOperations getInstance() {
+        if (instance == null) {
+        	// This is a synchronized block, when multiple threads will access this instance
+            synchronized (LoginDAOOperations.class) {
+                instance = new LoginDAOOperations();
+            }
+        }
+        return instance;
+    }
 
     //TODO: implement data fetch using SQL queries
     @Override

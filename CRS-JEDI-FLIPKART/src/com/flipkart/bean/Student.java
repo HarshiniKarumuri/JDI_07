@@ -8,7 +8,7 @@ public class Student extends User{
 	private int studentId;
 	private String branch;
 	private boolean hasScholarship;
-	private int isApproved;
+	private boolean isApproved;
 
 	/**
 	 * @return the studentId
@@ -53,16 +53,20 @@ public class Student extends User{
 	}
 
 	/**
-	 * @return the isApproved
+	 * 
+	 * @return returns boolean
 	 */
-	public int getIsApproved() {
+	public boolean isApproved() {
 		return isApproved;
 	}
 
 	/**
-	 * @param isApproved the isApproved to set
+	 * 
+	 * @param isApproved
 	 */
-	public void setIsApproved(int isApproved) {
+	public void setIsApproved(boolean isApproved) {
 		this.isApproved = isApproved;
 	}
+
+	
 }

@@ -14,7 +14,7 @@ import com.flipkart.constants.UIConstants;
 public class ProfessorCRSMenu {
 	
 	private static final Logger logger = Logger.getLogger(ProfessorCRSMenu.class);
-	ProfessorOperations professorOperation = new ProfessorOperations();
+	ProfessorOperations professorOperation = ProfessorOperations.getInstance();
 	Scanner sc = new Scanner(System.in);
 	
 	//Display Professor's Menu
@@ -34,8 +34,8 @@ public class ProfessorCRSMenu {
 			logger.info("2. To view students in a course");
 			logger.info("3. To add or update grade of a student in a course");
 			logger.info("------------------------------------------------------------------");
-			choice = sc.nextInt();
-			sc.nextLine();
+			choice = Integer.parseInt(sc.nextLine());
+			//sc.nextLine();
 			logger.info("\n");
 
 			// switch to the selected choice
@@ -47,19 +47,19 @@ public class ProfessorCRSMenu {
 
 				case 2:
 					logger.info(UIConstants.REQUEST_COURSE_ID_MESSAGE);
-					courseId = sc.nextInt();
+					courseId = Integer.parseInt(sc.nextLine());
 
 					professorOperation.viewStudentsRegisteredInCourse(professor.getProfessorId(), courseId);
 					break;
 
 				case 3:
 					logger.info(UIConstants.REQUEST_COURSE_ID_MESSAGE);
-					courseId = sc.nextInt();
+					courseId = Integer.parseInt(sc.nextLine());
 					logger.info(UIConstants.REQUEST_STUDENT_ID_MESSAGE);
-					studentId = sc.nextInt();
-					sc.nextLine();
+					studentId = Integer.parseInt(sc.nextLine());
+					//sc.nextLine();
 					logger.info(UIConstants.REQUEST_STUDENT_GRADE_MESSAGE);
-					grade = sc.next();
+					grade = sc.nextLine();
 
 					professorOperation.gradeStudent(professor.getProfessorId(), courseId, grade, studentId);
 					break;
