@@ -1,48 +1,137 @@
 package com.flipkart.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.flipkart.bean.Course;
+import com.flipkart.constants.SQLQueriesConstants;
+import com.flipkart.utils.DBUtils;
+import org.apache.log4j.Logger;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class CatalogDAOOperations implements CatalogDAOInterface {
 
-	@Override
-	public ArrayList<Course> viewCatalog() {
-		// TODO Auto-generated method stub
-		
-		//Dummy Data
-		ArrayList<Course> courses = new ArrayList<Course>();
-		
-		Course course1 = new Course();
-		course1.setCourseId(1);
-		course1.setCourseName("Java");
-		course1.setDescription("Programming Language");
-		course1.setFees(100000);
-		courses.add(course1);
-		
-		Course course2 = new Course();
-		course2.setCourseId(2);
-		course2.setCourseName("ML");
-		course2.setDescription("A good course");
-		course2.setFees(200000);
-		courses.add(course2);
-		
-		return courses;
-	}
+    private static final Logger logger = Logger.getLogger(CatalogDAOOperations.class);
+    Connection connection = DBUtils.getConnection();
+    
+    private static volatile CatalogDAOOperations instance = null;
+	 
+    // private constructor
+    private CatalogDAOOperations() {
+    }
+ 
+    public static CatalogDAOOperations getInstance() {
+        if (instance == null) {
+        	// This is a synchronized block, when multiple threads will access this instance
+            synchronized (CatalogDAOOperations.class) {
+                instance = new CatalogDAOOperations();
+            }
+        }
+        return instance;
+    }
 
-	@Override
-	public Course viewCourse(int courseId) {
-		// TODO Auto-generated method stub
-		
-		//Dummy Data
-		Course course1 = new Course();
-		course1.setCourseId(1);
-		course1.setCourseName("Java");
-		course1.setDescription("Programming Language");
-		course1.setFees(100000);
-		
-		return course1;
-	}
+    @Override
+    public ArrayList<Course> viewCoursesCatalog() {
+
+        ArrayList<Course> courses = new ArrayList<Course>();
+        PreparedStatement stmt;
+        ResultSet result;
+
+        try {
+            stmt = connection.prepareStatement(SQLQueriesConstants.VIEW_COURSES_QUERY);
+            result = stmt.executeQuery();
+            while (result.next()) {
+                Course course = new Course();
+                course.setCourseId(result.getInt("course_id"));
+                course.setCourseName(result.getString("course_name"));
+                course.setDescription(result.getString("description"));
+                course.setFees(result.getInt("fees"));
+                course.setCapacity(result.getInt("capacity"));
+                courses.add(course);
+            }
+            stmt.close();
+        } catch (Exception se) {
+            logger.error(se.getMessage());
+        }
+
+        return courses;
+    }
+
+    @Override
+    public ArrayList<Course> viewCoursesOffered() {
+
+        ArrayList<Course> courses = new ArrayList<Course>();
+        PreparedStatement stmt;
+        ResultSet result;
+
+        try {
+            stmt = connection.prepareStatement(SQLQueriesConstants.VIEW_OFFERED_COURSE);
+            result = stmt.executeQuery();
+            while (result.next()) {
+                Course course = new Course();
+                course.setCourseId(result.getInt("course_id"));
+                course.setCourseName(result.getString("course_name"));
+                course.setDescription(result.getString("description"));
+                course.setFees(result.getInt("fees"));
+                course.setCapacity(result.getInt("capacity"));
+                courses.add(course);
+            }
+            stmt.close();
+        } catch (Exception se) {
+            logger.error(se.getMessage());
+        }
+
+        return courses;
+    }
+
+    @Override
+    public Course viewCourseDetails(int courseId) {
+
+        Course course = null;
+        PreparedStatement stmt;
+        ResultSet result;
+
+        try {
+            stmt = connection.prepareStatement(SQLQueriesConstants.VIEW_COURSE_QUERY);
+            stmt.setInt(1, courseId);
+            result = stmt.executeQuery();
+            while (result.next()) {
+                course = new Course();
+                course.setCourseId(result.getInt("course_id"));
+                course.setCourseName(result.getString("course_name"));
+                course.setDescription(result.getString("description"));
+                course.setFees(result.getInt("fees"));
+                course.setCapacity(result.getInt("capacity"));
+            }
+            stmt.close();
+        } catch (Exception se) {
+            logger.error(se.getMessage());
+        }
+
+        return course;
+    }
+
+    @Override
+    public boolean checkCourseOffered(int courseId) {
+
+        PreparedStatement stmt;
+        ResultSet result;
+
+        try {
+            stmt = connection.prepareStatement(SQLQueriesConstants.CHECK_COURSE_OFFERED_QUERY);
+            stmt.setInt(1, courseId);
+            result = stmt.executeQuery();
+            result.next();
+            if (result.getInt(1) > 0) {
+                return true;
+            }
+            stmt.close();
+        } catch (Exception se) {
+            logger.error(se.getMessage());
+        }
+
+        return false;
+    }
 
 }

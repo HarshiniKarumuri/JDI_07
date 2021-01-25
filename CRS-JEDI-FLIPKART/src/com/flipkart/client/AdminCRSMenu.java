@@ -8,6 +8,7 @@ import com.flipkart.bean.Admin;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.constants.UIConstants;
+import com.flipkart.exception.AdminClientException;
 import com.flipkart.service.AdminOperations;
  
 /**
@@ -16,7 +17,7 @@ import com.flipkart.service.AdminOperations;
 public class AdminCRSMenu {
 
 	private static final Logger logger = Logger.getLogger(AdminCRSMenu.class);
-	AdminOperations adminOperation = new AdminOperations();
+	AdminOperations adminOperation = AdminOperations.getInstance();
 	Scanner sc = new Scanner(System.in);
 
 	/**
@@ -29,19 +30,25 @@ public class AdminCRSMenu {
 		// user input variables
 		int choice, courseId, studentId;
 		String grade;
- 
+		System.out.println(UserCRSMenu.loggedIn);
 		// check if user logged in CRS
 		while(UserCRSMenu.loggedIn){
- 
+			
 			// options available for professor
 			logger.info("-----------------------Enter your choice:------------------------");
 			logger.info("0. To logout and return to Main Menu");
-			logger.info("1. To view the offered courses in course catalog");
-			logger.info("2. To add a course into offered courses");
-			logger.info("3. To remove a course from offered courses");
-			logger.info("4. To add a professor user");
-			logger.info("5. To assign a professor to a course");
-			logger.info("6. To delete a user");
+			logger.info("1. To see the List of Users");
+			logger.info("2. To add professor or admin");
+			logger.info("3. To assign Professor");
+			logger.info("4. To delete user");
+			logger.info("5. To view offered Course");
+			logger.info("6. To add catalog");
+			logger.info("7. To remove catalog");
+			logger.info("8. To add course into catalog");
+			logger.info("9. To remove course from catalog");
+			logger.info("10. To add course into offered course");
+			logger.info("11. To remove course from offered course");
+			logger.info("12. To approve student profile");
 			logger.info("------------------------------------------------------------------");
 			choice = sc.nextInt();
 			sc.nextLine();
@@ -54,64 +61,158 @@ public class AdminCRSMenu {
 					UserCRSMenu.logout();
 					break;
 				case 1:
-					adminOperation.viewCoursesOffered();
+					adminOperation.viewUser();
 					break;
- 
 				case 2:
-					addCourseToOffer();
-					break;
- 
-				case 3:
-					removeOfferedCourse();
-					break;
- 
-				case 4:
 					addNewUser();
 					break;
-
-				case 5:
+				case 3:
 					assignProfessorToCourse();
 					break;
-
-				case 6:
+				case 4:
 					deleteUser();
 					break;
-
+				case 5:
+					adminOperation.viewCoursesOffered();
+					break;
+				case 6:
+					addCatalog();
+					break;
+				case 7:
+					removeCatalog();
+					break;
+				case 8:
+					addCourseIntoCatalog();
+					break;
+				case 9:
+					removeCourseFromCatalog();
+					break;
+				case 10:
+					addCourseToOffer();
+					break;
+				case 11:
+					removeOfferedCourse();
+					break;
+				case 12:
+					approveStudentProfile();
+					break;
 				default:
 					logger.info(UIConstants.SELECT_CORRECT_OPTION_MESSAGE);
 					logger.info("\n");
 			}
 		}
 	}
+	
 
 	/**
-	 * Add course to offered courses from courses catalog
+	 * To approve student profile
 	 */
-	void addCourseToOffer() {
+	private void approveStudentProfile() {
+		// TODO Auto-generated method stub
+		logger.info(UIConstants.REQUEST_STUDENT_ID_MESSAGE);
+		int studentId = Integer.parseInt(sc.nextLine());
+		
+		adminOperation.approveStudent(studentId);
+	}
+
+	/**
+	 * Adds catalog into catalog table
+	 */
+	void addCatalog() {
+		// TODO Auto-generated method stub
+		logger.info(UIConstants.ADD_CATALOG_ID_MESSAGE);
+		int catalogId = Integer.parseInt(sc.nextLine());
+		logger.info(UIConstants.ADD_CATALOG_NAME_MESSAGE);
+		String catalogName = sc.nextLine();
+		adminOperation.addCatalog(catalogId, catalogName);
+	}
+
+	/**
+	 * Removes catalog from catalog table
+	 */
+	void removeCatalog() {
+		logger.info(UIConstants.ADD_CATALOG_ID_MESSAGE);
+		int catalogId = Integer.parseInt(sc.nextLine());
+		adminOperation.removeCatalog(catalogId);
+	}
+	
+	/**
+	 * Adds course into course catalog
+	 */
+	void addCourseIntoCatalog() {
 		
 		Course course = new Course();
 		logger.info(UIConstants.REQUEST_COURSE_ID_MESSAGE);
 		int courseId = Integer.parseInt(sc.nextLine());
 		course.setCourseId(courseId);
+		
 		logger.info(UIConstants.REQUEST_COURSE_NAME_MESSAGE);
 		String courseName = sc.nextLine();
 		course.setCourseName(courseName);
+		
 		logger.info(UIConstants.REQUEST_COURSE_DESCRIPTION_MESSAGE);
 		String description = sc.nextLine();
 		course.setDescription(description);
+		
 		logger.info(UIConstants.REQUEST_COURSE_FEE_MESSAGE);
 		int fees = Integer.parseInt(sc.nextLine());
 		course.setFees(fees);
-		adminOperation.addCourseToOffer(course);
+		
+		try {
+			logger.info(UIConstants.ENTER_COURSE_CAPACITY);
+			int capacity = Integer.parseInt(sc.nextLine());
+			course.setCapacity(capacity);
+			
+			if(capacity < 3 || capacity >10) {
+				throw new AdminClientException("Capacity needs to be within 3 to 10");
+			}
+		}
+		catch(AdminClientException  | NumberFormatException e){
+			logger.error(e.getMessage());
+		}
+		logger.info(UIConstants.ADD_CATALOG_ID_MESSAGE);
+		int catalogId = Integer.parseInt(sc.nextLine());
+		
+		adminOperation.addCourseIntoCatalog(course, catalogId);
+	}
+	
+	/*
+	 * Remove Course from catalog
+	 */
+	void removeCourseFromCatalog() {
+		
+		logger.info(UIConstants.REQUEST_COURSE_ID_MESSAGE);
+		int courseId = Integer.parseInt(sc.nextLine());
+		
+		adminOperation.removeCourseFromCatalog(courseId);
+	}
+	
+	/**
+	 * Adds a course to Offered course
+	 */
+	void addCourseToOffer() {
+		
+		logger.info(UIConstants.REQUEST_COURSE_ID_MESSAGE);
+		int courseId = Integer.parseInt(sc.nextLine());
+		
+		logger.info(UIConstants.ADD_CATALOG_ID_MESSAGE);
+		int catalogId = Integer.parseInt(sc.nextLine());
+		
+		adminOperation.addCourseToOffer(courseId, catalogId);
 	}
 
 	/**
 	 * Remove an offered course
 	 */
 	void removeOfferedCourse() {
+		
 		logger.info(UIConstants.REQUEST_COURSE_ID_MESSAGE);
 		int courseId = Integer.parseInt(sc.nextLine());
-		adminOperation.removeOfferedCourse(courseId);
+		
+		logger.info(UIConstants.ADD_CATALOG_ID_MESSAGE);
+		int catalogId = Integer.parseInt(sc.nextLine());
+		
+		adminOperation.removeOfferedCourse(courseId,catalogId);
 	}
 
 	/**
@@ -121,12 +222,10 @@ public class AdminCRSMenu {
 		
 		logger.info("Enter professor Id");
 		int professorId = Integer.parseInt(sc.nextLine());
-		Professor professor = new Professor();
-		professor.setProfessorId(professorId);
 		logger.info("Enter course Id");
 		int courseId = Integer.parseInt(sc.nextLine());
 		
-		adminOperation.assignProfessorToCourse(professor, courseId);
+		adminOperation.assignProfessorToCourse(professorId, courseId);
 	}
 
 	/**
@@ -151,24 +250,49 @@ public class AdminCRSMenu {
 		
 			case 1:
 				Admin admin = new Admin();
-				logger.info("Enter admin id:");
-				admin.setAdminId(Integer.parseInt(sc.nextLine()));
-				logger.info("Enter admin name:");
-				admin.setUsername(sc.nextLine());
+				logger.info("Enter email:");
+				admin.setEmail(sc.nextLine());
+				
 				logger.info("Enter password");
 				String password = sc.nextLine();
+				
+				logger.info("Enter User name");
+				admin.setUsername(sc.nextLine());
+				
+				admin.setRole("Admin");
+				
+				logger.info("Enter Gender");
+				admin.setGender(sc.nextLine());
+				
+				logger.info("Enter Address");
+				admin.setAddress(sc.nextLine());
+				
 				adminOperation.addAdmin(admin, password);
 				break;
 				
 			case 2:
 				Professor professor = new Professor();
-				logger.info("Enter professor id:");
-				professor.setProfessorId(Integer.parseInt(sc.nextLine()));
-				logger.info("Enter professor name:");
-				professor.setUsername(sc.nextLine());
+				logger.info("Enter email:");
+				professor.setEmail(sc.nextLine());
+				
 				logger.info("Enter password");
-				password = sc.nextLine();
-				adminOperation.addProfessor(professor, password);
+				String password1 = sc.nextLine();
+				
+				logger.info("Enter User name");
+				professor.setUsername(sc.nextLine());
+				
+				professor.setRole("Professor");
+				
+				logger.info("Enter Gender");
+				professor.setGender(sc.nextLine());
+				
+				logger.info("Enter Address");
+				professor.setAddress(sc.nextLine());
+				
+				logger.info("Enter Department");
+				professor.setDepartment(sc.nextLine());
+				
+				adminOperation.addProfessor(professor, password1);
 				break;
 				
 			default:

@@ -1,109 +1,165 @@
 package com.flipkart.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
+import org.apache.log4j.Logger;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
+import com.flipkart.constants.SQLQueriesConstants;
+import com.flipkart.utils.DBUtils;
 
 public class ProfessorDAOOperations implements ProfessorDAOInterface {
 
-	private static final Logger logger = Logger.getLogger(ProfessorDAOOperations.class.getName());
+	private static final Logger logger = Logger.getLogger(ProfessorDAOOperations.class);	
+	static Connection connection = DBUtils.getConnection();
+	
+	private static volatile ProfessorDAOOperations instance = null;
+	 
+    // private constructor
+    private ProfessorDAOOperations() {
+    }
+ 
+    public static ProfessorDAOOperations getInstance() {
+        if (instance == null) {
+        	// This is a synchronized block, when multiple threads will access this instance
+            synchronized (ProfessorDAOOperations.class) {
+                instance = new ProfessorDAOOperations();
+            }
+        }
+        return instance;
+    }
+	
+	public List<Student> getRegisteredStudentsInCourse(int userid, int courseId) {
 
-	//TODO: implement data fetch using SQL queries
-	public List<Student> getRegisteredStudentsInCourse(int professorId, int courseId) {
-
-		// dummy students data
 		List<Student> students = new ArrayList<Student>();
-
-		Student student1 = new Student();
-		student1.setStudentId(101);
-		student1.setUsername("Harry");
-		student1.setBranch("CSE");
-		student1.setGender("Male");
-		student1.setHasScholarship(true);
-		student1.setIsApproved(0);
-		students.add(student1);
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(SQLQueriesConstants.GET_REGISTERED_STUDENTS);
+			stmt.setInt(1, courseId);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				Student student = new Student();
+				student.setStudentId(rs.getInt(1));
+				student.setUsername(rs.getString("name"));
+				student.setBranch(rs.getString("branch"));
+				students.add(student);
 		
-		Student student2 = new Student();
-		student2.setStudentId(102);
-		student2.setUsername("Hermonie");
-		student2.setBranch("ECE");
-		student2.setGender("Female");
-		student2.setHasScholarship(false);
-		student2.setIsApproved(1);
-		students.add(student2);
-
+			}
+		} catch (SQLException se){
+			logger.error(se.getMessage());
+		}
 		return students;
+		
+		
 	}
 
-	//TODO: implement data fetch using SQL queries
-	public List<Course> getAssignedCourses(int professorId){
-
-		// dummy courses data
-		List<Course> courses = new ArrayList<>();
-		
-		Course course1 = new Course();
-		course1.setCourseId(1);
-		course1.setCourseName("Java");
-		course1.setDescription("Programming Language");
-		course1.setFees(100000);
-		courses.add(course1);
-		
-		Course course2 = new Course();
-		course2.setCourseId(2);
-		course2.setCourseName("ML");
-		course2.setDescription("A good course");
-		course2.setFees(200000);
-		courses.add(course2);
-		
+	public List<Course> getAssignedCourses (int userid){
+		List<Course> courses=new ArrayList<Course>();
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(SQLQueriesConstants.GET_ASSIGNED_COURSES);
+			stmt.setInt(1, userid);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				Course course=new Course();
+				course.setCourseId(rs.getInt(1));
+				course.setCourseName(rs.getString(2));
+				course.setFees(rs.getInt(3));
+				course.setDescription(rs.getString(4));
+				course.setCapacity(rs.getInt(5));
+				courses.add(course);
+			}
+		} catch(SQLException se) {
+			logger.error(se.getMessage());
+		}
 		return courses;
+		
 	}
 
 	//TODO: implement data fetch using SQL queries
-	public void gradeStudent(int courseId, int studentId, String grade) {}
+	public void gradeStudent(int courseId, int studentId, String grade) {
+		
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(SQLQueriesConstants.ASSIGN_GRADE);
+			stmt.setString(1, grade);
+			stmt.setInt(2,studentId);
+			stmt.setInt(3, courseId);
+			int rs = stmt.executeUpdate();
+		} catch(SQLException se) {
+			logger.error(se.getMessage());
+		}
+	}
 
 	//TODO: implement data fetch using SQL queries
 	@Override
-	public boolean checkCanGradeCourse(int professorId, int courseId) {
-		return true;
+	public boolean checkCanGradeCourse(int userid, int courseId) {
+		
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(SQLQueriesConstants.VALID_COURSE_FOR_PROFESSOR);
+			stmt.setInt(1, userid);
+			stmt.setInt(2, courseId);
+			ResultSet rs = stmt.executeQuery();
+
+			if(rs.next()) {
+				return true;
+			}
+		}catch(SQLException se) {
+			logger.error(se.getMessage());
+		}
+		return false;
 	}
 
 	//TODO: implement data fetch using SQL queries
 	@Override
 	public boolean checkCanGradeStudent(int studentId, int courseId) {
-		return true;
+		
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(SQLQueriesConstants.VALID_COURSE_FOR_STUDENT);
+			stmt.setInt(1, studentId);
+			stmt.setInt(2, courseId);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				return true;
+			}
+		}catch(SQLException se) {
+			logger.error(se.getMessage());
+		}
+		return false;
+		
 	}
-
 	//TODO: implement data fetch using SQL queries
 	@Override
-	public Professor getProfessorDetails(String username) {
+	public Professor getProfessorDetails(int userid) {
 
-		// dummy professor
+		PreparedStatement stmt=null;
 		Professor professor = new Professor();
-		professor.setUsername("Mr. Aman");
-		professor.setProfessorId(2223423);
-		professor.setUserId(1233334);
-		professor.setUsername("aman.rocks");
-		professor.setEmail("aman.rocks@crshome.com");
+		try {
+			stmt=connection.prepareStatement(SQLQueriesConstants.PROFESSOR_DETAILS_QUERY);
+			stmt.setInt(1, userid);
+			ResultSet rs=stmt.executeQuery();
+			rs.next();
+				professor.setProfessorId(userid);
+				professor.setDepartment(rs.getString(1));
+				professor.setUsername(rs.getString(2));
+				professor.setGender(rs.getString(3));
+				professor.setAddress(rs.getString(4));
+		}catch(SQLException se) {
+			logger.error(se.getMessage());
+		}
 
 		return professor;
 	}
 
-	/*For debugging purposes
-	public static void main(String[] args) {
-		
-		ProfessorDAOImpl pdl = new ProfessorDAOImpl();
-		Professor prof = new Professor();
-		pdl.viewStudents(prof);
-		
-		List<Course> courses = pdl.getCourses(prof);
-		for(Course cou : courses) {
-			logger.info(cou.getCourseId()+" "+cou.getCourseName());
-			
-		}
-		
-	}*/
+
 }
