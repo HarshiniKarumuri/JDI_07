@@ -99,5 +99,9 @@ public interface AdminDAOInterface {
 	 */
 	public void removeOfferedCourse(int courseId,int catalogId);
 	
+	/**
+	 * To approve a student for the registration
+	 * @param studentId unique student identifier
+	 */
 	public void approveStudent(int studentId);
 }

@@ -11,6 +11,7 @@ public class Student extends User{
 	private boolean isApproved;
 
 	/**
+	 * get the student Id
 	 * @return the studentId
 	 */
 	public int getStudentId() {
@@ -18,6 +19,7 @@ public class Student extends User{
 	}
 
 	/**
+	 * set the student Id
 	 * @param studentId the studentId to set
 	 */
 	public void setStudentId(int studentId) {
@@ -25,6 +27,7 @@ public class Student extends User{
 	}
 
 	/**
+	 * get the branch of the student
 	 * @return the branch
 	 */
 	public String getBranch() {
@@ -32,6 +35,7 @@ public class Student extends User{
 	}
 
 	/**
+	 * set the branch of the student
 	 * @param branch the branch to set
 	 */
 	public void setBranch(String branch) {
@@ -39,30 +43,32 @@ public class Student extends User{
 	}
 
 	/**
+	 * get the scholarship status of the student
 	 * @return the hasScholarship
 	 */
-	public boolean isHasScholarship() {
+	public boolean getHasScholarship() {
 		return hasScholarship;
 	}
 
 	/**
-	 * @param hasScholarship the hasScholarship to set
+	 * set the scholarship status of the student
+	 * @param hasScholarship 'True' if the student has a scholarship, 'False' otherwise 
 	 */
 	public void setHasScholarship(boolean hasScholarship) {
 		this.hasScholarship = hasScholarship;
 	}
 
 	/**
-	 * 
+	 * get the status of the approval
 	 * @return returns boolean
 	 */
-	public boolean isApproved() {
+	public boolean getIsApproved() {
 		return isApproved;
 	}
 
 	/**
-	 * 
-	 * @param isApproved
+	 * set the status of the approval 
+	 * @param isApproved 'True' if the student is approved, 'False' otherwise
 	 */
 	public void setIsApproved(boolean isApproved) {
 		this.isApproved = isApproved;

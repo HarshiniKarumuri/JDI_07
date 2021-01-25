@@ -20,16 +20,16 @@ public class StudentOperations implements StudentInterface {
 
     private final StudentDAOInterface studentDAOOperations = StudentDAOOperations.getInstance();
     private final NotificationOperations notificationOperations = NotificationOperations.getInstance();
-    
+
     private static volatile StudentOperations instance = null;
-	 
+
     // private constructor
     private StudentOperations() {
     }
- 
+
     public static StudentOperations getInstance() {
         if (instance == null) {
-        	// This is a synchronized block, when multiple threads will access this instance
+            // This is a synchronized block, when multiple threads will access this instance
             synchronized (StudentOperations.class) {
                 instance = new StudentOperations();
             }
@@ -98,22 +98,22 @@ public class StudentOperations implements StudentInterface {
         notificationOperations.getNotification(studentId);
     }
 
-	@Override
-	public void addStudent(Student student, String password) {
-		// TODO Auto-generated method stub
-		logger.info("in add student");
-		int id = studentDAOOperations.addStudent(student, password);
-		if(id != -1) {
-			logger.info("Your userId is " + id);
-		}else {
-			logger.info("Registration failed");
-		}
-		
-	}
+    @Override
+    public void addStudent(Student student, String password) {
+        // TODO Auto-generated method stub
+        logger.info("in add student");
+        int id = studentDAOOperations.addStudent(student, password);
+        if (id != -1) {
+            logger.info("Your userId is " + id);
+        } else {
+            logger.info("Registration failed");
+        }
 
-	@Override
-	public boolean isStudentProfileApproved(int studentId) {
-		// TODO Auto-generated method stub
-		return studentDAOOperations.isStudentProfileApproved(studentId);
-	}
+    }
+
+    @Override
+    public boolean isStudentProfileApproved(int studentId) {
+        // TODO Auto-generated method stub
+        return studentDAOOperations.isStudentProfileApproved(studentId);
+    }
 }

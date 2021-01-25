@@ -14,6 +14,7 @@ public class User {
 	String gender;
 
 	/**
+	 * get the email of the email
 	 * @return the email
 	 */
 	public String getEmail() {
@@ -21,6 +22,7 @@ public class User {
 	}
 
 	/**
+	 * set the email of the email
 	 * @param email the email to set
 	 */
 	public void setEmail(String email) {
@@ -28,6 +30,7 @@ public class User {
 	}
 
 	/**
+	 * get the address of the user
 	 * @return the address
 	 */
 	public String getAddress() {
@@ -35,6 +38,7 @@ public class User {
 	}
 
 	/**
+	 * set the address of the user
 	 * @param address the address to set
 	 */
 	public void setAddress(String address) {
@@ -42,6 +46,7 @@ public class User {
 	}
 
 	/**
+	 * get the password of the user
 	 * @return the password
 	 */
 	public String getPassword() {
@@ -49,6 +54,7 @@ public class User {
 	}
 
 	/**
+	 * set the password of the user
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
@@ -56,6 +62,7 @@ public class User {
 	}
 
 	/**
+	 * get the role of the user
 	 * @return the role
 	 */
 	public String getRole() {
@@ -63,6 +70,7 @@ public class User {
 	}
 
 	/**
+	 * get the role of the user
 	 * @param role the role to set
 	 */
 	public void setRole(String role) {
@@ -70,6 +78,7 @@ public class User {
 	}
 
 	/**
+	 * get the gender of the user
 	 * @return the gender
 	 */
 	public String getGender() {
@@ -77,6 +86,7 @@ public class User {
 	}
 
 	/**
+	 * set the gender of the user
 	 * @param gender the gender to set
 	 */
 	public void setGender(String gender) {
@@ -84,6 +94,7 @@ public class User {
 	}
 
 	/**
+	 * get the user Id
 	 * @return the userId
 	 */
 	public int getUserId() {
@@ -91,6 +102,7 @@ public class User {
 	}
 
 	/**
+	 * set the user Id
 	 * @param userId the userId to set
 	 */
 	public void setUserId(int userId) {
@@ -98,6 +110,7 @@ public class User {
 	}
 
 	/**
+	 * get the username 
 	 * @return the username
 	 */
 	public String getUsername() {
@@ -105,6 +118,7 @@ public class User {
 	}
 
 	/**
+	 * set the username
 	 * @param username the username to set
 	 */
 	public void setUsername(String username) {
