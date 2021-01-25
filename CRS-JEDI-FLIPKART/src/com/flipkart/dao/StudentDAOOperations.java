@@ -21,6 +21,22 @@ public class StudentDAOOperations implements StudentDAOInterface {
     //private final StudentDAOInterface studentDao = new StudentDAOOperations();
     private static final Logger logger = Logger.getLogger(StudentOperations.class);
 
+    private static volatile StudentDAOOperations instance = null;
+	 
+    // private constructor
+    private StudentDAOOperations() {
+    }
+ 
+    public static StudentDAOOperations getInstance() {
+        if (instance == null) {
+        	// This is a synchronized block, when multiple threads will access this instance
+            synchronized (StudentDAOOperations.class) {
+                instance = new StudentDAOOperations();
+            }
+        }
+        return instance;
+    }
+    
     /**
      * @return
      */

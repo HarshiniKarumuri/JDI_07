@@ -16,6 +16,23 @@ public class CatalogDAOOperations implements CatalogDAOInterface {
 	
 	public static Logger logger = Logger.getLogger(CatalogDAOOperations.class);
 	Connection connection = DBUtils.getConnection();
+	
+	private static volatile CatalogDAOOperations instance = null;
+	 
+    // private constructor
+    private CatalogDAOOperations() {
+    }
+ 
+    public static CatalogDAOOperations getInstance() {
+        if (instance == null) {
+        	// This is a synchronized block, when multiple threads will access this instance
+            synchronized (CatalogDAOOperations.class) {
+                instance = new CatalogDAOOperations();
+            }
+        }
+        return instance;
+    }
+
 
 	@Override
 	public ArrayList<Course> viewCatalog() {

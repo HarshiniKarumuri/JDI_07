@@ -70,11 +70,11 @@ public class UserCRSMenu {
 	 */
 	public static void login() {
 		logger.info("Enter Userid");
-		int userid = scanner.nextInt();
+		int userid = Integer.parseInt(scanner.nextLine());
 		logger.info("Enter Password");
-		String password = scanner.next();
+		String password = scanner.nextLine();
 
-		LoginDAOInterface loginDAOOperations = new LoginDAOOperations();
+		LoginDAOInterface loginDAOOperations = LoginDAOOperations.getInstance();
 		loggedIn = loginDAOOperations.checkCredentials(userid, password);
 		String role = loginDAOOperations.login(userid, password);
 
@@ -82,7 +82,7 @@ public class UserCRSMenu {
 			case "Professor":
 				logger.info("User logged in as " + role);
 				ProfessorCRSMenu professorCrsMenu = new ProfessorCRSMenu();
-				ProfessorDAOOperations professorDAOOperations = new ProfessorDAOOperations();
+				ProfessorDAOOperations professorDAOOperations = ProfessorDAOOperations.getInstance();
 				Professor professor = professorDAOOperations.getProfessorDetails(userid);
 				professorCrsMenu.displayMenu(professor);
 				break;
@@ -90,7 +90,7 @@ public class UserCRSMenu {
 			case "Student":
 				logger.info("User logged in as " + role);
 				StudentCRSMenu studentCrsMenu = new StudentCRSMenu();
-				StudentDAOOperations studentDAOOperations = new StudentDAOOperations();
+				StudentDAOOperations studentDAOOperations = StudentDAOOperations.getInstance();
 				Student student = studentDAOOperations.getStudentDetails(userid);
 				studentCrsMenu.displayMenu(student);
 				break;

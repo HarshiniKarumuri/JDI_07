@@ -22,7 +22,7 @@ public class AdminOperations implements AdminInterface {
 	
 	private static Logger logger = Logger.getLogger(AdminOperations.class);
 	private static final AdminDAOOperations adminDAOOperations = AdminDAOOperations.getInstance();
-	private static final CatalogDAOOperations catalogDAOOperations = new CatalogDAOOperations();
+	private static final CatalogDAOOperations catalogDAOOperations = CatalogDAOOperations.getInstance();
 	private static final NotificationDAOOperation notificationDAOOperation = NotificationDAOOperation.getInstance();
 
 	private static volatile AdminOperations instance = null;

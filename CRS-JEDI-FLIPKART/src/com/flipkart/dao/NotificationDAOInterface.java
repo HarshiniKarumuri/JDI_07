@@ -10,4 +10,6 @@ public interface NotificationDAOInterface {
 	 */
 	public void sendNotification(Notification notification);
 	
+	
+	
 }

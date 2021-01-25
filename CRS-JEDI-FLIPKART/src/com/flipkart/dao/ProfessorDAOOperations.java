@@ -20,7 +20,7 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 	private static final Logger logger = Logger.getLogger(ProfessorDAOOperations.class);	
 	static Connection connection = DBUtils.getConnection();
 	
-	/*private static volatile ProfessorDAOOperations instance = null;
+	private static volatile ProfessorDAOOperations instance = null;
 	 
     // private constructor
     private ProfessorDAOOperations() {
@@ -34,7 +34,7 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
             }
         }
         return instance;
-    }*/
+    }
 	
 	public List<Student> getRegisteredStudentsInCourse(int userid, int courseId) {
 

@@ -15,9 +15,25 @@ import org.apache.log4j.Logger;
  */
 public class ProfessorOperations implements ProfessorInterface {
 
-	private final ProfessorDAOInterface professorDao = new ProfessorDAOOperations();
+	private final ProfessorDAOInterface professorDao = ProfessorDAOOperations.getInstance();
 	private static final Logger logger = Logger.getLogger(ProfessorOperations.class);
 
+	private static volatile ProfessorOperations instance = null;
+	 
+    // private constructor
+    private ProfessorOperations() {
+    }
+ 
+    public static ProfessorOperations getInstance() {
+        if (instance == null) {
+        	// This is a synchronized block, when multiple threads will access this instance
+            synchronized (ProfessorOperations.class) {
+                instance = new ProfessorOperations();
+            }
+        }
+        return instance;
+    }
+	
 	@Override
 	public void viewAssignedCourses(int professorId) {
 		logger.info("-------------- Assigned Courses --------------\n");

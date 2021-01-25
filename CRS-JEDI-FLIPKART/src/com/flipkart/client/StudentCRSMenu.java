@@ -12,7 +12,7 @@ import com.flipkart.service.StudentOperations;
  */
 public class StudentCRSMenu {
 	private static Logger logger = Logger.getLogger(StudentCRSMenu.class.getName());
-	StudentOperations studentOperations = new StudentOperations();
+	StudentOperations studentOperations = StudentOperations.getInstance();
 	Scanner sc = new Scanner(System.in);
 	
 	public void displayMenu(Student student) {
