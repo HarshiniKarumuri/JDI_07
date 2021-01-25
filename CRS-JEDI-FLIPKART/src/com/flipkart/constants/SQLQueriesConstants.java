@@ -9,16 +9,15 @@ public class SQLQueriesConstants {
 	public static String LOGIN_QUERY = "SELECT u.role FROM User u WHERE u.user_id=?";
 	public static String CHECK_CREDENTIALS_QUERY = "SELECT u.password FROM User u WHERE u.user_id=?";
 	public static String VIEW_COURSES_QUERY = "SELECT * FROM CoursesCatalog";
-	public static String VIEW_CATALOG_QUERY = "SELECT co.catalog_id, co.course_id, c.course_name FROM CoursesOffered co JOIN CoursesCatalog c ON co.course_id = c.course_id";
+	public static String VIEW_CATALOG_QUERY = "SELECT * FROM CoursesCatalog WHERE course_id = ?";
 	
 	//Professor Query 
-	public static String PROFESSOR_DETAILS_QUERY ="select department from Professor where professor_id = ?";
+	public static String PROFESSOR_DETAILS_QUERY ="select * from Professor where professor_id = ?";
 	public static String VALID_COURSE_FOR_PROFESSOR="select professor_id from ProfessorCourse where professor_id=? and course_id=?";
-	public static String VALID_COURSE_FOR_STUDENT="select student_id from RegisteredCourses where student_id=? and course_id=?";
-	public static String GET_ASSIGNED_COURSES="select CourseCatalog.course_id, CourseCatalog.course_name, CourseCatalog.fees ,CourseCatalog.description,CourseCatalog.capacity from ProfessorCourse inner join CourseCatalog on CourseCatalog.course_id = ProfessorCourse.course_id where ProfessorCourse.professor_id = ?";
-	public static String GET_REGISTERED_STUDENTS="select Student.student_id, Student.branch from Student inner join RegisteredCourses on RegisteredCourses.student_id = Student.student_id where RegisteredCourses.course_id = ?";
-	public static String GET_INFO="select user_name,address from Users where user_id=?";
-	public static String ASSIGN_GRADE="update RegisteredCourses set grade = ? where student_id = ? and course_id = ?";
+	public static String VALID_COURSE_FOR_STUDENT="select student_id from RegisteredCourse where student_id=? and course_id=?";
+	public static String GET_ASSIGNED_COURSES="select CoursesCatalog.course_id, CoursesCatalog.course_name, CoursesCatalog.fees ,CoursesCatalog.description,CoursesCatalog.capacity from ProfessorCourse join CoursesCatalog on CoursesCatalog.course_id = ProfessorCourse.course_id where ProfessorCourse.professor_id = ?";
+	public static String GET_REGISTERED_STUDENTS="select * from Student join RegisteredCourse on RegisteredCourse.student_id = Student.student_id where RegisteredCourse.course_id = ?";
+	public static String ASSIGN_GRADE="update RegisteredCourse set grade = ? where student_id = ? and course_id = ?";
 
 	//Admin Query
 	public static String VIEW_USERS_QUERY = "Select * from User";
