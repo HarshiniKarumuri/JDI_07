@@ -279,8 +279,7 @@ public class StudentDAOOperations implements StudentDAOInterface {
 
 	@Override
 	public int addStudent(Student student, String password) {
-		// TODO Auto-generated method stub
-		
+
 		PreparedStatement statement = null;
 		int id = -1;
 		try {
@@ -302,8 +301,8 @@ public class StudentDAOOperations implements StudentDAOInterface {
 			statement = connection.prepareStatement(SQLQueriesConstants.ADD_STUDENT);
 			statement.setInt(1, student.getUserId());
 			statement.setString(2,student.getBranch());
-			statement.setBoolean(3, student.isHasScholarship());
-			statement.setBoolean(4, student.isApproved());
+			statement.setBoolean(3, student.getHasScholarship());
+			statement.setBoolean(4, student.getIsApproved());
 			statement.setString(5,student.getUsername());
 			statement.setString(6,student.getGender());
 			statement.setString(7, student.getAddress());
@@ -320,7 +319,6 @@ public class StudentDAOOperations implements StudentDAOInterface {
 
 	@Override
 	public boolean isStudentProfileApproved(int studentId) {
-		// TODO Auto-generated method stub
 		PreparedStatement statement = null;
 		boolean isApproved = false;
 		try {

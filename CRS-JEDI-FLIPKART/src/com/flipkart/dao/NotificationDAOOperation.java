@@ -35,7 +35,6 @@ public class NotificationDAOOperation implements NotificationDAOInterface{
 	
 	@Override
 	public void sendNotification(Notification notification) {
-		// TODO Auto-generated method stub
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.SEND_NOTIFICATION);
@@ -52,7 +51,6 @@ public class NotificationDAOOperation implements NotificationDAOInterface{
 
 	@Override
 	public ArrayList<Notification> getNotification(int userId) {
-		// TODO Auto-generated method stub
 		PreparedStatement statement = null;
 		ArrayList<Notification> notifications = new ArrayList<Notification>();
 		try {

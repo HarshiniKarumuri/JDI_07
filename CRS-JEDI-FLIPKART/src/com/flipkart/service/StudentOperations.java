@@ -107,7 +107,6 @@ public class StudentOperations implements StudentInterface {
 
 	@Override
 	public void addStudent(Student student, String password) {
-		// TODO Auto-generated method stub
 		logger.info("in add student");
 		int id = studentDAOOperations.addStudent(student, password);
 		if(id != -1) {
@@ -126,7 +125,6 @@ public class StudentOperations implements StudentInterface {
 
     @Override
     public boolean isStudentProfileApproved(int studentId) {
-        // TODO Auto-generated method stub
         return studentDAOOperations.isStudentProfileApproved(studentId);
     }
 }

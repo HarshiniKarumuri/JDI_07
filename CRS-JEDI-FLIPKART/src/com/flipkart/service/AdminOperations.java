@@ -6,6 +6,7 @@ import com.flipkart.bean.Notification;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
+import com.flipkart.constants.UIConstants;
 import com.flipkart.dao.AdminDAOOperations;
 import com.flipkart.dao.CatalogDAOOperations;
 import com.flipkart.dao.NotificationDAOOperation;
@@ -47,7 +48,6 @@ public class AdminOperations implements AdminInterface {
 	
 	@Override
 	public void viewUser() {
-		// TODO Auto-generated method stub
 		logger.info("In viewUser");
 		
 		ArrayList<User> users = adminDAOOperations.viewUser();
@@ -76,8 +76,7 @@ public class AdminOperations implements AdminInterface {
 	
 	@Override
 	public void addProfessor(Professor professor,String password) {
-		// TODO Auto-generated method stub
-		logger.info("In add Professor");
+//		logger.info("In add Professor");
 		int professorId = adminDAOOperations.addProfessor(professor, password);
 		if(professorId != -1) {
 			logger.info("Your professor Id is" + professorId);
@@ -95,22 +94,19 @@ public class AdminOperations implements AdminInterface {
 	
 	@Override
 	public void assignProfessorToCourse(int professorId, int courseId) {
-		// TODO Auto-generated method stub
-		logger.info("In assign Professor");
+//		logger.info("In assign Professor");
 		adminDAOOperations.assignProfessorToCourse(professorId, courseId);
 	}
 
 
     @Override
     public void deleteUser(int userId) {
-        // TODO Auto-generated method stub
-        logger.info("In delete User");
+//        logger.info("In delete User");
         adminDAOOperations.deleteUser(userId);
     }
 
 	@Override
 	public void addAdmin(Admin admin, String password) {
-		// TODO Auto-generated method stub
 		logger.info("In add admin");
 		int adminId = adminDAOOperations.addAdmin(admin, password);
 		if(adminId != -1) {
@@ -130,7 +126,6 @@ public class AdminOperations implements AdminInterface {
 
     @Override
     public void viewCoursesOffered() {
-        // TODO Auto-generated method stub
         List<Course> courses;
         courses = catalogDAOOperations.viewCoursesCatalog();
 
@@ -142,43 +137,36 @@ public class AdminOperations implements AdminInterface {
 
     @Override
     public void addCatalog(int catalogId, String catalogName) {
-        // TODO Auto-generated method stub
         adminDAOOperations.addCatalog(catalogId, catalogName);
     }
 
     @Override
     public void removeCatalog(int catalogId) {
-        // TODO Auto-generated method stub
         adminDAOOperations.removeCatalog(catalogId);
     }
 
     @Override
     public void addCourseIntoCatalog(Course course, int catalogId) {
-        // TODO Auto-generated method stub
         adminDAOOperations.addCourseIntoCatalog(course, catalogId);
     }
 
     @Override
     public void removeCourseFromCatalog(int courseId) {
-        // TODO Auto-generated method stub
         adminDAOOperations.removeCourseFromCatalog(courseId);
     }
 
     @Override
     public void addCourseToOffer(int courseId, int catalogId) {
-        // TODO Auto-generated method stub
         adminDAOOperations.addCourseToOffer(courseId, catalogId);
     }
 
     @Override
     public void removeOfferedCourse(int courseId, int catalogId) {
-        // TODO Auto-generated method stub
         adminDAOOperations.removeOfferedCourse(courseId, catalogId);
     }
 
 	@Override
 	public void approveStudent(int studentId) {
-		// TODO Auto-generated method stub
 		adminDAOOperations.approveStudent(studentId);
 		Notification notification = new Notification();
 		notification.setUserId(studentId);
@@ -189,13 +177,14 @@ public class AdminOperations implements AdminInterface {
 
 	@Override
 	public void viewPendingApprovalStudent() {
-		// TODO Auto-generated method stub
-		ArrayList<Student> list = new ArrayList<Student>();
-		list = adminDAOOperations.viewPendingApprovalStudent();
-		logger.info(list.size() + "StudentId  StudentName");
+		ArrayList<Student> list = adminDAOOperations.viewPendingApprovalStudent();
+		logger.info(UIConstants.DASHED_LINE);
+		logger.info(String.format("%-30s%-30s","StudentId", "StudentName"));
+		logger.info(UIConstants.DASHED_LINE);
 		for(Student student:list) {
-			logger.info(student.getStudentId() + " " + student.getUsername());
+			logger.info(String.format("%-30s%-30s", student.getStudentId(), student.getUsername()));
 		}
+		logger.info("\n");
 	}
 
 }

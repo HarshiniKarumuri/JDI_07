@@ -41,7 +41,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	
 	@Override
 	public ArrayList<User> viewUser() {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		ArrayList<User> userList = new ArrayList<User>();
 		
@@ -65,7 +65,6 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	
 	@Override
 	public int addProfessor(Professor professor,String password) {
-		// TODO Auto-generated method stub
 		
 		PreparedStatement statement = null;
 		int id = -1;
@@ -104,7 +103,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void assignProfessorToCourse(int professorId, int courseId) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.ASSIGN_PROFESSOR_QUERY);
@@ -122,7 +121,6 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void deleteUser(int userId) {
-		// TODO Auto-generated method stub
 		PreparedStatement statement = null;
 		try {
 			int rows;
@@ -139,7 +137,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public int addAdmin(Admin admin, String password) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		int id = -1;
 		try {
@@ -176,7 +174,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public Admin getAdminDetails(int  userId) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		Admin admin = new Admin();
 		try {
@@ -199,8 +197,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void addCatalog(int catalogId,String catalogName) {
-		// TODO Auto-generated method stub
-		PreparedStatement statement = null;
+		PreparedStatement statement;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.ADD_NEW_CATALOG);
 			statement.setInt(1, catalogId);
@@ -216,7 +213,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void removeCatalog(int catalogId) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.DELETE_CATALOG);
@@ -232,7 +229,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	
 	@Override
 	public void addCourseIntoCatalog(Course course, int catalogId) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.ADD_NEW_COURSE_QUERY);
@@ -254,7 +251,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void removeCourseFromCatalog(int courseId) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.DELETE_COURSE_QUERY);
@@ -270,7 +267,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void addCourseToOffer(int courseId,int catalogId) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.ADD_COURSE_TO_OFFERED_COURSE);
@@ -287,7 +284,6 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void removeOfferedCourse(int courseId,int catalogId) {
-		// TODO Auto-generated method stub
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.DELETE_OFFERED_COURSE);
@@ -306,7 +302,6 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void approveStudent(int studentId) {
-		// TODO Auto-generated method stub
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.APPROVE_STUDENT);
@@ -322,7 +317,6 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public ArrayList<Student> viewPendingApprovalStudent() {
-		// TODO Auto-generated method stub
 		ArrayList<Student> list = new ArrayList<Student>();
 		PreparedStatement statement = null;
 		try {

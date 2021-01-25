@@ -31,14 +31,12 @@ public class NotificationOperations implements NotificationInterface{
 	
 	@Override
 	public void sendNotification(Notification notification) {
-		// TODO Auto-generated method stub
 		notification.setTimestamp(new Timestamp(System.currentTimeMillis()));
 		notificationDAOOperation.sendNotification(notification);
 	}
 
 	@Override
 	public void getNotification(int userId) {
-		// TODO Auto-generated method stub
 		ArrayList<Notification> notifications = new ArrayList<Notification>();
 		notifications = notificationDAOOperation.getNotification(userId);
 		logger.info("Timestamp   UserId   Description  NotificationId");
