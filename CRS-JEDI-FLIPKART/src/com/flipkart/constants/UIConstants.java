@@ -31,4 +31,5 @@ public class UIConstants {
     public static final String ADD_CATALOG_NAME_MESSAGE = "Enter Catalog Name\n";
     public static final String ADD_COURSE_NAME_MESSAGE = "Enter Course Name\n";
     public static final String ENTER_COURSE_CAPACITY = "Enter Maximum number of Student who can take up this course\n";
+    public static final String ENTER_VALID_CREDENTIALS_MESSAGE = "Please enter vaid credentials";
 }
