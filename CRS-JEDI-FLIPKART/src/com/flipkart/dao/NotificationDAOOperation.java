@@ -2,7 +2,9 @@ package com.flipkart.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
@@ -47,6 +49,35 @@ public class NotificationDAOOperation implements NotificationDAOInterface{
 		}catch(Exception e) {
 			logger.error(e.getMessage());
 		}
+	}
+
+	@Override
+	public ArrayList<Notification> getNotification(int userId) {
+		// TODO Auto-generated method stub
+		PreparedStatement statement = null;
+		ArrayList<Notification> notifications = new ArrayList<Notification>();
+		try {
+			statement = connection.prepareStatement(SQLQueriesConstants.GET_NOTIFICATION);
+			statement.setInt(1, userId);
+			ResultSet rs =statement.executeQuery();
+			
+			while(rs.next()) {
+				Notification notification = new Notification();
+				notification.setNotificationId(rs.getInt(1));
+				notification.setUserId(userId);
+				notification.setDescription(rs.getString(3));
+				notification.setTimestamp(rs.getTimestamp(4));
+				
+				notifications.add(notification);
+			}
+			int rows = notifications.size();
+			logger.info(rows + " notification fetched");
+		}catch(SQLException se) {
+			logger.error(se.getMessage());
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return notifications;
 	}
 	
 	

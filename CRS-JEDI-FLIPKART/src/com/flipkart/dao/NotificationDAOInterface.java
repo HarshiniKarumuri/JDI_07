@@ -1,5 +1,7 @@
 package com.flipkart.dao;
 
+import java.util.ArrayList;
+
 import com.flipkart.bean.Notification;
 
 public interface NotificationDAOInterface {
@@ -10,6 +12,12 @@ public interface NotificationDAOInterface {
 	 */
 	public void sendNotification(Notification notification);
 	
-	
+	/**
+	 * Fetches the list of notification of particular user
+	 * 
+	 * @param studentId unique identifier for student
+	 * @return list of notification
+	 */
+	public ArrayList<Notification> getNotification(int userId);
 	
 }

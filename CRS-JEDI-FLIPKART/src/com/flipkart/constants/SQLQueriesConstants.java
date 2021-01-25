@@ -38,6 +38,7 @@ public class SQLQueriesConstants {
 	public static String ADD_COURSE_TO_OFFERED_COURSE = "insert into CoursesOffered(catalog_id,course_id) values(?,?)";
 	public static String DELETE_OFFERED_COURSE = "delete from CoursesOffered where catalog_id = ? and course_id = ?";
 	public static String SEND_NOTIFICATION = "insert into Notification(student_id,description,timestamp) values (?,?,?)";
+	public static String GET_NOTIFICATION = "select * from Notification where student_id = ?";
 	public static String FETCH_USER_ID = "select user_id from User where email = ? and password = ?";
 	public static String APPROVE_STUDENT = "update Student set is_approved = 1 where student_id = ?";
 	
