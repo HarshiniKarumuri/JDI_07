@@ -51,6 +51,7 @@ public class AdminCRSMenu {
 			logger.info("10. To add course into offered course");
 			logger.info("11. To remove course from offered course");
 			logger.info("12. To approve student profile");
+			logger.info("13. To see the list of pending approvals");
 			logger.info("------------------------------------------------------------------");
 			choice = sc.nextInt();
 			sc.nextLine();
@@ -98,6 +99,8 @@ public class AdminCRSMenu {
 				case 12:
 					approveStudentProfile();
 					break;
+				case 13:
+					viewPendingApprovals();
 				default:
 					logger.info(UIConstants.SELECT_CORRECT_OPTION_MESSAGE);
 					logger.info("\n");
@@ -105,6 +108,13 @@ public class AdminCRSMenu {
 		}
 	}
 	
+
+	private void viewPendingApprovals() {
+		// TODO Auto-generated method stub
+		logger.info("In pending approvals");
+		adminOperation.viewPendingApprovalStudent();
+	}
+
 
 	/**
 	 * To approve student profile

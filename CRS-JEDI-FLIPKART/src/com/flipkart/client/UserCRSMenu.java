@@ -5,6 +5,7 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 import com.flipkart.bean.Admin;
+import com.flipkart.bean.Notification;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.constants.UIConstants;
@@ -13,6 +14,7 @@ import com.flipkart.dao.LoginDAOInterface;
 import com.flipkart.dao.LoginDAOOperations;
 import com.flipkart.dao.ProfessorDAOOperations;
 import com.flipkart.dao.StudentDAOOperations;
+import com.flipkart.service.NotificationOperations;
 import com.flipkart.service.StudentOperations;
 
 /**
@@ -97,7 +99,6 @@ public class UserCRSMenu {
 		
 		StudentOperations studentOperations = StudentOperations.getInstance();
 		studentOperations.addStudent(student, password);
-		
 	}
 
 	/**

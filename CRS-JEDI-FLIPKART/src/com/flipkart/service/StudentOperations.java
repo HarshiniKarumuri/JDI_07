@@ -112,6 +112,12 @@ public class StudentOperations implements StudentInterface {
 		int id = studentDAOOperations.addStudent(student, password);
 		if(id != -1) {
 			logger.info("Your userId is " + id);
+			NotificationOperations notificationOperations = NotificationOperations.getInstance();
+			Notification notification = new Notification();
+			notification.setDescription("You are Succesfully registered in system");
+			notification.setUserId(student.getStudentId());
+			notificationOperations.sendNotification(notification);
+			notificationOperations.getNotification(student.getStudentId());
 		}else {
 			logger.info("Registration failed");
 		}

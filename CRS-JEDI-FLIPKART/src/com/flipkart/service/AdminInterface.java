@@ -96,4 +96,6 @@ public interface AdminInterface {
 
 	
 	public void approveStudent(int studentId);
+	
+	public void viewPendingApprovalStudent();
 }

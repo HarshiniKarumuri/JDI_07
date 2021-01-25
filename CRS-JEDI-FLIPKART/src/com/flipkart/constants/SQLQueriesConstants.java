@@ -59,5 +59,6 @@ public class SQLQueriesConstants {
 	public static String GET_NOTIFICATION = "select * from Notification where student_id = ?";
 	public static String FETCH_USER_ID = "select user_id from User where email = ? and password = ?";
 	public static String APPROVE_STUDENT = "update Student set is_approved = true where student_id = ?";
+	public static String VIEW_PENDING_APPROVAL_STUDENT = "select * from Student where is_approved = 0";
 	
 }
