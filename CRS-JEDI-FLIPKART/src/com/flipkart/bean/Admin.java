@@ -8,6 +8,7 @@ public class Admin extends User {
 	private int adminId;
 
 	/**
+	 * get the Admin ID
 	 * @return the adminId
 	 */
 
@@ -16,6 +17,7 @@ public class Admin extends User {
 	}
 
 	/**
+	 * set the Admin Id
 	 * @param adminId the adminId to set
 	 */
 	public void setAdminId(int adminId) {

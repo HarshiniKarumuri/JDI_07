@@ -17,7 +17,7 @@ public class Notification {
 	private Timestamp timestamp;
 	
 	/**
-	 * 
+	 * gets the timestamp
 	 * @return returns time stamp of the notification
 	 */
 	public Timestamp getTimestamp() {
@@ -25,7 +25,7 @@ public class Notification {
 	}
 
 	/**
-	 * 
+	 * sets the timestamp
 	 * @param timestamp time stamp of notification
 	 */
 	public void setTimestamp(Timestamp timestamp) {
@@ -33,7 +33,7 @@ public class Notification {
 	}
 
 	/**
-	 * 
+	 * gets user Id
 	 * @return return user id
 	 */
 	public int getUserId() {
@@ -41,37 +41,40 @@ public class Notification {
 	}
 	
 	/**
-	 * 
+	 * sets User Id
 	 * @param userId the user id to set
 	 */
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	/**
+	 * gets Notification Id
 	 * @return the notificationId
 	 */
 	public int getNotificationId() {
 		return notificationId;
 	}
 	/**
+	 * sets the notification Id
 	 * @param notificationId the notificationId to set
 	 */
 	public void setNotificationId(int notificationId) {
 		this.notificationId = notificationId;
 	}
 	/**
+	 * gets the Description of the notification
 	 * @return the description
 	 */
 	public String getDescription() {
 		return description;
 	}
 	/**
+	 * sets the Description of the notification
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
 	
 
 }

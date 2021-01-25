@@ -13,6 +13,7 @@ public class Payment {
     private Timestamp paymentTime;
 
     /**
+     * gets the payment Id of the payment
      * @return the paymentId
      */
     public int getPaymentId() {
@@ -20,6 +21,7 @@ public class Payment {
     }
 
     /**
+     * sets the payment Id of the payment
      * @param paymentId the paymentId to set
      */
     public void setPaymentId(int paymentId) {
@@ -27,6 +29,7 @@ public class Payment {
     }
 
     /**
+     * get the fees paid
      * @return the feesPaid
      */
     public int getFeesPaid() {
@@ -34,6 +37,7 @@ public class Payment {
     }
 
     /**
+     * set the fees paid
      * @param feesPaid the feesPaid to set
      */
     public void setFeesPaid(int feesPaid) {
@@ -41,6 +45,7 @@ public class Payment {
     }
 
     /**
+     * get the payment time
      * @return the paymentDate
      */
     public Timestamp getPaymentTime() {
@@ -48,16 +53,26 @@ public class Payment {
     }
 
     /**
+     * set the payment time
      * @param paymentTime the paymentDate to set
      */
     public void setPaymentTime(Timestamp paymentTime) {
         this.paymentTime = paymentTime;
     }
 
+    /**
+     * get the mode of the payment
+     * @return the mode of the payment
+     */
     public String getPaymentMode() {
         return paymentMode;
     }
 
+    /**
+     * set the mode of the payment
+     * @param paymentMode the mode of the payment
+     * 
+     */
     public void setPaymentMode(String paymentMode) {
         this.paymentMode = paymentMode;
     }
