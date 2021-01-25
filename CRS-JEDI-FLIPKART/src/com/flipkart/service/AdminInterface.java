@@ -85,7 +85,7 @@ public interface AdminInterface {
 	 *
 	 * @param course course to add into offered Courses 
 	 */
-	public void addCourseToOffer(int courseId,int catalogId);
+	public void addCourseToOffer(int courseId, int catalogId);
 
 	/**
 	 * Add course to offered courses from courses catalog

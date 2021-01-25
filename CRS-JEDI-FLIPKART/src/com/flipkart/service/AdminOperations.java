@@ -20,7 +20,7 @@ import org.apache.log4j.Logger;
  */
 public class AdminOperations implements AdminInterface {
 	
-	private static Logger logger = Logger.getLogger(AdminOperations.class);
+	private static final Logger logger = Logger.getLogger(AdminOperations.class);
 	private static final AdminDAOOperations adminDAOOperations = AdminDAOOperations.getInstance();
 	private static final CatalogDAOOperations catalogDAOOperations = CatalogDAOOperations.getInstance();
 	private static final NotificationDAOOperation notificationDAOOperation = NotificationDAOOperation.getInstance();
