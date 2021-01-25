@@ -198,15 +198,16 @@ public class StudentDAOOperations implements StudentDAOInterface {
             stmtRequest.setInt(2, fees);
             stmtRequest.setString(3, UIConstants.PAYMENT_MODE[payModeChoice - 1]);
             stmtRequest.executeUpdate();
-            /*stmtRequest = connection.prepareStatement(SQLQueriesConstants.GET_LATEST_PAYMENT_DETAILS);
+            stmtRequest = connection.prepareStatement(SQLQueriesConstants.GET_LATEST_PAYMENT_DETAILS);
             stmtRequest.setInt(1,studentId);
             result = stmtRequest.executeQuery();
             result.next();
+            payment = new Payment();
             payment.setPaymentId(result.getInt(1));
             payment.setPaymentTime(result.getTimestamp(4));
             payment.setFeesPaid(result.getInt(3));
             payment.setPaymentMode(result.getString(5));
-            if(result.next()) {
+            /*if(result.next()) {
             	
                 /*int pid = result.getInt(1);
                 //stmtReConfirm = connection.prepareStatement("select * from Payment where payment_id = "+pid);

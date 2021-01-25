@@ -64,7 +64,7 @@ public class Payment {
 
     @Override
     public String toString() {
-        return String.format("%-15s%-15s%-15s%-15s", "Date/Time", "Payment ID", "Payment Mode", "Amount Paid\n") +
+        return String.format("\n%-15s%-15s%-15s%-15s", "Date/Time", "Payment ID", "Payment Mode", "Amount Paid\n") +
                 String.format("%-15s%-15s%-15s%-15s", paymentTime, paymentId, paymentMode, feesPaid);
     }
 }

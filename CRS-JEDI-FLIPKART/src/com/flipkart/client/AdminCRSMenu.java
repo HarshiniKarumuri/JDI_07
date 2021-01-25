@@ -10,6 +10,7 @@ import com.flipkart.bean.Professor;
 import com.flipkart.constants.UIConstants;
 import com.flipkart.exception.AdminClientException;
 import com.flipkart.service.AdminOperations;
+import com.flipkart.service.NotificationOperations;
  
 /**
  * Admin main class (user interface)
@@ -18,6 +19,7 @@ public class AdminCRSMenu {
 
 	private static final Logger logger = Logger.getLogger(AdminCRSMenu.class);
 	AdminOperations adminOperation = AdminOperations.getInstance();
+	NotificationOperations notificationOperations = NotificationOperations.getInstance(); 
 	Scanner sc = new Scanner(System.in);
 
 	/**
@@ -113,6 +115,7 @@ public class AdminCRSMenu {
 		int studentId = Integer.parseInt(sc.nextLine());
 		
 		adminOperation.approveStudent(studentId);
+		notificationOperations.getNotification(studentId);
 	}
 
 	/**
