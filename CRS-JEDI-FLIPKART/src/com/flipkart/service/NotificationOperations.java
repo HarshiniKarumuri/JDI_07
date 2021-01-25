@@ -1,6 +1,7 @@
 package com.flipkart.service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
@@ -33,6 +34,17 @@ public class NotificationOperations implements NotificationInterface{
 		// TODO Auto-generated method stub
 		notification.setTimestamp(new Timestamp(System.currentTimeMillis()));
 		notificationDAOOperation.sendNotification(notification);
+	}
+
+	@Override
+	public void getNotification(int userId) {
+		// TODO Auto-generated method stub
+		ArrayList<Notification> notifications = new ArrayList<Notification>();
+		notifications = notificationDAOOperation.getNotification(userId);
+		logger.info("Timestamp   UserId   Description  NotificationId");
+		for(Notification notification : notifications) {
+			logger.info(notification.getTimestamp() + " " + notification.getUserId() + " " + notification.getDescription() + " " + notification.getNotificationId());
+		}
 	}
 
 }
