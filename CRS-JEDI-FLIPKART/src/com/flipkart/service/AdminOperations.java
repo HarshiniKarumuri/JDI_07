@@ -110,7 +110,7 @@ public class AdminOperations implements AdminInterface {
 	public void viewCoursesOffered() {
 		// TODO Auto-generated method stub
 		List<Course> courses;
-		courses = catalogDAOOperations.viewCatalog();
+		courses = catalogDAOOperations.viewCoursesCatalog();
 		
 		logger.info(String.format("%-15s", "Course Names"));
 		for(Course course:courses) {

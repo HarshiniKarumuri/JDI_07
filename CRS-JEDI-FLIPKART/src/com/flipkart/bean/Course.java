@@ -75,10 +75,10 @@ public class Course {
 	}
 
 	/**
-	 * @param fees the fees to set
+	 * @param l the fees to set
 	 */
-	public void setFees(int fees) {
-		this.fees = fees;
+	public void setFees(int l) {
+		this.fees = l;
 	}
 
 }

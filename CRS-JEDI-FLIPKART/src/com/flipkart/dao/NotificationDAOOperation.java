@@ -41,7 +41,6 @@ public class NotificationDAOOperation implements NotificationDAOInterface{
 			statement = connection.prepareStatement(SQLQueriesConstants.SEND_NOTIFICATION);
 			statement.setInt(1,notification.getUserId());
 			statement.setString(2, notification.getDescription());
-			statement.setTimestamp(3, notification.getTimestamp());
 			int rows = statement.executeUpdate();
 			logger.info(rows + " notification added");
 		}catch(SQLException se) {

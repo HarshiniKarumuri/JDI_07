@@ -13,6 +13,7 @@ import com.flipkart.dao.LoginDAOInterface;
 import com.flipkart.dao.LoginDAOOperations;
 import com.flipkart.dao.ProfessorDAOOperations;
 import com.flipkart.dao.StudentDAOOperations;
+import com.flipkart.service.StudentOperations;
 
 /**
  * User main class (user interface)
@@ -58,11 +59,45 @@ public class UserCRSMenu {
 					UserCRSMenu.login();
 					break;
 				case 2:
+					addStudent();
 					break;
 				default:
 					showingMenu = false;
 			}
 		}
+	}
+
+	private static void addStudent() {
+		// TODO Auto-generated method stub
+		Student student = new Student();
+		logger.info("Enter email:");
+		student.setEmail(scanner.nextLine());
+		
+		logger.info("Enter password");
+		String password = scanner.nextLine();
+		
+		logger.info("Enter User name");
+		student.setUsername(scanner.nextLine());
+		
+		student.setRole("Student");
+		
+		logger.info("Enter Gender");
+		student.setGender(scanner.nextLine());
+		
+		logger.info("Enter Address");
+		student.setAddress(scanner.nextLine());
+		
+		student.setIsApproved(false);
+		
+		logger.info("Enter Branch");
+		student.setBranch(scanner.nextLine());
+		
+		logger.info("Do you have Scholarship? (Choose from true or false)");
+		student.setHasScholarship(Boolean.parseBoolean(scanner.nextLine()));
+		
+		StudentOperations studentOperations = StudentOperations.getInstance();
+		studentOperations.addStudent(student, password);
+		
 	}
 
 	/**
