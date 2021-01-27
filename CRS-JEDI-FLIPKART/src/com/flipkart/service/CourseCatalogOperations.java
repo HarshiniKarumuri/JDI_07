@@ -32,8 +32,7 @@ public class CourseCatalogOperations implements CourseCatalogInterface {
 
     @Override
     public void viewCoursesCatalog() {
-        // TODO Auto-generated method stub
-        logger.info("In fetch Catalog Details");
+//        logger.info("In fetch Catalog Details");
         ArrayList<Course> list = new ArrayList<Course>();
         list = catalogDAOOperations.viewCoursesCatalog();
         logger.info("CourseID  CourseName");
@@ -44,7 +43,6 @@ public class CourseCatalogOperations implements CourseCatalogInterface {
 
     @Override
     public void viewCourseDetails(int courseId) {
-        // TODO Auto-generated method stub
         logger.info("In view Course Details");
         Course course = new Course();
         course = catalogDAOOperations.viewCourseDetails(courseId);

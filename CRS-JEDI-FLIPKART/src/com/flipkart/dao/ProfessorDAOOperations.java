@@ -84,7 +84,6 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 		
 	}
 
-	//TODO: implement data fetch using SQL queries
 	public void gradeStudent(int courseId, int studentId, String grade) {
 		
 		PreparedStatement stmt = null;
@@ -99,7 +98,6 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 		}
 	}
 
-	//TODO: implement data fetch using SQL queries
 	@Override
 	public boolean checkCanGradeCourse(int userid, int courseId) {
 		
@@ -119,7 +117,6 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 		return false;
 	}
 
-	//TODO: implement data fetch using SQL queries
 	@Override
 	public boolean checkCanGradeStudent(int studentId, int courseId) {
 		
@@ -138,7 +135,6 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 		return false;
 		
 	}
-	//TODO: implement data fetch using SQL queries
 	@Override
 	public Professor getProfessorDetails(int userid) {
 

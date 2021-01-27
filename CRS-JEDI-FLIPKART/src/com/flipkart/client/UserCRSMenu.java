@@ -73,7 +73,7 @@ public class UserCRSMenu {
      * AddStudent
      */
     private static void addStudent() {
-        // TODO Auto-generated method stub
+
         Student student = new Student();
         logger.info("Enter email:");
         student.setEmail(scanner.nextLine());

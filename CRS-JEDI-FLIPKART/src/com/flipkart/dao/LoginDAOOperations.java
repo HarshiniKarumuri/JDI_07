@@ -31,7 +31,6 @@ public class LoginDAOOperations implements LoginDAOInterface{
         return instance;
     }
 
-    //TODO: implement data fetch using SQL queries
     @Override
     public String login(int userid, String password) {
     	PreparedStatement stmt = null;

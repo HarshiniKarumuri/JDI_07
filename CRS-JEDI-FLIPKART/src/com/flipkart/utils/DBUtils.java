@@ -38,7 +38,6 @@ public class DBUtils {
     }
 
     public static void closeConnection() {
-
         try {
             if (connection != null) {
                 connection.close();

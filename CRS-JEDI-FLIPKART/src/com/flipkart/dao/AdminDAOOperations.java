@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import com.flipkart.bean.Admin;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
 import com.flipkart.constants.SQLQueriesConstants;
 import com.flipkart.service.AdminOperations;
@@ -40,7 +41,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	
 	@Override
 	public ArrayList<User> viewUser() {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		ArrayList<User> userList = new ArrayList<User>();
 		
@@ -64,7 +65,6 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	
 	@Override
 	public int addProfessor(Professor professor,String password) {
-		// TODO Auto-generated method stub
 		
 		PreparedStatement statement = null;
 		int id = -1;
@@ -103,7 +103,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void assignProfessorToCourse(int professorId, int courseId) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.ASSIGN_PROFESSOR_QUERY);
@@ -121,7 +121,6 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void deleteUser(int userId) {
-		// TODO Auto-generated method stub
 		PreparedStatement statement = null;
 		try {
 			int rows;
@@ -138,7 +137,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public int addAdmin(Admin admin, String password) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		int id = -1;
 		try {
@@ -175,7 +174,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public Admin getAdminDetails(int  userId) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		Admin admin = new Admin();
 		try {
@@ -198,8 +197,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void addCatalog(int catalogId,String catalogName) {
-		// TODO Auto-generated method stub
-		PreparedStatement statement = null;
+		PreparedStatement statement;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.ADD_NEW_CATALOG);
 			statement.setInt(1, catalogId);
@@ -215,7 +213,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void removeCatalog(int catalogId) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.DELETE_CATALOG);
@@ -231,7 +229,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	
 	@Override
 	public void addCourseIntoCatalog(Course course, int catalogId) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.ADD_NEW_COURSE_QUERY);
@@ -253,7 +251,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void removeCourseFromCatalog(int courseId) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.DELETE_COURSE_QUERY);
@@ -269,7 +267,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void addCourseToOffer(int courseId,int catalogId) {
-		// TODO Auto-generated method stub
+
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.ADD_COURSE_TO_OFFERED_COURSE);
@@ -286,7 +284,6 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void removeOfferedCourse(int courseId,int catalogId) {
-		// TODO Auto-generated method stub
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.DELETE_OFFERED_COURSE);
@@ -305,7 +302,6 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 	@Override
 	public void approveStudent(int studentId) {
-		// TODO Auto-generated method stub
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.APPROVE_STUDENT);
@@ -317,6 +313,33 @@ public class AdminDAOOperations implements AdminDAOInterface{
 		}catch(Exception e) {
 			logger.error(e.getMessage());
 		}
+	}
+
+	@Override
+	public ArrayList<Student> viewPendingApprovalStudent() {
+		ArrayList<Student> list = new ArrayList<Student>();
+		PreparedStatement statement = null;
+		try {
+			statement = connection.prepareStatement(SQLQueriesConstants.VIEW_PENDING_APPROVAL_STUDENT);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()) {
+				Student student = new Student();
+				student.setStudentId(rs.getInt(1));
+				student.setBranch(rs.getString(2));
+				student.setHasScholarship(rs.getBoolean(3));
+				student.setIsApproved(rs.getBoolean(4));
+				student.setUsername(rs.getString(5));
+				student.setGender(rs.getString(6));
+				student.setAddress(rs.getString(7));
+				
+				list.add(student);
+			}
+		}catch(SQLException se) {
+			logger.error(se.getMessage());
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return list;
 	}
 	
 }
