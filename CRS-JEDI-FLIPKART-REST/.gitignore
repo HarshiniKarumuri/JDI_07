@@ -1,0 +1,9 @@
+/out/
+/.settings/
+/.classpath
+/.project
+/bin/
+/.idea/
+/contacts.log
+src/contacts.log
+/doc/
