@@ -1,4 +1,4 @@
-package com.flipkart.rest_controller;
+package com.flipkart.restController;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.flipkart.rest_controller;
+package com.flipkart.restController;
 
 import java.util.Scanner;
 
@@ -121,7 +121,7 @@ public class UserCRSMenu {
         switch (role) {
             case "Professor":
                 logger.info("User logged in as " + role);
-                ProfessorCRSMenu professorCrsMenu = new ProfessorCRSMenu();
+                ProfessorRESTController professorCrsMenu = new ProfessorRESTController();
                 ProfessorDAOOperations professorDAOOperations = ProfessorDAOOperations.getInstance();
                 Professor professor = professorDAOOperations.getProfessorDetails(userid);
                 professorCrsMenu.displayMenu(professor);
