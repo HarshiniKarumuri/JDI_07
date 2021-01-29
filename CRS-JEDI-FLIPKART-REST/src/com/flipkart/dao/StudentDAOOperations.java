@@ -260,11 +260,21 @@ public class StudentDAOOperations implements StudentDAOInterface {
         ArrayList<Course> courses = new ArrayList<>();
         PreparedStatement stmtRequest;
         ResultSet result;
+        logger.info(studentId);
 
         try {
+            logger.info(SQLQueriesConstants.GET_REGISTERED_COURSES_QUERY);
+            if(connection == null) {
+                logger.info("Connection not working");
+            }
+            else {
+                logger.info("working");
+            }
             stmtRequest = connection.prepareStatement(SQLQueriesConstants.GET_REGISTERED_COURSES_QUERY);
+            logger.info(stmtRequest);
             stmtRequest.setInt(1, studentId);
             result = stmtRequest.executeQuery();
+//            logger.info(result);
             while (result.next()) {
                 courses.add(catalogDAOOperations.viewCourseDetails(result.getInt(1)));
             }
