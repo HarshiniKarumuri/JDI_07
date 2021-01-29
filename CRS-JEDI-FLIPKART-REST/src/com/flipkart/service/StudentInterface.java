@@ -1,5 +1,10 @@
 package com.flipkart.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+//import com.flipkart.bean.Student;
+import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
 
 /**
@@ -28,14 +33,14 @@ public interface StudentInterface {
      *
      * @param studentId unique identifier for student
      */
-    void viewRegisteredCourses(int studentId);
+    ArrayList<Course> viewRegisteredCourses(int studentId);
 
     /**
      * view personal grades
      *
      * @param studentId unique identifier for student
      */
-    void viewGrades(int studentId);
+    List<List> viewGrades(int studentId);
 
     /**
      * total fee calculation

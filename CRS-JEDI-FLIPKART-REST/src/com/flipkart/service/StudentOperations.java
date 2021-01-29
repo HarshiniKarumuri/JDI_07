@@ -1,5 +1,10 @@
 package com.flipkart.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Notification;
 import com.flipkart.bean.Payment;
@@ -7,11 +12,11 @@ import com.flipkart.bean.Student;
 import com.flipkart.constants.UIConstants;
 import com.flipkart.dao.StudentDAOInterface;
 import com.flipkart.dao.StudentDAOOperations;
-import com.flipkart.exception.*;
-import org.apache.log4j.Logger;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.flipkart.exception.CourseAlreadyRegisteredException;
+import com.flipkart.exception.CourseNotAvailableException;
+import com.flipkart.exception.CourseNotFoundException;
+import com.flipkart.exception.CourseNotRegisteredException;
+import com.flipkart.exception.MaximumCourseRegisteredException;
 
 /**
  * Student service class
@@ -22,6 +27,8 @@ public class StudentOperations implements StudentInterface {
 
     private final StudentDAOInterface studentDAOOperations = StudentDAOOperations.getInstance();
     private final NotificationOperations notificationOperations = NotificationOperations.getInstance();
+
+//    StudentDao studentDao = new StudentDaoImpl();
 
     private static volatile StudentOperations instance = null;
 
@@ -64,17 +71,19 @@ public class StudentOperations implements StudentInterface {
     }
 
     @Override
-    public void viewRegisteredCourses(int studentId) {
+    public ArrayList<Course> viewRegisteredCourses(int studentId) {
         ArrayList<Course> courses = studentDAOOperations.viewRegisteredCourses(studentId);
+//        logger.info("LOl");
         if (courses.size() == 0) {
             logger.info(UIConstants.NO_COURSE_REGISTERED_MESSAGE);
         } else {
-            logger.info("Course Id\tCourse Name");
+            //logger.info("Course Id\tCourse Name");
             courses.forEach(course -> logger.info(course.getCourseId() + "\t\t " + course.getCourseName()));
         }
+        return courses;
     }
 
-    public void viewGrades(int studentId) {
+    public List<List> viewGrades(int studentId) {
         logger.info(UIConstants.DASHED_LINE);
         logger.info("Report Card");
         logger.info(UIConstants.DASHED_LINE);
@@ -85,6 +94,7 @@ public class StudentOperations implements StudentInterface {
             logger.info(String.format("%-15s%-15s%-15s", "Course Id", "Course Name", "Grade"));
             grades.forEach(course -> logger.info(String.format("%-15s%-15s%-15s", course.get(0), course.get(1), course.get(2))));
         }
+        return grades;
     }
 
     @Override
@@ -96,7 +106,7 @@ public class StudentOperations implements StudentInterface {
 
     @Override
     public void makePayment(int studentId, int payModeChoice, int fees) {
-    	Payment payment = studentDAOOperations.makePayment(studentId, payModeChoice, fees);
+        Payment payment = studentDAOOperations.makePayment(studentId, payModeChoice, fees);
         logger.info(payment.toString());
         Notification notification = new Notification();
         notification.setDescription("You paid " + payment.getFeesPaid() + "/-");
@@ -105,23 +115,23 @@ public class StudentOperations implements StudentInterface {
         notificationOperations.getNotification(studentId);
     }
 
-	@Override
-	public void addStudent(Student student, String password) {
-		logger.info("in add student");
-		int id = studentDAOOperations.addStudent(student, password);
-		if(id != -1) {
-			logger.info("Your userId is " + id);
-			NotificationOperations notificationOperations = NotificationOperations.getInstance();
-			Notification notification = new Notification();
-			notification.setDescription("You are Succesfully registered in system");
-			notification.setUserId(student.getStudentId());
-			notificationOperations.sendNotification(notification);
-			notificationOperations.getNotification(student.getStudentId());
-		}else {
-			logger.info("Registration failed");
-		}
-		
-	}
+    @Override
+    public void addStudent(Student student, String password) {
+        logger.info("in add student");
+        int id = studentDAOOperations.addStudent(student, password);
+        if(id != -1) {
+            logger.info("Your userId is " + id);
+            NotificationOperations notificationOperations = NotificationOperations.getInstance();
+            Notification notification = new Notification();
+            notification.setDescription("You are Successfully registered in system");
+            notification.setUserId(student.getStudentId());
+            notificationOperations.sendNotification(notification);
+            notificationOperations.getNotification(student.getStudentId());
+        }else {
+            logger.info("Registration failed");
+        }
+
+    }
 
     @Override
     public boolean isStudentProfileApproved(int studentId) {
