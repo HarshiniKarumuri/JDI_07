@@ -46,7 +46,7 @@ public class StudentOperations implements StudentInterface {
         return instance;
     }
 
-
+    // POST
     //function to add Course to a particular student
     @Override
     public void registerCourse(int studentId, int courseId) {
@@ -59,14 +59,17 @@ public class StudentOperations implements StudentInterface {
 
     }
 
+    // DELETE
     //function to drop Course for a particular student
     @Override
-    public void dropCourse(int studentId, int courseId) {
+    public boolean dropCourse(int studentId, int courseId) {
         try {
-            studentDAOOperations.dropCourse(studentId, courseId);
             logger.info(UIConstants.COURSE_DROP_MESSAGE);
+            studentDAOOperations.dropCourse(studentId, courseId);
+            return true;
         } catch (CourseNotFoundException | CourseNotRegisteredException e) {
             logger.error(e.getMessage());
+            return false;
         }
     }
 
@@ -104,17 +107,21 @@ public class StudentOperations implements StudentInterface {
         return fees;
     }
 
+    // POST
     @Override
-    public void makePayment(int studentId, int payModeChoice, int fees) {
+    public Payment makePayment(int studentId, int payModeChoice) {
+        int fees = calculateFees(studentId);
         Payment payment = studentDAOOperations.makePayment(studentId, payModeChoice, fees);
-        logger.info(payment.toString());
+       //logger.info(payment.toString());
         Notification notification = new Notification();
         notification.setDescription("You paid " + payment.getFeesPaid() + "/-");
         notification.setUserId(studentId);
         notificationOperations.sendNotification(notification);
         notificationOperations.getNotification(studentId);
+        return payment;
     }
 
+    // POST
     @Override
     public void addStudent(Student student, String password) {
         logger.info("in add student");
@@ -133,6 +140,7 @@ public class StudentOperations implements StudentInterface {
 
     }
 
+    // GET
     @Override
     public boolean isStudentProfileApproved(int studentId) {
         return studentDAOOperations.isStudentProfileApproved(studentId);
