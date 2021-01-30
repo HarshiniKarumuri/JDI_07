@@ -16,6 +16,7 @@ import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
 import com.flipkart.helper.AssignGradeRequest;
 import com.flipkart.service.ProfessorOperations;
+import com.flipkart.service.StudentOperations;
   
 /**
  * @author sankeerth
@@ -26,6 +27,7 @@ import com.flipkart.service.ProfessorOperations;
 public class ProfessorRESTController {
 	
     ProfessorOperations professorOperation = ProfessorOperations.getInstance();
+    StudentOperations studentOperations = StudentOperations.getInstance();
  
     @GET
     @Path("/viewprofessorcourses/{professorId}")
@@ -49,8 +51,8 @@ public class ProfessorRESTController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response gradeStudent(AssignGradeRequest graderequest) {
     	professorOperation.gradeStudent(graderequest.getProfessorId(), graderequest.getCourseId(), graderequest.getGrade(), graderequest.getStudentId());
-		String str="{\"abc\":\"UUID abcSuccess\"}";
-    	return Response.status(201).entity(str).build();
+		//String str="{\"abc\":\"UUID abcSuccess\"}";
+    	return Response.status(201).entity(studentOperations.viewGrades(graderequest.getStudentId())).build();
 
 	}
 
