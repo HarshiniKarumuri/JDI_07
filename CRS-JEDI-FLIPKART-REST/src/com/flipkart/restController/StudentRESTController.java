@@ -1,4 +1,4 @@
-package com.flipkart.rest_controller;
+package com.flipkart.restController;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
