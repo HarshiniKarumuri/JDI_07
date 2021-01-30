@@ -31,7 +31,7 @@ public class CourseCatalogOperations implements CourseCatalogInterface {
     }
 
     @Override
-    public void viewCoursesCatalog() {
+    public ArrayList<Course> viewCoursesCatalog() {
 //        logger.info("In fetch Catalog Details");
         ArrayList<Course> list = new ArrayList<Course>();
         list = catalogDAOOperations.viewCoursesCatalog();
@@ -39,6 +39,7 @@ public class CourseCatalogOperations implements CourseCatalogInterface {
         for (Course course : list) {
             logger.info(course.getCourseId() + " " + course.getCourseName());
         }
+        return list;
     }
 
     @Override
@@ -52,7 +53,7 @@ public class CourseCatalogOperations implements CourseCatalogInterface {
     }
 
     @Override
-    public void viewCoursesOffered() {
+    public ArrayList<Course> viewCoursesOffered() {
         logger.info("In view Courses Offered");
         ArrayList<Course> list = new ArrayList<Course>();
         list = catalogDAOOperations.viewCoursesOffered();
@@ -60,5 +61,6 @@ public class CourseCatalogOperations implements CourseCatalogInterface {
         for (Course course : list) {
             logger.info(course.getCourseId() + " " + course.getCourseName());
         }
+        return list;
     }
 }

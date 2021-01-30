@@ -196,19 +196,23 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	}
 
 	@Override
-	public void addCatalog(int catalogId,String catalogName) {
+	public int addCatalog(int catalogId,String catalogName) {
 		PreparedStatement statement;
+		int catalogid=-1;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.ADD_NEW_CATALOG);
 			statement.setInt(1, catalogId);
 			statement.setString(2, catalogName);
 			int rows = statement.executeUpdate();
 			logger.info(rows + " catalog added");
+			
+			catalogid=catalogId;
 		}catch(SQLException se) {
 			logger.error(se.getMessage());
 		}catch(Exception e) {
 			logger.error(e.getMessage());
 		}
+		return catalogid;
 	}
 
 	@Override
@@ -228,9 +232,10 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	}
 	
 	@Override
-	public void addCourseIntoCatalog(Course course, int catalogId) {
+	public int addCourseIntoCatalog(Course course, int catalogId) {
 
 		PreparedStatement statement = null;
+		int catalogid=-1;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.ADD_NEW_COURSE_QUERY);
 			statement.setInt(1, catalogId);
@@ -240,13 +245,14 @@ public class AdminDAOOperations implements AdminDAOInterface{
 			statement.setString(5, course.getDescription());
 			statement.setInt(6,course.getCapacity());
 			int rows = statement.executeUpdate();
+			catalogid=catalogId;
 			logger.info(rows + " course added into catalog");
 		}catch(SQLException se) {
 			logger.error(se.getMessage());
 		}catch(Exception e) {
 			logger.error(e.getMessage());
 		}
-		
+		return catalogid;
 	}
 
 	@Override
@@ -266,20 +272,23 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	}
 
 	@Override
-	public void addCourseToOffer(int courseId,int catalogId) {
+	public int addCourseToOffer(int courseId,int catalogId) {
 
 		PreparedStatement statement = null;
+		int courseid=-1;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.ADD_COURSE_TO_OFFERED_COURSE);
 			statement.setInt(1, catalogId);
 			statement.setInt(2, courseId);
 			int rows = statement.executeUpdate();
 			logger.info(rows + " added course into offered course");
+			courseid=courseId;
 		}catch(SQLException se) {
 			logger.error(se.getMessage());
 		}catch(Exception e) {
 			logger.error(e.getMessage());
 		}
+		return courseid;
 	}
 
 	@Override
@@ -301,18 +310,21 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 
 	@Override
-	public void approveStudent(int studentId) {
+	public int approveStudent(int studentId) {
 		PreparedStatement statement = null;
+		int studentid=-1;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.APPROVE_STUDENT);
 			statement.setInt(1, studentId);
 			int rows = statement.executeUpdate();
 			logger.info(rows + " approved student");
+			studentid=studentId;
 		}catch(SQLException se) {
 			logger.error(se.getMessage());
 		}catch(Exception e) {
 			logger.error(e.getMessage());
 		}
+		return studentid;
 	}
 
 	@Override

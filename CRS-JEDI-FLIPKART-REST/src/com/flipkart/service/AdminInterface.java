@@ -1,8 +1,13 @@
 package com.flipkart.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.flipkart.bean.Admin;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.Student;
+import com.flipkart.bean.User;
 
 /**
  * Admin business interface
@@ -12,7 +17,7 @@ public interface AdminInterface {
     /**
      * To see the list of users in CRS
      */
-    void viewUser();
+    ArrayList<User> viewUser();
 
     /**
      * Register a professor user into CRS
@@ -20,7 +25,7 @@ public interface AdminInterface {
      * @param professor represents a new professor to be added into DB
      * @param password  password for professor account
      */
-    void addProfessor(Professor professor, String password);
+    int addProfessor(Professor professor, String password);
 
     /**
      * Assign a professor to a course offered
@@ -36,7 +41,7 @@ public interface AdminInterface {
      * @param admin    admin object which is added into DB
      * @param password password for professor account
      */
-    void addAdmin(Admin admin, String password);
+    int addAdmin(Admin admin, String password);
 
     /**
      * Delete an existing account of a user in CRS
@@ -48,7 +53,7 @@ public interface AdminInterface {
     /**
      * To view the offered courses from courses catalog
      */
-    void viewCoursesOffered();
+    List<Course> viewCoursesOffered();
 
     /**
      * Adds a new catalog
@@ -56,7 +61,7 @@ public interface AdminInterface {
      * @param catalogId   unique identifier of catalog
      * @param catalogName catalog name
      */
-    void addCatalog(int catalogId, String catalogName);
+    int addCatalog(int catalogId, String catalogName);
 
     /**
      * Remove a catalog
@@ -71,7 +76,7 @@ public interface AdminInterface {
      * @param course    a new course to add into catalog
      * @param catalogId unique catalog identifier
      */
-    void addCourseIntoCatalog(Course course, int catalogId);
+    int addCourseIntoCatalog(Course course, int catalogId);
 
     /**
      * Removes a course from catalog
@@ -86,7 +91,7 @@ public interface AdminInterface {
      * @param courseId  course to add into offered Courses
      * @param catalogId unique identifier for catalog
      */
-    void addCourseToOffer(int courseId, int catalogId);
+    int addCourseToOffer(int courseId, int catalogId);
 
     /**
      * @param courseId  unique identifier of the course to be removed from offered courses
@@ -99,10 +104,10 @@ public interface AdminInterface {
      *
      * @param studentId unique course identifier
      */
-    void approveStudent(int studentId);
+    int approveStudent(int studentId);
 
 	/**
 	 * To view students with pending approval from admin
 	 */
-	void viewPendingApprovalStudent();
+	List<Student> viewPendingApprovalStudent();
 }

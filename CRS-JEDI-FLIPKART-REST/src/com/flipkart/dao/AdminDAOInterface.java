@@ -62,7 +62,7 @@ public interface AdminDAOInterface {
 	 * @param catlogId unique identifier of catalog
 	 * @param catalogName catalog name
 	 */
-	public void addCatalog(int catlogId,String catalogName);
+	public int addCatalog(int catlogId,String catalogName);
 	
 	/**
 	 * 
@@ -76,7 +76,7 @@ public interface AdminDAOInterface {
 	 * @param course a new course to add into catalog
 	 * @param catalogId unique catalog identifier
 	 */
-	public void addCourseIntoCatalog(Course course,int catalogId);
+	public int addCourseIntoCatalog(Course course,int catalogId);
 	
 	/**
 	 * Removes a course from catalog
@@ -91,7 +91,7 @@ public interface AdminDAOInterface {
 	 *
 	 * @param course course to add into offered Courses 
 	 */
-	public void addCourseToOffer(int courseId,int catalogId);
+	public int addCourseToOffer(int courseId,int catalogId);
 
 	/**
 	 * Add course to offered courses from courses catalog
@@ -104,7 +104,7 @@ public interface AdminDAOInterface {
 	 * To approve a student for the registration
 	 * @param studentId unique student identifier
 	 */
-	public void approveStudent(int studentId);
+	public int approveStudent(int studentId);
 	
 	public ArrayList<Student> viewPendingApprovalStudent();
 }

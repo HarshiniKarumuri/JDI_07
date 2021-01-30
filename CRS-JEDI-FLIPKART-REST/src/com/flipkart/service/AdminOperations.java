@@ -47,7 +47,7 @@ public class AdminOperations implements AdminInterface {
     }
 	
 	@Override
-	public void viewUser() {
+	public ArrayList<User> viewUser() {
 		logger.info("In viewUser");
 		
 		ArrayList<User> users = adminDAOOperations.viewUser();
@@ -72,10 +72,11 @@ public class AdminOperations implements AdminInterface {
 				logger.info(String.format("UserEmail = %s, UserId = %d", user.getEmail(),user.getUserId()));
 			}
 		}
+		return users;
 	}
 	
 	@Override
-	public void addProfessor(Professor professor,String password) {
+	public int addProfessor(Professor professor,String password) {
 //		logger.info("In add Professor");
 		int professorId = adminDAOOperations.addProfessor(professor, password);
 		if(professorId != -1) {
@@ -90,6 +91,7 @@ public class AdminOperations implements AdminInterface {
 		else {
 			logger.info("Professor registration failed");
 		}
+		return professorId;
 	}
 	
 	@Override
@@ -106,7 +108,7 @@ public class AdminOperations implements AdminInterface {
     }
 
 	@Override
-	public void addAdmin(Admin admin, String password) {
+	public int addAdmin(Admin admin, String password) {
 		logger.info("In add admin");
 		int adminId = adminDAOOperations.addAdmin(admin, password);
 		if(adminId != -1) {
@@ -121,23 +123,25 @@ public class AdminOperations implements AdminInterface {
 		else {
 			logger.info("Admin registration failed");
 		}
+		return adminId;
 	}
 
 
     @Override
-    public void viewCoursesOffered() {
+    public List<Course> viewCoursesOffered() {
         List<Course> courses;
         courses = catalogDAOOperations.viewCoursesCatalog();
-
-        logger.info(String.format("%-15s", "Course Names"));
-        for (Course course : courses) {
-            logger.info(String.format("%-15s", course.getCourseName()));
-        }
+        return courses;
+		/*
+		 * logger.info(String.format("%-15s", "Course Names")); for (Course course :
+		 * courses) { logger.info(String.format("%-15s", course.getCourseName())); }
+		 */
     }
 
     @Override
-    public void addCatalog(int catalogId, String catalogName) {
-        adminDAOOperations.addCatalog(catalogId, catalogName);
+    public int addCatalog(int catalogId, String catalogName) {
+        int catalogid=adminDAOOperations.addCatalog(catalogId, catalogName);
+        return catalogid;
     }
 
     @Override
@@ -146,8 +150,9 @@ public class AdminOperations implements AdminInterface {
     }
 
     @Override
-    public void addCourseIntoCatalog(Course course, int catalogId) {
-        adminDAOOperations.addCourseIntoCatalog(course, catalogId);
+    public int addCourseIntoCatalog(Course course, int catalogId) {
+       int catalogid= adminDAOOperations.addCourseIntoCatalog(course, catalogId);
+       return catalogid;
     }
 
     @Override
@@ -156,8 +161,9 @@ public class AdminOperations implements AdminInterface {
     }
 
     @Override
-    public void addCourseToOffer(int courseId, int catalogId) {
-        adminDAOOperations.addCourseToOffer(courseId, catalogId);
+    public int addCourseToOffer(int courseId, int catalogId) {
+        int courseid=adminDAOOperations.addCourseToOffer(courseId, catalogId);
+        return courseid;
     }
 
     @Override
@@ -166,25 +172,27 @@ public class AdminOperations implements AdminInterface {
     }
 
 	@Override
-	public void approveStudent(int studentId) {
-		adminDAOOperations.approveStudent(studentId);
+	public int approveStudent(int studentId) {
+		int studentid=adminDAOOperations.approveStudent(studentId);
 		Notification notification = new Notification();
 		notification.setUserId(studentId);
 		notification.setTimestamp(new Timestamp(System.currentTimeMillis()));
 		notification.setDescription(studentId + " profile is approved so kindly verify it.");
 		notificationDAOOperation.sendNotification(notification);
+		return studentid;
 	}
 
 	@Override
-	public void viewPendingApprovalStudent() {
+	public List<Student> viewPendingApprovalStudent() {
 		ArrayList<Student> list = adminDAOOperations.viewPendingApprovalStudent();
-		logger.info(UIConstants.DASHED_LINE);
-		logger.info(String.format("%-30s%-30s","StudentId", "StudentName"));
-		logger.info(UIConstants.DASHED_LINE);
-		for(Student student:list) {
-			logger.info(String.format("%-30s%-30s", student.getStudentId(), student.getUsername()));
-		}
-		logger.info("\n");
+		return list;
+		/*
+		 * logger.info(UIConstants.DASHED_LINE);
+		 * logger.info(String.format("%-30s%-30s","StudentId", "StudentName"));
+		 * logger.info(UIConstants.DASHED_LINE); for(Student student:list) {
+		 * logger.info(String.format("%-30s%-30s", student.getStudentId(),
+		 * student.getUsername())); } logger.info("\n");
+		 */
 	}
 
 }

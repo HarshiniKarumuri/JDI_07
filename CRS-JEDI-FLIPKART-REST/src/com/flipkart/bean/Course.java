@@ -10,7 +10,16 @@ public class Course {
 	private String description;
 	private int fees;
 	private int capacity;
+	private int catalogId;
 	
+	public int getCatalogId() {
+		return catalogId;
+	}
+
+	public void setCatalogId(int catalogId) {
+		this.catalogId = catalogId;
+	}
+
 	/**
 	 * get the capacity of the course
 	 * @return the capacity
