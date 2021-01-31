@@ -5,6 +5,7 @@ import java.util.List;
 
 //import com.flipkart.bean.Student;
 import com.flipkart.bean.Course;
+import com.flipkart.bean.Payment;
 import com.flipkart.bean.Student;
 
 /**
@@ -26,7 +27,7 @@ public interface StudentInterface {
      * @param studentId unique identifier for student
      * @param courseId  unique identifier for course
      */
-    void dropCourse(int studentId, int courseId);
+    boolean dropCourse(int studentId, int courseId);
 
     /**
      * view chosen courses
@@ -57,7 +58,7 @@ public interface StudentInterface {
      * @param payModeChoice mode of payment
      * @param fees          total fee to pay
      */
-    void makePayment(int studentId, int payModeChoice, int fees);
+    Payment makePayment(int studentId, int payModeChoice);
 
     /**
      * Register a new Student
