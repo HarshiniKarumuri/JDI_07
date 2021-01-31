@@ -1,4 +1,4 @@
-package com.flipkart.restController;
+package com.flipkart.rest.controller;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -28,24 +28,22 @@ import com.flipkart.service.NotificationOperations;
 @Path("/admin")
 public class AdminRESTController {
 
-	AdminOperations adminOperations = AdminOperations.getInstance();
-	CourseCatalogOperations coursecatalogOperations = CourseCatalogOperations.getInstance();
-	NotificationOperations notificationOperations=NotificationOperations.getInstance();
+	private final AdminOperations adminOperations = AdminOperations.getInstance();
+	private final CourseCatalogOperations coursecatalogOperations = CourseCatalogOperations.getInstance();
+	private final NotificationOperations notificationOperations=NotificationOperations.getInstance();
 
 	@GET
 	@Path("/view-users")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<User> viewUser() {
-		ArrayList<User> userList = adminOperations.viewUser();
-		return userList;
+		return adminOperations.viewUser();
 	}
 
 	@GET
-	@Path("/viewPendingApprovalStudent")
+	@Path("/view-pending-approval-student")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Student> viewPendingApprovalStudent() {
-		List<Student> students = adminOperations.viewPendingApprovalStudent();
-		return students;
+		return adminOperations.viewPendingApprovalStudent();
 	}
 
 	@POST
@@ -54,7 +52,7 @@ public class AdminRESTController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addProfessor(Professor professor) {
 		int professorId = adminOperations.addProfessor(professor, professor.getPassword());
-		String result = "";
+		String result;
 		if (professorId != -1) {
 			result = "Your User Id is " + professorId;
 		} else {
@@ -88,7 +86,7 @@ public class AdminRESTController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addAdmin(Admin admin) {
 		int adminId = adminOperations.addAdmin(admin, admin.getPassword());
-		String result = "";
+		String result;
 		if (adminId != -1) {
 			result = "Your User Id is " + adminId;
 		} else {
@@ -104,10 +102,6 @@ public class AdminRESTController {
 		List<Course> courses;
 		courses = coursecatalogOperations.viewCoursesOffered();
 		return courses;
-		/*
-		 * logger.info(String.format("%-15s", "Course Names")); for (Course course :
-		 * courses) { logger.info(String.format("%-15s", course.getCourseName())); }
-		 */
 	}
 
 	@POST
@@ -116,7 +110,7 @@ public class AdminRESTController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addCatalog(@PathParam("catalogId") int catalogId, @PathParam("catalogName") String catalogName) {
 		int catalogid = adminOperations.addCatalog(catalogId, catalogName);
-		String result = "";
+		String result;
 		if (catalogId != -1) {
 			result = "Catalog Id is " + catalogid;
 		} else {
@@ -126,16 +120,16 @@ public class AdminRESTController {
 	}
 
 	@DELETE
-	@Path("/deleteCatalog/{catalogId}")
+	@Path("/delete-catalog/{catalogId}")
 	public Response removeCatalog(@PathParam("catalogId") int catalogId) {
 
 		adminOperations.removeCatalog(catalogId);
-		String result = "Catalog " + catalogId + " deleted Succesfully.";
+		String result = "Catalog " + catalogId + " deleted Successfully.";
 		return Response.status(201).entity(result).build();
 	}
 
 	@POST
-	@Path("/addCourseToCatalog")
+	@Path("/add-course-to-catalog")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addCourseIntoCatalog(Course course) {
@@ -145,7 +139,7 @@ public class AdminRESTController {
 	}
 
 	@DELETE
-	@Path("/removeCourseFromCatalog/{courseId}")
+	@Path("/remove-course-from-catalog/{courseId}")
 	public Response removeCourseFromCatalog(@PathParam("courseId") int courseId) {
 		adminOperations.removeCourseFromCatalog(courseId);
 		String result = "Course " + courseId + " deleted Succesfully.";
@@ -153,7 +147,7 @@ public class AdminRESTController {
 	}
 
 	@POST
-	@Path("/addCourseToOffer/{courseId}/{catalogId}")
+	@Path("/add-course-to-offer/{courseId}/{catalogId}")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addCourseToOffer(@PathParam("courseId") int courseId, @PathParam("catalogId") int catalogId) {
@@ -163,21 +157,20 @@ public class AdminRESTController {
 	}
 
 	@DELETE
-	@Path("/removeCourseFromOffer/{courseId}/{catalogId}")
+	@Path("/remove-course-from-offer/{courseId}/{catalogId}")
 	public Response removeOfferedCourse(@PathParam("courseId") int courseId, @PathParam("catalogId") int catalogId) {
 		adminOperations.removeOfferedCourse(courseId, catalogId);
 		String result = "Course " + courseId + " deleted Succesfully.";
 		return Response.status(201).entity(result).build();
 	}
-
 	
 	@PUT
-	@Path("/approveStudent/{studentId}")
+	@Path("/approve-student/{studentId}")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response approveStudent(@PathParam("studentId") int studentId) {
 		int studentid=adminOperations.approveStudent(studentId);
-		String result = "";
+		String result;
 		if (studentid != -1) {
 			result = "Student  " + studentid + " approved successfully";
 		} else {

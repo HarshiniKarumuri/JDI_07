@@ -1,4 +1,4 @@
-package com.flipkart.restController;
+package com.flipkart.rest.controller;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -24,18 +24,13 @@ import com.flipkart.bean.Payment;
 import com.flipkart.service.StudentInterface;
 import com.flipkart.service.StudentOperations;
 
-@Path("/studentRestController")
+@Path("/student")
 public class StudentRESTController {
 
-    private static final Logger logger = Logger.getLogger(StudentOperations.class);
-
     private final StudentInterface studentOperations = StudentOperations.getInstance();
-//    private final NotificationOperations notificationOperations = NotificationOperations.getInstance();
-
-    //    private static volatile StudentOperations instance = null;
     
     @POST
-    @Path("/registerCourse/{studentId}/{courseId}")
+    @Path("/register-course/{studentId}/{courseId}")
     @Consumes("application/json")
     @Produces(MediaType.APPLICATION_JSON)
     public Response registerCourse(@PathParam("studentId") int studentId, @PathParam("courseId") int courseId) {
@@ -44,17 +39,16 @@ public class StudentRESTController {
     }
     
     @POST
-    @Path("/makePayment/{studentId}/{payMode}")
+    @Path("/make-payment/{studentId}/{payMode}")
     @Consumes("application/json")
     @Produces(MediaType.APPLICATION_JSON)
     public Response makePayment(@PathParam("studentId") int studentId, @PathParam("payMode") int payMode) {
-        //logger.info(studentOperations.makePayment(studentId, payMode).getClass().getName());
         Payment payment = studentOperations.makePayment(studentId, payMode);
         int paymentId = payment.getPaymentId();
         int feesPaid = payment.getFeesPaid();
         String paymentMode = payment.getPaymentMode();
         Timestamp paymentTime = payment.getPaymentTime();
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<>();
         map.put("paymentId", Integer.toString(paymentId));
         map.put("feesPaid", Integer.toString(feesPaid));
         map.put("paymentMode", paymentMode);
@@ -64,39 +58,22 @@ public class StudentRESTController {
         return Response.status(201).entity(map).build();
     }
     
-    /*@POST
-    @Path("")
-    @Consumes("application/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response addStudent() {
-    	
-    }*/
-    
     @GET
-    @Path("viewRegisteredCourses/{studentId}")
+    @Path("view-registered-courses/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Course> viewRegisteredCourses(@PathParam("studentId") int studentId) {
-
-        ArrayList<Course> courses = studentOperations.viewRegisteredCourses(studentId);
-        return courses;
+        return studentOperations.viewRegisteredCourses(studentId);
     }
 
     @GET
-    @Path("viewGrades/{studentId}")
+    @Path("view-grades/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<List> viewGrades(@PathParam("studentId") int studentId) {
         return studentOperations.viewGrades(studentId);
     }
 
     @GET
-    @Path("/sample/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public int sampleFunction(@PathParam("id") int id) {
-        return id;
-    }
-
-    @GET
-    @Path("/checkApproval/{studentId}")
+    @Path("/check-approval/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
     public String checkApproval(@PathParam("studentId") int studentId) {
         if(studentOperations.isStudentProfileApproved(studentId)) {
@@ -107,8 +84,8 @@ public class StudentRESTController {
     }
 
     @DELETE
-    @Path("/dropCourse/{studentId}/{courseId}")
-    public Response dropCourse(@PathParam("studentId") int studentId, @PathParam("courseId") int courseId) throws URIReferenceException {
+    @Path("/drop-course/{studentId}/{courseId}")
+    public Response dropCourse(@PathParam("studentId") int studentId, @PathParam("courseId") int courseId) {
         if(studentOperations.dropCourse(studentId, courseId)) {
             return Response.status(200).entity("The Course with CourseID: " + courseId + " for student: " + studentId + " has been successfully deleted.").build();
         } else {
