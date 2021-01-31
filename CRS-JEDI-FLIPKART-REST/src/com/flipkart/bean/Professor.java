@@ -1,11 +1,21 @@
 package com.flipkart.bean;
 
+import com.flipkart.constants.ValidationConstants;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  * Professor bean class
  */
 public class Professor extends User{
 
+	@NotNull
+	@Pattern(message = ValidationConstants.ONLY_INTEGERS_ALLOWED, regexp = "^[0-9]+$")
 	private int professorId;
+
+	@NotNull
+	@Pattern(message = ValidationConstants.ONLY_ALPHABETS_ALLOWED, regexp = "^[a-zA-Z ]+$")
 	private String department;
 
 	/**

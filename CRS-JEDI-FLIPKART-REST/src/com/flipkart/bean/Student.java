@@ -1,13 +1,30 @@
 package com.flipkart.bean;
 
+import com.flipkart.constants.ValidationConstants;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  * Student bean class
  */
 public class Student extends User{
 
+	@NotNull
+	@Pattern(message = ValidationConstants.ONLY_INTEGERS_ALLOWED, regexp = "^[0-9]+$")
 	private int studentId;
+
+	@NotNull
+	@Pattern(message = ValidationConstants.ONLY_ALPHABETS_ALLOWED, regexp = "^[a-zA-Z ]+$")
 	private String branch;
+
+	@NotNull
+	@Pattern(regexp = "^true$|^false$", message = ValidationConstants.ONLY_BOOLEAN_ALLOWED)
 	private boolean hasScholarship;
+
+	@NotNull
+	@Pattern(regexp = "^true$|^false$", message = ValidationConstants.ONLY_BOOLEAN_ALLOWED)
 	private boolean isApproved;
 
 	/**

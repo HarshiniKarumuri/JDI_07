@@ -1,17 +1,36 @@
 package com.flipkart.bean;
 
+import com.flipkart.constants.ValidationConstants;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  * User bean class
  */
 public class User {
 
+	@NotNull
+	@Pattern(message = ValidationConstants.ONLY_INTEGERS_ALLOWED, regexp = "^[0-9]+$")
 	int userId;
+
+	@NotNull
+	@Pattern(message = ValidationConstants.VALID_USERNAME, regexp = "^[0-9a-zA-Z@#$&]+$")
 	String username;
+
+	@NotNull
+	@Pattern(message = ValidationConstants.VALID_EMAIL, regexp = "^[a-zA-Z0-9_!#$%&�*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
 	String email;
-	String address;
+
+	@NotNull
+	@Pattern(message = ValidationConstants.VALID_PASSWORD , regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")
 	String password;
+
+	@NotNull
 	String role;
+
 	String gender;
+	String address;
 
 	/**
 	 * get the email of the email

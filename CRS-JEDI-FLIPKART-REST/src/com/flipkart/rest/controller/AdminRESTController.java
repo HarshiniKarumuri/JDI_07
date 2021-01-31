@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.ValidationException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -50,7 +52,7 @@ public class AdminRESTController {
 	@Path("/add-professor")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addProfessor(Professor professor) {
+	public Response addProfessor(@Valid Professor professor) throws ValidationException {
 		int professorId = adminOperations.addProfessor(professor, professor.getPassword());
 		String result;
 		if (professorId != -1) {
@@ -65,8 +67,7 @@ public class AdminRESTController {
 	@Path("/assign-professor/{professorId}/{courseId}")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response assignProfessorToCourse(@PathParam("professorId") int professorId,
-			@PathParam("courseId") int courseId) {
+	public Response assignProfessorToCourse(@PathParam("professorId") int professorId, @PathParam("courseId") int courseId) {
 		adminOperations.assignProfessorToCourse(professorId, courseId);
 		String result = "Professor Id " + professorId + " is assigned to course " + courseId + " succesfully.";
 		return Response.status(201).entity(result).build();
@@ -84,7 +85,7 @@ public class AdminRESTController {
 	@Path("/add-admin")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addAdmin(Admin admin) {
+	public Response addAdmin(@Valid Admin admin) throws ValidationException {
 		int adminId = adminOperations.addAdmin(admin, admin.getPassword());
 		String result;
 		if (adminId != -1) {
@@ -132,7 +133,7 @@ public class AdminRESTController {
 	@Path("/add-course-to-catalog")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addCourseIntoCatalog(Course course) {
+	public Response addCourseIntoCatalog(@Valid Course course) throws ValidationException {
 		int catalogid = adminOperations.addCourseIntoCatalog(course, course.getCatalogId());
 		ArrayList<Course> courses = coursecatalogOperations.viewCoursesCatalog();
 		return Response.status(201).entity(courses).build();
