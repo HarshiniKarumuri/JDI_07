@@ -1,0 +1,115 @@
+22:13:12,683  INFO AdminOperations,http-nio-8080-exec-9:51 - In viewUser
+22:13:13,007  INFO AdminOperations,http-nio-8080-exec-9:55 - Admin
+22:13:13,008  INFO AdminOperations,http-nio-8080-exec-9:58 - UserEmail = nilshah117@gmail.com, UserId = 234
+22:13:13,008  INFO AdminOperations,http-nio-8080-exec-9:58 - UserEmail = admin3@yahoo.com, UserId = 250
+22:13:13,009  INFO AdminOperations,http-nio-8080-exec-9:62 - Student
+22:13:13,009  INFO AdminOperations,http-nio-8080-exec-9:65 - UserEmail = harshini@gmail.com, UserId = 238
+22:13:13,010  INFO AdminOperations,http-nio-8080-exec-9:65 - UserEmail = abc@gmail.com, UserId = 241
+22:13:13,010  INFO AdminOperations,http-nio-8080-exec-9:65 - UserEmail = 123@gmail.com, UserId = 242
+22:13:13,010  INFO AdminOperations,http-nio-8080-exec-9:65 - UserEmail = utuy@gmail.com, UserId = 243
+22:13:13,011  INFO AdminOperations,http-nio-8080-exec-9:65 - UserEmail = saurav@gmail.com, UserId = 244
+22:13:13,011  INFO AdminOperations,http-nio-8080-exec-9:65 - UserEmail = abc@gmail.com, UserId = 245
+22:13:13,012  INFO AdminOperations,http-nio-8080-exec-9:65 - UserEmail = ab, UserId = 246
+22:13:13,012  INFO AdminOperations,http-nio-8080-exec-9:69 - Professor
+22:13:13,012  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = amit@gmail.com, UserId = 236
+22:13:13,013  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = prof2@gmail.com, UserId = 240
+22:13:13,013  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = prof3@yahoo.com, UserId = 249
+22:13:13,014  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = nil.*@gmail.com, UserId = 251
+22:13:13,014  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = nil@gmail.com, UserId = 252
+22:13:13,014  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = xyz@gmail.com, UserId = 253
+22:13:13,015  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = ami@gmail.com, UserId = 254
+22:13:13,015  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = ami@gmail.com, UserId = 255
+22:13:13,016  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = ami@gmail.com, UserId = 256
+22:13:13,016  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = ami@gmail.com, UserId = 257
+22:13:13,016  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = ami@gmail.com, UserId = 258
+22:13:13,017  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = ami@gmail.com, UserId = 259
+22:13:13,017  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = xyz@gmail.com, UserId = 260
+22:13:13,017  INFO AdminOperations,http-nio-8080-exec-9:72 - UserEmail = wxyz@gmail.com, UserId = 261
+22:13:13,383  INFO AdminOperations,http-nio-8080-exec-10:51 - In viewUser
+22:13:13,666  INFO AdminOperations,http-nio-8080-exec-10:55 - Admin
+22:13:13,666  INFO AdminOperations,http-nio-8080-exec-10:58 - UserEmail = nilshah117@gmail.com, UserId = 234
+22:13:13,667  INFO AdminOperations,http-nio-8080-exec-10:58 - UserEmail = admin3@yahoo.com, UserId = 250
+22:13:13,667  INFO AdminOperations,http-nio-8080-exec-10:62 - Student
+22:13:13,667  INFO AdminOperations,http-nio-8080-exec-10:65 - UserEmail = harshini@gmail.com, UserId = 238
+22:13:13,668  INFO AdminOperations,http-nio-8080-exec-10:65 - UserEmail = abc@gmail.com, UserId = 241
+22:13:13,668  INFO AdminOperations,http-nio-8080-exec-10:65 - UserEmail = 123@gmail.com, UserId = 242
+22:13:13,668  INFO AdminOperations,http-nio-8080-exec-10:65 - UserEmail = utuy@gmail.com, UserId = 243
+22:13:13,669  INFO AdminOperations,http-nio-8080-exec-10:65 - UserEmail = saurav@gmail.com, UserId = 244
+22:13:13,669  INFO AdminOperations,http-nio-8080-exec-10:65 - UserEmail = abc@gmail.com, UserId = 245
+22:13:13,669  INFO AdminOperations,http-nio-8080-exec-10:65 - UserEmail = ab, UserId = 246
+22:13:13,670  INFO AdminOperations,http-nio-8080-exec-10:69 - Professor
+22:13:13,670  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = amit@gmail.com, UserId = 236
+22:13:13,671  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = prof2@gmail.com, UserId = 240
+22:13:13,671  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = prof3@yahoo.com, UserId = 249
+22:13:13,671  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = nil.*@gmail.com, UserId = 251
+22:13:13,672  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = nil@gmail.com, UserId = 252
+22:13:13,672  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = xyz@gmail.com, UserId = 253
+22:13:13,673  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = ami@gmail.com, UserId = 254
+22:13:13,673  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = ami@gmail.com, UserId = 255
+22:13:13,673  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = ami@gmail.com, UserId = 256
+22:13:13,674  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = ami@gmail.com, UserId = 257
+22:13:13,674  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = ami@gmail.com, UserId = 258
+22:13:13,674  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = ami@gmail.com, UserId = 259
+22:13:13,675  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = xyz@gmail.com, UserId = 260
+22:13:13,675  INFO AdminOperations,http-nio-8080-exec-10:72 - UserEmail = wxyz@gmail.com, UserId = 261
+22:13:17,528  INFO AdminOperations,http-nio-8080-exec-1:51 - In viewUser
+22:13:17,811  INFO AdminOperations,http-nio-8080-exec-1:55 - Admin
+22:13:17,811  INFO AdminOperations,http-nio-8080-exec-1:58 - UserEmail = nilshah117@gmail.com, UserId = 234
+22:13:17,812  INFO AdminOperations,http-nio-8080-exec-1:58 - UserEmail = admin3@yahoo.com, UserId = 250
+22:13:17,812  INFO AdminOperations,http-nio-8080-exec-1:62 - Student
+22:13:17,812  INFO AdminOperations,http-nio-8080-exec-1:65 - UserEmail = harshini@gmail.com, UserId = 238
+22:13:17,813  INFO AdminOperations,http-nio-8080-exec-1:65 - UserEmail = abc@gmail.com, UserId = 241
+22:13:17,813  INFO AdminOperations,http-nio-8080-exec-1:65 - UserEmail = 123@gmail.com, UserId = 242
+22:13:17,813  INFO AdminOperations,http-nio-8080-exec-1:65 - UserEmail = utuy@gmail.com, UserId = 243
+22:13:17,813  INFO AdminOperations,http-nio-8080-exec-1:65 - UserEmail = saurav@gmail.com, UserId = 244
+22:13:17,814  INFO AdminOperations,http-nio-8080-exec-1:65 - UserEmail = abc@gmail.com, UserId = 245
+22:13:17,814  INFO AdminOperations,http-nio-8080-exec-1:65 - UserEmail = ab, UserId = 246
+22:13:17,814  INFO AdminOperations,http-nio-8080-exec-1:69 - Professor
+22:13:17,814  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = amit@gmail.com, UserId = 236
+22:13:17,815  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = prof2@gmail.com, UserId = 240
+22:13:17,815  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = prof3@yahoo.com, UserId = 249
+22:13:17,815  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = nil.*@gmail.com, UserId = 251
+22:13:17,816  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = nil@gmail.com, UserId = 252
+22:13:17,816  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = xyz@gmail.com, UserId = 253
+22:13:17,816  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = ami@gmail.com, UserId = 254
+22:13:17,816  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = ami@gmail.com, UserId = 255
+22:13:17,817  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = ami@gmail.com, UserId = 256
+22:13:17,829  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = ami@gmail.com, UserId = 257
+22:13:17,829  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = ami@gmail.com, UserId = 258
+22:13:17,830  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = ami@gmail.com, UserId = 259
+22:13:17,831  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = xyz@gmail.com, UserId = 260
+22:13:17,831  INFO AdminOperations,http-nio-8080-exec-1:72 - UserEmail = wxyz@gmail.com, UserId = 261
+22:14:03,012  INFO AdminDAOOperations,http-nio-8080-exec-4:77 - 1 added in User
+22:14:03,580  INFO AdminDAOOperations,http-nio-8080-exec-4:94 - 1 added in Professor
+22:14:03,581  INFO AdminOperations,http-nio-8080-exec-4:83 - Your professor Id is254
+22:18:43,965  INFO AdminOperations,http-nio-8080-exec-5:51 - In viewUser
+22:18:44,289  INFO AdminOperations,http-nio-8080-exec-5:55 - Admin
+22:18:44,290  INFO AdminOperations,http-nio-8080-exec-5:58 - UserEmail = nilshah117@gmail.com, UserId = 234
+22:18:44,290  INFO AdminOperations,http-nio-8080-exec-5:58 - UserEmail = admin3@yahoo.com, UserId = 250
+22:18:44,291  INFO AdminOperations,http-nio-8080-exec-5:62 - Student
+22:18:44,291  INFO AdminOperations,http-nio-8080-exec-5:65 - UserEmail = harshini@gmail.com, UserId = 238
+22:18:44,292  INFO AdminOperations,http-nio-8080-exec-5:65 - UserEmail = abc@gmail.com, UserId = 241
+22:18:44,292  INFO AdminOperations,http-nio-8080-exec-5:65 - UserEmail = 123@gmail.com, UserId = 242
+22:18:44,293  INFO AdminOperations,http-nio-8080-exec-5:65 - UserEmail = utuy@gmail.com, UserId = 243
+22:18:44,293  INFO AdminOperations,http-nio-8080-exec-5:65 - UserEmail = saurav@gmail.com, UserId = 244
+22:18:44,294  INFO AdminOperations,http-nio-8080-exec-5:65 - UserEmail = abc@gmail.com, UserId = 245
+22:18:44,295  INFO AdminOperations,http-nio-8080-exec-5:65 - UserEmail = ab, UserId = 246
+22:18:44,296  INFO AdminOperations,http-nio-8080-exec-5:69 - Professor
+22:18:44,297  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = amit@gmail.com, UserId = 236
+22:18:44,298  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = prof2@gmail.com, UserId = 240
+22:18:44,299  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = prof3@yahoo.com, UserId = 249
+22:18:44,299  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = nil.*@gmail.com, UserId = 251
+22:18:44,300  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = nil@gmail.com, UserId = 252
+22:18:44,300  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = xyz@gmail.com, UserId = 253
+22:18:44,301  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = ami@gmail.com, UserId = 254
+22:18:44,303  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = ami@gmail.com, UserId = 255
+22:18:44,304  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = ami@gmail.com, UserId = 256
+22:18:44,306  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = ami@gmail.com, UserId = 257
+22:18:44,306  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = ami@gmail.com, UserId = 258
+22:18:44,307  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = ami@gmail.com, UserId = 259
+22:18:44,307  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = xyz@gmail.com, UserId = 260
+22:18:44,308  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = wxyz@gmail.com, UserId = 261
+22:18:44,308  INFO AdminOperations,http-nio-8080-exec-5:72 - UserEmail = ami@gmail.com, UserId = 262
+22:18:53,885  INFO AdminDAOOperations,http-nio-8080-exec-6:77 - 1 added in User
+22:18:54,452  INFO AdminDAOOperations,http-nio-8080-exec-6:94 - 1 added in Professor
+22:18:54,453  INFO AdminOperations,http-nio-8080-exec-6:83 - Your professor Id is254
