@@ -11,8 +11,6 @@ import javax.validation.constraints.Pattern;
  */
 public class Student extends User{
 
-	@NotNull
-	@Pattern(message = ValidationConstants.ONLY_INTEGERS_ALLOWED, regexp = "^[0-9]+$")
 	private int studentId;
 
 	@NotNull

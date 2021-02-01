@@ -53,6 +53,7 @@ public class AdminRESTController {
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addProfessor(@Valid Professor professor) throws ValidationException {
+		professor.setRole("Professor");
 		int professorId = adminOperations.addProfessor(professor, professor.getPassword());
 		String result;
 		if (professorId != -1) {
@@ -86,6 +87,7 @@ public class AdminRESTController {
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addAdmin(@Valid Admin admin) throws ValidationException {
+		admin.setRole("Admin");
 		int adminId = adminOperations.addAdmin(admin, admin.getPassword());
 		String result;
 		if (adminId != -1) {

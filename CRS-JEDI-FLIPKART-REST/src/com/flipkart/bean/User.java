@@ -10,8 +10,6 @@ import javax.validation.constraints.Pattern;
  */
 public class User {
 
-	@NotNull
-	@Pattern(message = ValidationConstants.ONLY_INTEGERS_ALLOWED, regexp = "^[0-9]+$")
 	int userId;
 
 	@NotNull
@@ -26,7 +24,6 @@ public class User {
 	@Pattern(message = ValidationConstants.VALID_PASSWORD , regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")
 	String password;
 
-	@NotNull
 	String role;
 
 	String gender;

@@ -8,8 +8,6 @@ import javax.validation.constraints.Pattern;
  */
 public class Admin extends User {
 
-	@NotNull
-	@Pattern(message = "Invalid user ID -> Valid user ID contains only digits.", regexp = "^[0-9]+$")
 	private int adminId;
 
 	/**
