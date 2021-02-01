@@ -1,27 +1,60 @@
 package com.flipkart.bean;
 
+import com.flipkart.constants.ValidationConstants;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 /**
  * Course bean class
  */
 public class Course {
 
-	private int courseId;
-	private String courseName;
-	private String description;
-	private int fees;
-	private int capacity;
+	@NotNull
+	@Pattern(message = ValidationConstants.ONLY_INTEGERS_ALLOWED, regexp = "^[0-9]+$")
 	private int catalogId;
-	
+
+	@NotNull
+	@Pattern(message = ValidationConstants.ONLY_INTEGERS_ALLOWED, regexp = "^[0-9]+$")
+	private int courseId;
+
+	@NotNull
+	@Pattern(message = ValidationConstants.ONLY_ALPHABETS_ALLOWED, regexp = "^[a-zA-Z ]+$")
+	private String courseName;
+
+	@NotNull
+	@Pattern(message = ValidationConstants.ONLY_INTEGERS_ALLOWED, regexp = "^[0-9]+$")
+	private int fees;
+
+	@NotNull
+	@Size(min = 3, max = 10, message = ValidationConstants.COURSE_CAPACITY_VIOLATED)
+	private int capacity;
+
+	private String description;
+
+
+	/**
+	 * get the catalog Id of the course
+	 *
+	 * @return catalog Id
+	 */
 	public int getCatalogId() {
 		return catalogId;
 	}
 
+	/**
+	 * set the catalog Id of the course
+	 *
+	 * @param catalogId catalog Id of the course
+	 */
 	public void setCatalogId(int catalogId) {
 		this.catalogId = catalogId;
 	}
 
 	/**
 	 * get the capacity of the course
+	 *
 	 * @return the capacity
 	 */
 	public int getCapacity() {
@@ -30,6 +63,7 @@ public class Course {
 
 	/**
 	 * set the capacity of the course
+	 *
 	 * @param capacity the capacity to set
 	 */
 	public void setCapacity(int capacity) {
@@ -38,6 +72,7 @@ public class Course {
 
 	/**
 	 * get the Course Id
+	 *
 	 * @return the courseId
 	 */
 	public int getCourseId() {
@@ -46,6 +81,7 @@ public class Course {
 
 	/**
 	 * Set the course Id
+	 *
 	 * @param courseId the courseId to set
 	 */
 	public void setCourseId(int courseId) {
@@ -54,6 +90,7 @@ public class Course {
 
 	/**
 	 * get the course name
+	 *
 	 * @return the courseName
 	 */
 	public String getCourseName() {
@@ -62,6 +99,7 @@ public class Course {
 
 	/**
 	 * set the course name
+	 *
 	 * @param courseName the courseName to set
 	 */
 	public void setCourseName(String courseName) {
@@ -70,6 +108,7 @@ public class Course {
 
 	/**
 	 * get the Description of the course
+	 *
 	 * @return the description
 	 */
 	public String getDescription() {
@@ -78,6 +117,7 @@ public class Course {
 
 	/**
 	 * sets the description of the course
+	 *
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
@@ -86,6 +126,7 @@ public class Course {
 
 	/**
 	 * gets the fees of the course
+	 *
 	 * @return the fees
 	 */
 	public int getFees() {
@@ -94,6 +135,7 @@ public class Course {
 
 	/**
 	 * sets the fees of the course
+	 *
 	 * @param l the fees to set
 	 */
 	public void setFees(int l) {
