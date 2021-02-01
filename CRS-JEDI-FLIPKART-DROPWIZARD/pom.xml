@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.flipkart</groupId>
-  <artifactId>crs-jedi-flipkart-dropwizard</artifactId>
+  <artifactId>CRS-JEDI-FLIPKART-DROPWIZARD</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>crs-jedi-flipkart-dropwizard</name>
+  <name>CRS-JEDI-FLIPKART-DROPWIZARD</name>
   <url>http://maven.apache.org</url>
   <properties>
     <dropwizard.version>1.0.0</dropwizard.version>
@@ -28,6 +28,11 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.12</version>
     </dependency>
+<!--    <dependency>-->
+<!--      <groupId>log4j</groupId>-->
+<!--      <artifactId>log4j</artifactId>-->
+<!--      <version>1.7.21</version>-->
+<!--    </dependency>-->
   </dependencies>
   <build>
     <finalName>CRS-Jedi-Flipkart-Dropwizard-${project.version}</finalName>

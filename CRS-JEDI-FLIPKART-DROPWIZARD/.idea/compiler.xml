@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="crs-jedi-flipkart-dropwizard" />
+        <module name="CRS-JEDI-FLIPKART-DROPWIZARD" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="crs-jedi-flipkart-dropwizard" target="1.8" />
+      <module name="CRS-JEDI-FLIPKART-DROPWIZARD" target="1.8" />
       <module name="crs-jedi-flipkart-dropwizard (1)" target="1.8" />
       <module name="crs-jedi-flipkart-dropwizard (2)" target="1.5" />
     </bytecodeTargetLevel>
