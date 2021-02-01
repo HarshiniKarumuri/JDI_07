@@ -81,12 +81,6 @@ public class AdminOperations implements AdminInterface {
 		int professorId = adminDAOOperations.addProfessor(professor, password);
 		if(professorId != -1) {
 			logger.info("Your professor Id is" + professorId);
-			NotificationOperations notificationOperations = NotificationOperations.getInstance();
-			Notification notification = new Notification();
-			notification.setDescription("You are Succesfully registered in system");
-			notification.setUserId(professor.getProfessorId());
-			notificationOperations.sendNotification(notification);
-			notificationOperations.getNotification(professor.getProfessorId());
 		}
 		else {
 			logger.info("Professor registration failed");
@@ -113,12 +107,6 @@ public class AdminOperations implements AdminInterface {
 		int adminId = adminDAOOperations.addAdmin(admin, password);
 		if(adminId != -1) {
 			logger.info("Your Admin Id is" + adminId);
-			NotificationOperations notificationOperations = NotificationOperations.getInstance();
-			Notification notification = new Notification();
-			notification.setDescription("You are Succesfully registered in system");
-			notification.setUserId(admin.getAdminId());
-			notificationOperations.sendNotification(notification);
-			notificationOperations.getNotification(admin.getAdminId());
 		}
 		else {
 			logger.info("Admin registration failed");
@@ -179,6 +167,12 @@ public class AdminOperations implements AdminInterface {
 		notification.setTimestamp(new Timestamp(System.currentTimeMillis()));
 		notification.setDescription(studentId + " profile is approved so kindly verify it.");
 		notificationDAOOperation.sendNotification(notification);
+
+		ArrayList<Notification> notifications = notificationDAOOperation.getNotification(studentId);
+		logger.info("Timestamp   UserId   Description  NotificationId");
+		for(Notification notifs : notifications) {
+			logger.info(notifs.getTimestamp() + " " + notifs.getUserId() + " " + notifs.getDescription() + " " + notification.getNotificationId());
+		}
 		return studentid;
 	}
 
