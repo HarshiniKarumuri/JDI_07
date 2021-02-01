@@ -161,7 +161,7 @@ public class AdminOperations implements AdminInterface {
 
 	@Override
 	public int approveStudent(int studentId) {
-		int studentid=adminDAOOperations.approveStudent(studentId);
+		int studentid = adminDAOOperations.approveStudent(studentId);
 		Notification notification = new Notification();
 		notification.setUserId(studentId);
 		notification.setTimestamp(new Timestamp(System.currentTimeMillis()));
@@ -171,8 +171,9 @@ public class AdminOperations implements AdminInterface {
 		ArrayList<Notification> notifications = notificationDAOOperation.getNotification(studentId);
 		logger.info("Timestamp   UserId   Description  NotificationId");
 		for(Notification notifs : notifications) {
-			logger.info(notifs.getTimestamp() + " " + notifs.getUserId() + " " + notifs.getDescription() + " " + notification.getNotificationId());
+			logger.info(notifs.getTimestamp() + " " + notifs.getUserId() + " " + notifs.getDescription() + " " + notifs.getNotificationId());
 		}
+
 		return studentid;
 	}
 
