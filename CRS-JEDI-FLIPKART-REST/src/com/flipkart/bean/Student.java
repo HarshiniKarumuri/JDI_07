@@ -1,13 +1,29 @@
 package com.flipkart.bean;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.flipkart.constants.ValidationConstants;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  * Student bean class
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Student extends User{
 
 	private int studentId;
+
+	@NotNull
+	@Pattern(message = ValidationConstants.ONLY_ALPHABETS_ALLOWED, regexp = "^[a-zA-Z ]+$")
 	private String branch;
+
+	@NotNull
+	@Pattern(regexp = "^true$|^false$", message = ValidationConstants.ONLY_BOOLEAN_ALLOWED)
 	private boolean hasScholarship;
+
+	@NotNull
+	@Pattern(regexp = "^true$|^false$", message = ValidationConstants.ONLY_BOOLEAN_ALLOWED)
 	private boolean isApproved;
 
 	/**

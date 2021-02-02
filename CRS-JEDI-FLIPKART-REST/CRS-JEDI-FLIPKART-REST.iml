@@ -9,72 +9,21 @@
         <webroots>
           <root url="file://$MODULE_DIR$/WebContent" relative="/" />
         </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/src" />
+        </sourceRoots>
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/out/production/CRS-JEDI-FLIPKART-REST" />
+    <output-test url="file://$MODULE_DIR$/out/test/CRS-JEDI-FLIPKART-REST" />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/WebContent" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/aopalliance-repackaged-2.5.0-b32.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/hk2-api-2.5.0-b32.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/hk2-locator-2.5.0-b32.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/hk2-utils-2.5.0-b32.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jackson-annotations-2.8.4.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jackson-core-2.8.4.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jackson-databind-2.8.4.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jackson-jaxrs-base-2.8.4.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jackson-jaxrs-json-provider-2.8.4.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jackson-module-jaxb-annotations-2.8.4.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/javassist-3.20.0-GA.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/javax.annotation-api-1.2.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/javax.inject-2.5.0-b32.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/javax.servlet-api-3.0.1.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/javax.ws.rs-api-2.0.1.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jaxb-api-2.2.7.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jersey-client.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jersey-common.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jersey-container-servlet-core.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jersey-container-servlet.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jersey-entity-filtering-2.25.1.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jersey-guava-2.25.1.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jersey-media-jaxb.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jersey-media-json-jackson-2.25.1.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/jersey-server.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/osgi-resource-locator-1.0.1.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/persistence-api-1.0.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/validation-api-1.1.0.Final.jar!/" />
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/org.osgi.core-4.2.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/WebContent/WEB-INF/lib/org.osgi.core-4.2.0.jar!/OSGI-OPT/src" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../log4j.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../mysql-connector-java-8.0.23.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

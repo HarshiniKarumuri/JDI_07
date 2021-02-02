@@ -8,6 +8,7 @@ import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
+import com.flipkart.exception.UserNotFoundException;
 
 /**
  * Admin business interface
@@ -21,11 +22,10 @@ public interface AdminInterface {
 
     /**
      * Register a professor user into CRS
+     *  @param professor represents a new professor to be added into DB
      *
-     * @param professor represents a new professor to be added into DB
-     * @param password  password for professor account
      */
-    int addProfessor(Professor professor, String password);
+    int addProfessor(Professor professor);
 
     /**
      * Assign a professor to a course offered
@@ -37,18 +37,17 @@ public interface AdminInterface {
 
     /**
      * Register a admin user in CRS
+     *  @param admin    admin object which is added into DB
      *
-     * @param admin    admin object which is added into DB
-     * @param password password for professor account
      */
-    int addAdmin(Admin admin, String password);
+    int addAdmin(Admin admin);
 
     /**
      * Delete an existing account of a user in CRS
      *
      * @param userId unique identifier of user to be deleted
      */
-    void deleteUser(int userId);
+    void deleteUser(int userId) throws UserNotFoundException;
 
     /**
      * To view the offered courses from courses catalog
@@ -104,7 +103,7 @@ public interface AdminInterface {
      *
      * @param studentId unique course identifier
      */
-    int approveStudent(int studentId);
+    void approveStudent(int studentId) throws UserNotFoundException;
 
 	/**
 	 * To view students with pending approval from admin
