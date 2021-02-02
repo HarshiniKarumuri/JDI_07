@@ -6,6 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="4e27dd83-8272-41bd-bd31-24fcc4a8b611" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/flipkart/bean/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flipkart/bean/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/flipkart/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flipkart/bean/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/CRS-Jedi-Flipkart-Dropwizard-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/CRS-Jedi-Flipkart-Dropwizard-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/flipkart/bean/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/flipkart/bean/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-CRS-Jedi-Flipkart-Dropwizard-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-CRS-Jedi-Flipkart-Dropwizard-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +105,7 @@
       <workItem from="1612199205383" duration="293000" />
       <workItem from="1612199763813" duration="202000" />
       <workItem from="1612199972668" duration="367000" />
-      <workItem from="1612239093147" duration="1266000" />
+      <workItem from="1612239093147" duration="5125000" />
     </task>
     <servers />
   </component>
