@@ -2,6 +2,7 @@ package com.flipkart.client;
 
 import java.util.Scanner;
 
+import com.flipkart.exception.AdminClientException;
 import com.flipkart.service.NotificationOperations;
 import org.apache.log4j.Logger;
 
@@ -9,7 +10,6 @@ import com.flipkart.bean.Admin;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.constants.UIConstants;
-import com.flipkart.exception.AdminClientException;
 import com.flipkart.service.AdminOperations;
 
 /**

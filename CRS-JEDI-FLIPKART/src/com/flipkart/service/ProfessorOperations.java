@@ -6,8 +6,12 @@ import com.flipkart.constants.UIConstants;
 import com.flipkart.dao.ProfessorDAOInterface;
 import com.flipkart.dao.ProfessorDAOOperations;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import com.flipkart.utils.PrintTabularInterface;
+import com.flipkart.utils.StringFormatUtil;
 import org.apache.log4j.Logger;
 
 /**
@@ -34,37 +38,39 @@ public class ProfessorOperations implements ProfessorInterface {
         return instance;
     }
 
+    private List<String> getAsList(Course course) {
+        return new ArrayList<>(Arrays.asList(Integer.toString(course.getCourseId()), course.getCourseName(), course.getDescription()));
+    }
+
     @Override
     public void viewAssignedCourses(int professorId) {
-        logger.info("-------------- Assigned Courses --------------\n");
-        logger.info(String.format("%-15s%-15s%-15s", "Course Id", "Course Name", "Course Description"));
-        List<Course> coursesList = professorDao.getAssignedCourses(professorId);
-        if (coursesList.size() == 0) {
+        List<Course> courses = professorDao.getAssignedCourses(professorId);
+        if (courses.size() == 0) {
             logger.info(UIConstants.NO_COURSE_ASSIGNED_MESSAGE);
         } else {
-            coursesList.forEach(course ->
-                    logger.info(String.format("%-10s%-10s%-10s", course.getCourseId(), course.getCourseName(), course.getDescription()))
-            );
+            List<String> columnNames = Arrays.asList("Course ID", "Course Name", "Course Description");
+            PrintTabularInterface fn = param -> getAsList((Course) param);
+            StringFormatUtil.printTabular(logger, columnNames, courses, fn);
         }
-        logger.info("\n--------------------------------------------------\n");
+    }
+
+    private List<String> getAsListStudent(Student student) {
+        return new ArrayList<>(Arrays.asList(Integer.toString(student.getStudentId()), student.getUsername(), student.getBranch()));
     }
 
     @Override
     public void viewStudentsRegisteredInCourse(int professorId, int courseId) {
         if (professorDao.checkCanGradeCourse(professorId, courseId)) {
 
-            logger.info("-------------- Registered Students in Course --------------\n");
             logger.info(String.format("Course ID : %s\n", courseId));
-            logger.info(String.format("%-15s%-15s%-15s", "Student Id", "Student Name", "Course"));
             List<Student> studentsList = professorDao.getRegisteredStudentsInCourse(professorId, courseId);
             if (studentsList.size() == 0) {
                 logger.info(UIConstants.NO_STUDENT_REGISTERED_MESSAGE);
             } else {
-                studentsList.forEach(student ->
-                        logger.info(String.format("%-10s%-10s%-10s", student.getStudentId(), student.getUsername(), student.getBranch()))
-                );
+                List<String> columnNames = Arrays.asList("Student ID", "Student Name", "Course");
+                PrintTabularInterface fn = param -> getAsListStudent((Student) param);
+                StringFormatUtil.printTabular(logger, columnNames, studentsList, fn);
             }
-            logger.info("\n-----------------------------------------------------\n");
 
         } else {
             logger.info(UIConstants.COURSE_NOT_TAUGHT_MESSAGE);

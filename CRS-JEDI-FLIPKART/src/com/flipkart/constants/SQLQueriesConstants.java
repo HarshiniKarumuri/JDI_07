@@ -13,6 +13,7 @@ public class SQLQueriesConstants {
 	public static String VIEW_CATALOG_QUERY = "SELECT * FROM CoursesCatalog WHERE course_id = ?";
 	
 	//Student Query
+	public static String CHECK_EMAIL_EXIST_QUERY = "select count(*) from User where email = ?";
 	public static  String MAKE_PAYMENT_QUERY = "insert into Payment(student_id, fees_paid, payment_mode) values(?, ?, ?);";
     public static  String UPDATE_AFTER_PAYMENT = "";
     public static  String ADD_COURSE_STUDENT_QUERY = "insert into RegisteredCourse(student_id, course_id) values(?,?)";

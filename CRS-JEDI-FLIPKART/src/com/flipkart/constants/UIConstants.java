@@ -32,7 +32,7 @@ public class UIConstants {
     public static final String ADD_COURSE_NAME_MESSAGE = "Enter Course Name\n";
     public static final String ENTER_COURSE_CAPACITY = "Enter Maximum number of Student who can take up this course\n";
     public static final String ENTER_VALID_CREDENTIALS_MESSAGE = "Please enter vaid credentials";
-    
+    public static final String SUCCESS_USER_ID_MESSAGE = "Your User ID is ";
     public static final String WRONG_INPUT_MESSAGE = "Please enter value in correct format\n";
     public static final String SELECT_PAY_MODE_MESSAGE = "Select a payment mode";
     public static final String COURSE_UNAVAILABLE_MESSAGE = "This course is no longer available";
