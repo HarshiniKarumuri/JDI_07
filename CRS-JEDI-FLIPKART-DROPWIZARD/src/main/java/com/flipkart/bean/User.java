@@ -9,7 +9,10 @@ import javax.validation.constraints.Pattern;
 /**
  * User bean class
  */
+<<<<<<< HEAD:CRS-JEDI-FLIPKART-DROPWIZARD/src/main/java/com/flipkart/bean/User.java
 
+=======
+>>>>>>> 0c649c6c9c7d5d757bbcc6c2f9acb13b19c7f3fb:crs-jedi-flipkart-dropwizard/src/main/java/com/flipkart/bean/User.java
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
 

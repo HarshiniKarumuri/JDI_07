@@ -47,11 +47,11 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 			
 			while(rs.next()) {
 				Student student = new Student();
-				student.setStudentId(rs.getInt(1));
+				student.setUserId(rs.getInt(1));
 				student.setUsername(rs.getString("name"));
 				student.setBranch(rs.getString("branch"));
+				student.setIsApproved(rs.getBoolean("is_approved"));
 				students.add(student);
-		
 			}
 		} catch (SQLException se){
 			logger.error(se.getMessage());

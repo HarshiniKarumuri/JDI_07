@@ -1,10 +1,13 @@
 package com.flipkart.bean;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.sql.Timestamp;
 
 /**
  * @author harshini
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Payment {
 
     private int paymentId;

@@ -13,8 +13,14 @@ import com.flipkart.dao.NotificationDAOOperation;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import com.flipkart.exception.AlreadyRegisteredUserException;
+import com.flipkart.exception.RegistrationFailedException;
+import com.flipkart.exception.UserNotFoundException;
+import com.flipkart.utils.PrintTabularInterface;
+import com.flipkart.utils.StringFormatUtil;
 import org.apache.log4j.Logger;
 
 /**
@@ -45,91 +51,117 @@ public class AdminOperations implements AdminInterface {
         }
         return instance;
     }
-	
+
+	private List<String> getAsListUser(User user) {
+		return new ArrayList<>(Arrays.asList(user.getEmail(), Integer.toString(user.getUserId())));
+	}
+
 	@Override
 	public ArrayList<User> viewUser() {
-		logger.info("In viewUser");
-		
 		ArrayList<User> users = adminDAOOperations.viewUser();
-		
+		ArrayList<User> filterUser = new ArrayList<>();
+
+		logger.info(UIConstants.DASHED_LINE);
 		logger.info("Admin");
-		for(User user:users) {
-			if(user.getRole().equals("Admin")) {
-				logger.info(String.format("UserEmail = %s, UserId = %d", user.getEmail(),user.getUserId()));
+		logger.info(UIConstants.DASHED_LINE);
+		for (User user : users) {
+			if (user.getRole().equals("Admin")) {
+				filterUser.add(user);
 			}
+			List<String> columnNames = Arrays.asList("User Email", "User ID");
+			PrintTabularInterface fn = param -> getAsListUser((User) param);
+			StringFormatUtil.printTabular(logger, columnNames, filterUser, fn);
 		}
-		
+
+		logger.info(UIConstants.DASHED_LINE);
 		logger.info("Student");
-		for(User user:users) {
-			if(user.getRole().equals("Student")) {
-				logger.info(String.format("UserEmail = %s, UserId = %d", user.getEmail(),user.getUserId()));
+		logger.info(UIConstants.DASHED_LINE);
+		filterUser.clear();
+		for (User user : users) {
+			if (user.getRole().equals("Student")) {
+				filterUser.add(user);
 			}
+			List<String> columnNames = Arrays.asList("User Email", "User ID");
+			PrintTabularInterface fn = param -> getAsListUser((User) param);
+			StringFormatUtil.printTabular(logger, columnNames, filterUser, fn);
 		}
-		
+
+		logger.info(UIConstants.DASHED_LINE);
 		logger.info("Professor");
-		for(User user:users) {
-			if(user.getRole().equals("Professor")) {
-				logger.info(String.format("UserEmail = %s, UserId = %d", user.getEmail(),user.getUserId()));
+		logger.info(UIConstants.DASHED_LINE);
+		filterUser.clear();
+		for (User user : users) {
+			if (user.getRole().equals("Professor")) {
+				filterUser.add(user);
 			}
+			List<String> columnNames = Arrays.asList("User Email", "User ID");
+			PrintTabularInterface fn = param -> getAsListUser((User) param);
+			StringFormatUtil.printTabular(logger, columnNames, filterUser, fn);
 		}
+
 		return users;
 	}
 	
 	@Override
-	public int addProfessor(Professor professor,String password) {
-//		logger.info("In add Professor");
-		int professorId = adminDAOOperations.addProfessor(professor, password);
-		if(professorId != -1) {
-			logger.info("Your professor Id is" + professorId);
+	public int addProfessor(Professor professor) {
+		int userId = -1;
+
+		try {
+			userId = adminDAOOperations.addProfessor(professor);
+			logger.info(UIConstants.SUCCESS_USER_ID_MESSAGE + userId + "\n");
+		} catch (AlreadyRegisteredUserException | RegistrationFailedException e) {
+			logger.error(e.getMessage());
 		}
-		else {
-			logger.info("Professor registration failed");
-		}
-		return professorId;
+
+		return userId;
 	}
 	
 	@Override
 	public void assignProfessorToCourse(int professorId, int courseId) {
-//		logger.info("In assign Professor");
 		adminDAOOperations.assignProfessorToCourse(professorId, courseId);
 	}
 
 
     @Override
-    public void deleteUser(int userId) {
-//        logger.info("In delete User");
-        adminDAOOperations.deleteUser(userId);
+    public void deleteUser(int userId) throws UserNotFoundException {
+		try {
+			adminDAOOperations.deleteUser(userId);
+		} catch (UserNotFoundException e) {
+			logger.info(e.getMessage());
+			throw e;
+		}
     }
 
 	@Override
-	public int addAdmin(Admin admin, String password) {
-		logger.info("In add admin");
-		int adminId = adminDAOOperations.addAdmin(admin, password);
-		if(adminId != -1) {
-			logger.info("Your Admin Id is" + adminId);
+	public int addAdmin(Admin admin) {
+		int userId = -1;
+
+		try {
+			userId = adminDAOOperations.addAdmin(admin);
+			logger.info(UIConstants.SUCCESS_USER_ID_MESSAGE + userId + "\n");
+		} catch (AlreadyRegisteredUserException | RegistrationFailedException e) {
+			logger.error(e.getMessage());
 		}
-		else {
-			logger.info("Admin registration failed");
-		}
-		return adminId;
+
+		return userId;
 	}
 
+	private List<String> getAsListCourse(Course course) {
+		return new ArrayList<>(Arrays.asList(course.getCourseName()));
+	}
 
     @Override
     public List<Course> viewCoursesOffered() {
-        List<Course> courses;
-        courses = catalogDAOOperations.viewCoursesCatalog();
+		List<Course> courses = catalogDAOOperations.viewCoursesCatalog();
+		List<String> columnNames = Arrays.asList("Course Names");
+		PrintTabularInterface fn = param -> getAsListCourse((Course) param);
+		StringFormatUtil.printTabular(logger, columnNames, courses, fn);
         return courses;
-		/*
-		 * logger.info(String.format("%-15s", "Course Names")); for (Course course :
-		 * courses) { logger.info(String.format("%-15s", course.getCourseName())); }
-		 */
     }
 
     @Override
     public int addCatalog(int catalogId, String catalogName) {
-        int catalogid=adminDAOOperations.addCatalog(catalogId, catalogName);
-        return catalogid;
+        return adminDAOOperations.addCatalog(catalogId, catalogName);
     }
 
     @Override
@@ -160,33 +192,34 @@ public class AdminOperations implements AdminInterface {
     }
 
 	@Override
-	public int approveStudent(int studentId) {
-		int studentid=adminDAOOperations.approveStudent(studentId);
-		Notification notification = new Notification();
-		notification.setUserId(studentId);
-		notification.setTimestamp(new Timestamp(System.currentTimeMillis()));
-		notification.setDescription(studentId + " profile is approved so kindly verify it.");
-		notificationDAOOperation.sendNotification(notification);
+	public void approveStudent(int studentId) throws UserNotFoundException {
+		try {
+			adminDAOOperations.approveStudent(studentId);
 
-		ArrayList<Notification> notifications = notificationDAOOperation.getNotification(studentId);
-		logger.info("Timestamp   UserId   Description  NotificationId");
-		for(Notification notifs : notifications) {
-			logger.info(notifs.getTimestamp() + " " + notifs.getUserId() + " " + notifs.getDescription() + " " + notification.getNotificationId());
+			Notification notification = new Notification();
+			notification.setUserId(studentId);
+			notification.setTimestamp(new Timestamp(System.currentTimeMillis()));
+			notification.setDescription(studentId + " profile is approved so kindly verify it.");
+			notificationDAOOperation.sendNotification(notification);
+
+		} catch (UserNotFoundException e) {
+			logger.info(e.getMessage());
+			throw e;
 		}
-		return studentid;
+	}
+
+	private List<String> getAsListStudent(Student student) {
+		return new ArrayList<>(Arrays.asList(Integer.toString(student.getStudentId()), student.getUsername()));
 	}
 
 	@Override
 	public List<Student> viewPendingApprovalStudent() {
-		ArrayList<Student> list = adminDAOOperations.viewPendingApprovalStudent();
-		return list;
-		/*
-		 * logger.info(UIConstants.DASHED_LINE);
-		 * logger.info(String.format("%-30s%-30s","StudentId", "StudentName"));
-		 * logger.info(UIConstants.DASHED_LINE); for(Student student:list) {
-		 * logger.info(String.format("%-30s%-30s", student.getStudentId(),
-		 * student.getUsername())); } logger.info("\n");
-		 */
+		ArrayList<Student> students = adminDAOOperations.viewPendingApprovalStudent();
+		List<String> columnNames = Arrays.asList("Student ID", "Student Name");
+		PrintTabularInterface fn = param -> getAsListStudent((Student) param);
+		StringFormatUtil.printTabular(logger, columnNames, students, fn);
+
+		return students;
 	}
 
 }

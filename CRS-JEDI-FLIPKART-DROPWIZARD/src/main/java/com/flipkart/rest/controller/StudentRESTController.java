@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -17,6 +18,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.crypto.URIReferenceException;
 
+import com.flipkart.bean.Student;
+import com.flipkart.constants.UIConstants;
+import com.flipkart.exception.*;
 import org.apache.log4j.Logger;
 
 import com.flipkart.bean.Course;
@@ -34,7 +38,11 @@ public class StudentRESTController {
     @Consumes("application/json")
     @Produces(MediaType.APPLICATION_JSON)
     public Response registerCourse(@PathParam("studentId") int studentId, @PathParam("courseId") int courseId) {
-        studentOperations.registerCourse(studentId, courseId);
+        try {
+            studentOperations.registerCourse(studentId, courseId);
+        } catch (CourseNotFoundException | CourseNotRegisteredException | CourseAlreadyRegisteredException | CourseNotAvailableException | MaximumCourseRegisteredException e) {
+            return Response.status(400).entity(e.getMessage()).build();
+        }
         return Response.status(201).entity(studentOperations.viewRegisteredCourses(studentId)).build();
     }
     
@@ -61,15 +69,23 @@ public class StudentRESTController {
     @GET
     @Path("view-registered-courses/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<Course> viewRegisteredCourses(@PathParam("studentId") int studentId) {
-        return studentOperations.viewRegisteredCourses(studentId);
+    public Response viewRegisteredCourses(@PathParam("studentId") int studentId) {
+        List<Course> courses = studentOperations.viewRegisteredCourses(studentId);
+        if(courses.size() == 0) {
+            return Response.status(200).entity(UIConstants.NO_COURSE_REGISTERED_MESSAGE).build();
+        }
+        return Response.status(200).entity(courses).build();
     }
 
     @GET
     @Path("view-grades/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<List> viewGrades(@PathParam("studentId") int studentId) {
-        return studentOperations.viewGrades(studentId);
+    public Response viewGrades(@PathParam("studentId") int studentId) {
+        List<List> grades = studentOperations.viewGrades(studentId);
+        if(grades.size() == 0) {
+            return Response.status(200).entity(UIConstants.NO_COURSE_REGISTERED_MESSAGE).build();
+        }
+        return Response.status(200).entity(grades).build();
     }
 
     @GET
@@ -83,13 +99,28 @@ public class StudentRESTController {
         }
     }
 
+    @POST
+    @Path("/add-student")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addStudent(@Valid Student student) {
+        StudentOperations studentOperations = StudentOperations.getInstance();
+        try {
+            int userId = studentOperations.addStudent(student);
+            return Response.status(201).entity(UIConstants.SUCCESS_USER_ID_MESSAGE + userId).build();
+        } catch (RegistrationFailedException | AlreadyRegisteredUserException e) {
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+    }
+
     @DELETE
     @Path("/drop-course/{studentId}/{courseId}")
     public Response dropCourse(@PathParam("studentId") int studentId, @PathParam("courseId") int courseId) {
-        if(studentOperations.dropCourse(studentId, courseId)) {
-            return Response.status(200).entity("The Course with CourseID: " + courseId + " for student: " + studentId + " has been successfully deleted.").build();
-        } else {
-            return Response.status(404).entity("The Course with CourseID: " + courseId + " for student: " + studentId + " does not exist.").build();
+        try {
+            studentOperations.dropCourse(studentId, courseId);
+        } catch (CourseNotFoundException | CourseNotRegisteredException e) {
+            return Response.status(400).entity(e.getMessage()).build();
         }
+        return Response.status(200).entity("The Course with CourseID: " + courseId + " for student: " + studentId + " has been successfully deleted.").build();
     }
 }

@@ -12,7 +12,6 @@ import org.apache.log4j.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,11 +50,11 @@ public class StudentDAOOperations implements StudentDAOInterface {
         }
         // check if course already registered
         else if (checkRegisteredCourses(studentId, courseId)) {
-            throw new CourseAlreadyRegisteredException("Course with id " + courseId);
+            throw new CourseAlreadyRegisteredException(courseId);
         }
         // check if course is offered
         else if (!catalogDAOOperations.checkCourseOffered(courseId)) {
-            throw new CourseNotFoundException("Course with id " + courseId);
+            throw new CourseNotFoundException(courseId);
         } else {
             try {
                 stmt = connection.prepareStatement(SQLQueriesConstants.ADD_COURSE_STUDENT_QUERY);
@@ -70,7 +69,7 @@ public class StudentDAOOperations implements StudentDAOInterface {
         }
 
         if (rows <= 0) {
-            throw new CourseNotRegisteredException("Course with id " + courseId);
+            throw new CourseNotRegisteredException(courseId);
         }
     }
 
@@ -116,7 +115,7 @@ public class StudentDAOOperations implements StudentDAOInterface {
         int rows = 0;
 
         if (!catalogDAOOperations.checkCourseOffered(courseId)) {
-            throw new CourseNotFoundException("Course with ID " + courseId);
+            throw new CourseNotFoundException(courseId);
         }
 
         try {
@@ -131,7 +130,7 @@ public class StudentDAOOperations implements StudentDAOInterface {
         }
 
         if (rows <= 0) {
-            throw new CourseNotRegisteredException("Course with ID " + courseId);
+            throw new CourseNotRegisteredException(courseId);
         }
     }
 
@@ -287,49 +286,70 @@ public class StudentDAOOperations implements StudentDAOInterface {
         return courses;
     }
 
-	@Override
-	public int addStudent(Student student, String password) {
+    private boolean checkIsRegisteredUser(String email) {
+        PreparedStatement stmtRequest;
+        ResultSet result;
+        try {
+            stmtRequest = connection.prepareStatement(SQLQueriesConstants.CHECK_EMAIL_EXIST_QUERY);
+            stmtRequest.setString(1, email);
+            result = stmtRequest.executeQuery();
+            if(result.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return false;
+    }
 
-		PreparedStatement statement = null;
-		int id = -1;
-		try {
-			statement = connection.prepareStatement(SQLQueriesConstants.ADD_USER_QUERY);
-			statement.setString(1, student.getEmail());
-			statement.setString(2, password);
-			statement.setString(3, student.getRole());
-			int rows = statement.executeUpdate();
-			logger.info(rows + " added in User");
-			
-			statement = connection.prepareStatement(SQLQueriesConstants.FETCH_USER_ID);
-			statement.setString(1, student.getEmail());
-			statement.setString(2, password);
-			ResultSet rs = statement.executeQuery();
-			rs.next();
-			student.setUserId(rs.getInt(1));
-			id = student.getUserId();
-			
-			statement = connection.prepareStatement(SQLQueriesConstants.ADD_STUDENT);
-			statement.setInt(1, student.getUserId());
-			statement.setString(2,student.getBranch());
-			statement.setBoolean(3, student.getHasScholarship());
-			statement.setBoolean(4, student.getIsApproved());
-			statement.setString(5,student.getUsername());
-			statement.setString(6,student.getGender());
-			statement.setString(7, student.getAddress());
-			rows = statement.executeUpdate();
-			logger.info(rows + " added in student");
-		}catch(SQLException se) {
-			logger.error(se.getMessage());
-		}catch(Exception e) {
-			logger.error(e.getMessage());
-		}
-		
-		return id;
+	@Override
+	public int addStudent(Student student) throws RegistrationFailedException, AlreadyRegisteredUserException {
+
+        PreparedStatement statement;
+        ResultSet result;
+
+        if(checkIsRegisteredUser(student.getEmail())) {
+            throw new AlreadyRegisteredUserException(student.getEmail());
+        }
+
+        try {
+            statement = connection.prepareStatement(SQLQueriesConstants.ADD_USER_QUERY);
+            statement.setString(1, student.getEmail());
+            statement.setString(2, student.getPassword());
+            statement.setString(3, student.getRole());
+            int rows = statement.executeUpdate();
+            if(rows <= 0) {
+                throw new RegistrationFailedException(student.getEmail());
+            }
+
+            statement = connection.prepareStatement(SQLQueriesConstants.FETCH_USER_ID);
+            statement.setString(1, student.getEmail());
+            result = statement.executeQuery();
+            result.next();
+            student.setUserId(result.getInt(1));
+
+            statement = connection.prepareStatement(SQLQueriesConstants.ADD_STUDENT);
+            statement.setInt(1, student.getUserId());
+            statement.setString(2,student.getBranch());
+            statement.setBoolean(3, student.getHasScholarship());
+            statement.setBoolean(4, student.getIsApproved());
+            statement.setString(5,student.getUsername());
+            statement.setString(6,student.getGender());
+            statement.setString(7, student.getAddress());
+            rows = statement.executeUpdate();
+
+        } catch (RegistrationFailedException e) {
+            throw e;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        return student.getUserId();
 	}
 
 	@Override
 	public boolean isStudentProfileApproved(int studentId) {
-		PreparedStatement statement = null;
+		PreparedStatement statement;
 		boolean isApproved = false;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.IS_STUDENT_APPROVED);
@@ -337,11 +357,9 @@ public class StudentDAOOperations implements StudentDAOInterface {
 			ResultSet rs = statement.executeQuery();
 			rs.next();
 			isApproved = rs.getBoolean(1);
-		}catch(SQLException se) {
+		} catch(Exception se) {
 			logger.error(se.getMessage());
-		}catch(Exception e) {
-			logger.error(e.getMessage());
 		}
-		return isApproved;
+        return isApproved;
 	}
 }

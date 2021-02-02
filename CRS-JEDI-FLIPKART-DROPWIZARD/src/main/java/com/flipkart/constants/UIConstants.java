@@ -32,6 +32,7 @@ public class UIConstants {
     public static final String ADD_COURSE_NAME_MESSAGE = "Enter Course Name\n";
     public static final String ENTER_COURSE_CAPACITY = "Enter Maximum number of Student who can take up this course\n";
     public static final String ENTER_VALID_CREDENTIALS_MESSAGE = "Please enter vaid credentials";
+<<<<<<< HEAD
     
     public static final String WRONG_INPUT_MESSAGE = "Please enter value in correct format\n";
     public static final String SELECT_PAY_MODE_MESSAGE = "Select a payment mode";
@@ -40,6 +41,12 @@ public class UIConstants {
     public static final String COURSE_ALREADY_REGISTERED_MESSAGE = "The course corresponding to provided course ID is already registered by you";
     public static final String SUCCESS_COURSE_REGISTER_MESSAGE = "The course is registered successfully";
     public static final String FAILURE_COURSE_REGISTER_MESSAGE = "The course is not registered with the user";
+=======
+    public static final String SUCCESS_USER_ID_MESSAGE = "Your User ID is ";
+    public static final String WRONG_INPUT_MESSAGE = "Please enter value in correct format\n";
+    public static final String SELECT_PAY_MODE_MESSAGE = "Select a payment mode";
+    public static final String SUCCESS_COURSE_REGISTER_MESSAGE = "The course is registered successfully";
+>>>>>>> 0c649c6c9c7d5d757bbcc6c2f9acb13b19c7f3fb
     public static final String PAYABLE_FEE_MESSAGE = "Total payable fees for the registered courses is: ";
     public static final String[] PAYMENT_MODE = {"Cash", "Credit/ Debit Card", "Net Banking"};
     public static final String MAX_LIMIT_REACHED_MESSAGE = "You cannot add courses as you have already selected 4 courses";

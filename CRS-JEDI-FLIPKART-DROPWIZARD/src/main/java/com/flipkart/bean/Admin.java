@@ -1,11 +1,13 @@
 package com.flipkart.bean;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * Admin bean class
  */
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Admin extends User {
 
 	private int adminId;

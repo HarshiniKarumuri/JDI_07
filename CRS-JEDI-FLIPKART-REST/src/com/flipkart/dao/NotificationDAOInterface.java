@@ -10,14 +10,14 @@ public interface NotificationDAOInterface {
 	 * sends the notification
 	 * @param notification the notification to be sent
 	 */
-	public void sendNotification(Notification notification);
+	void sendNotification(Notification notification);
 	
 	/**
 	 * Fetches the list of notification of particular user
 	 * 
-	 * @param studentId unique identifier for student
+	 * @param userId unique identifier for student
 	 * @return list of notification
 	 */
-	public ArrayList<Notification> getNotification(int userId);
+	ArrayList<Notification> getNotification(int userId);
 	
 }

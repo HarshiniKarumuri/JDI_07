@@ -23,6 +23,7 @@ import com.flipkart.bean.Notification;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
+import com.flipkart.exception.UserNotFoundException;
 import com.flipkart.service.AdminOperations;
 import com.flipkart.service.CourseCatalogOperations;
 import com.flipkart.service.NotificationOperations;
@@ -54,14 +55,11 @@ public class AdminRESTController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addProfessor(@Valid Professor professor) throws ValidationException {
 		professor.setRole("Professor");
-		int professorId = adminOperations.addProfessor(professor, professor.getPassword());
-		String result;
+		int professorId = adminOperations.addProfessor(professor);
 		if (professorId != -1) {
-			result = "Your User Id is " + professorId;
-		} else {
-			result = "Registration Failed";
+			return Response.status(201).entity("Your User ID is " + professorId).build();
 		}
-		return Response.status(201).entity(result).build();
+		return Response.status(400).entity("Registration failed").build();
 	}
 
 	@POST
@@ -77,9 +75,13 @@ public class AdminRESTController {
 	@DELETE
 	@Path("/delete-user/{userId}")
 	public Response deleteUser(@PathParam("userId") int userId) {
-		adminOperations.deleteUser(userId);
-		String result = "User " + userId + " deleted Succesfully.";
-		return Response.status(201).entity(result).build();
+		try {
+			adminOperations.deleteUser(userId);
+		} catch (UserNotFoundException e) {
+			return Response.status(400).entity(e.getMessage()).build();
+		}
+		String result = "User " + userId + " deleted Successfully.";
+		return Response.status(200).entity(result).build();
 	}
 
 	@POST
@@ -88,23 +90,18 @@ public class AdminRESTController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addAdmin(@Valid Admin admin) throws ValidationException {
 		admin.setRole("Admin");
-		int adminId = adminOperations.addAdmin(admin, admin.getPassword());
-		String result;
+		int adminId = adminOperations.addAdmin(admin);
 		if (adminId != -1) {
-			result = "Your User Id is " + adminId;
-		} else {
-			result = "Registration Failed";
+			return Response.status(201).entity("Your User ID is " + adminId).build();
 		}
-		return Response.status(201).entity(result).build();
+		return Response.status(400).entity("Registration failed").build();
 	}
 
 	@GET
 	@Path("/courses")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Course> viewCoursesOffered() {
-		List<Course> courses;
-		courses = coursecatalogOperations.viewCoursesOffered();
-		return courses;
+		return coursecatalogOperations.viewCoursesOffered();
 	}
 
 	@POST
@@ -172,21 +169,12 @@ public class AdminRESTController {
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response approveStudent(@PathParam("studentId") int studentId) {
-		int studentid=adminOperations.approveStudent(studentId);
-		String result;
-		if (studentid != -1) {
-			result = "Student  " + studentid + " approved successfully";
-		} else {
-			result = "Approval Failed";
+		try {
+			adminOperations.approveStudent(studentId);
+		} catch (UserNotFoundException e) {
+			return Response.status(400).entity(e.getMessage()).build();
 		}
-		
-		Notification notification = new Notification();
-		notification.setUserId(studentId);
-		notification.setTimestamp(new Timestamp(System.currentTimeMillis()));
-		notification.setDescription(studentId + " profile is approved so kindly verify it.");
-		notificationOperations.sendNotification(notification);
-		
-		return Response.status(201).entity(result).build();
+		return Response.status(201).entity("Student  " + studentId + " approved successfully").build();
 	}
 
 }

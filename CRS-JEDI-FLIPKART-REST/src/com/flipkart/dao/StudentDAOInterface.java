@@ -66,10 +66,9 @@ public interface StudentDAOInterface {
     /**
      * 
      * @param student
-     * @param password
      * @return the userid of the student
      */
-    int addStudent(Student student,String password);
+    int addStudent(Student student) throws RegistrationFailedException, AlreadyRegisteredUserException;
     /**
      * @param studentId
      * @return the status of the approval of the student profile

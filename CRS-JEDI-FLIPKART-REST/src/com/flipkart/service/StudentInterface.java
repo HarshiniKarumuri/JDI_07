@@ -3,10 +3,11 @@ package com.flipkart.service;
 import java.util.ArrayList;
 import java.util.List;
 
-//import com.flipkart.bean.Student;
+//import com.Student;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Payment;
 import com.flipkart.bean.Student;
+import com.flipkart.exception.*;
 
 /**
  * Student business interface
@@ -19,7 +20,7 @@ public interface StudentInterface {
      * @param studentId unique identifier for student
      * @param courseId  unique identifier for course
      */
-    void registerCourse(int studentId, int courseId);
+    void registerCourse(int studentId, int courseId) throws CourseNotFoundException, MaximumCourseRegisteredException, CourseNotAvailableException, CourseAlreadyRegisteredException, CourseNotRegisteredException;
 
     /**
      * Drop course
@@ -27,7 +28,7 @@ public interface StudentInterface {
      * @param studentId unique identifier for student
      * @param courseId  unique identifier for course
      */
-    boolean dropCourse(int studentId, int courseId);
+    void dropCourse(int studentId, int courseId) throws CourseNotFoundException, CourseNotRegisteredException;
 
     /**
      * view chosen courses
@@ -56,17 +57,16 @@ public interface StudentInterface {
      *
      * @param studentId     unique identifier for student
      * @param payModeChoice mode of payment
-     * @param fees          total fee to pay
      */
     Payment makePayment(int studentId, int payModeChoice);
 
     /**
      * Register a new Student
-     *
      * @param student  student object
-     * @param password student password
+     *
+     * @return
      */
-    void addStudent(Student student, String password);
+    int addStudent(Student student) throws RegistrationFailedException, AlreadyRegisteredUserException;
 
     /**
      * Approve student profile

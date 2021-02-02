@@ -3,9 +3,13 @@ package com.flipkart.service;
 import com.flipkart.bean.Course;
 import com.flipkart.dao.CatalogDAOOperations;
 
+import com.flipkart.utils.PrintTabularInterface;
+import com.flipkart.utils.StringFormatUtil;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Course Catalog business class
@@ -30,37 +34,38 @@ public class CourseCatalogOperations implements CourseCatalogInterface {
         return instance;
     }
 
-    @Override
-    public ArrayList<Course> viewCoursesCatalog() {
-//        logger.info("In fetch Catalog Details");
-        ArrayList<Course> list = new ArrayList<Course>();
-        list = catalogDAOOperations.viewCoursesCatalog();
-        logger.info("CourseID  CourseName");
-        for (Course course : list) {
-            logger.info(course.getCourseId() + " " + course.getCourseName());
-        }
-        return list;
+    private List<String> getAsListCourse(Course course) {
+        return new ArrayList<>(Arrays.asList(Integer.toString(course.getCourseId()), course.getCourseName()));
     }
 
     @Override
-    public void viewCourseDetails(int courseId) {
-        logger.info("In view Course Details");
-        Course course = new Course();
-        course = catalogDAOOperations.viewCourseDetails(courseId);
-        logger.info("CourseID  CourseName Description Fees Capacity");
-        logger.info(course.getCourseId() + " " + course.getCourseName() + " " + course.getDescription() + " " + course.getFees() + " " + course.getCapacity());
+    public ArrayList<Course> viewCoursesCatalog() {
+        ArrayList<Course> courses = catalogDAOOperations.viewCoursesCatalog();
+        List<String> columnNames = Arrays.asList("Course ID", "Course Name");
+        PrintTabularInterface fn = param -> getAsListCourse((Course) param);
+        StringFormatUtil.printTabular(logger, columnNames, courses, fn);
+        return courses;
+    }
 
+    private List<String> getAsListB(Course course) {
+        return new ArrayList<>(Arrays.asList(Integer.toString(course.getCourseId()), course.getCourseName(), course.getDescription(), Integer.toString(course.getFees()), Integer.toString(course.getCapacity())));
+    }
+
+    //TODO: add rest controller in student
+    @Override
+    public void viewCourseDetails(int courseId) {
+        Course courses = catalogDAOOperations.viewCourseDetails(courseId);
+        List<String> columnNames = Arrays.asList("Course ID", "Course Name", "Description", "Fees", "Capacity");
+        PrintTabularInterface fn = param -> getAsListB((Course) param);
+        StringFormatUtil.printTabular(logger, columnNames, new ArrayList<>(Arrays.asList(courses)), fn);
     }
 
     @Override
     public ArrayList<Course> viewCoursesOffered() {
-        logger.info("In view Courses Offered");
-        ArrayList<Course> list = new ArrayList<Course>();
-        list = catalogDAOOperations.viewCoursesOffered();
-        logger.info("CourseID  CourseName");
-        for (Course course : list) {
-            logger.info(course.getCourseId() + " " + course.getCourseName());
-        }
-        return list;
+        ArrayList<Course> courses = catalogDAOOperations.viewCoursesOffered();
+        List<String> columnNames = Arrays.asList("Course ID", "Course Name");
+        PrintTabularInterface fn = param -> getAsListCourse((Course) param);
+        StringFormatUtil.printTabular(logger, columnNames, courses, fn);
+        return courses;
     }
 }

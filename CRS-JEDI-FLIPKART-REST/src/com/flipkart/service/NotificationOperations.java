@@ -2,7 +2,11 @@ package com.flipkart.service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import com.flipkart.utils.PrintTabularInterface;
+import com.flipkart.utils.StringFormatUtil;
 import org.apache.log4j.Logger;
 
 import com.flipkart.bean.Notification;
@@ -35,14 +39,16 @@ public class NotificationOperations implements NotificationInterface{
 		notificationDAOOperation.sendNotification(notification);
 	}
 
+	private List<String> getAsList(Notification notification) {
+		return new ArrayList<>(Arrays.asList(notification.getTimestamp().toString(), Integer.toString(notification.getUserId()), notification.getDescription(), Integer.toString(notification.getNotificationId())));
+	}
+
 	@Override
 	public void getNotification(int userId) {
-		ArrayList<Notification> notifications = new ArrayList<Notification>();
-		notifications = notificationDAOOperation.getNotification(userId);
-		logger.info("Timestamp   UserId   Description  NotificationId");
-		for(Notification notification : notifications) {
-			logger.info(notification.getTimestamp() + " " + notification.getUserId() + " " + notification.getDescription() + " " + notification.getNotificationId());
-		}
+		ArrayList<Notification> notifications = notificationDAOOperation.getNotification(userId);
+		List<String> columnNames = Arrays.asList("Timestamp", "User ID", "Description", "Notification ID");
+		PrintTabularInterface fn = param -> getAsList((Notification) param);
+		StringFormatUtil.printTabular(logger, columnNames, notifications, fn);
 	}
 
 }

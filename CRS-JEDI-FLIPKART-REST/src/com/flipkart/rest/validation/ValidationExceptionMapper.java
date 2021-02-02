@@ -12,7 +12,7 @@ import javax.ws.rs.ext.Provider;
 public class ValidationExceptionMapper implements ExceptionMapper<ValidationException> {
 
     @Override
-    public Response toResponse(javax.validation.ValidationException e) {
+    public Response toResponse(ValidationException e) {
         final StringBuilder strBuilder = new StringBuilder();
         for (ConstraintViolation<?> cv : ((ConstraintViolationException) e).getConstraintViolations()) {
             strBuilder.append(cv.getPropertyPath().toString()).append(" ").append(cv.getMessage());

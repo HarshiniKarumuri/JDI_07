@@ -36,7 +36,7 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
         return instance;
     }
 	
-	public List<Student> getRegisteredStudentsInCourse(int userid, int courseId) {
+	public List<Student> getRegisteredStudentsInCourse(int userId, int courseId) {
 
 		List<Student> students = new ArrayList<Student>();
 		PreparedStatement stmt = null;
@@ -47,11 +47,11 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 			
 			while(rs.next()) {
 				Student student = new Student();
-				student.setStudentId(rs.getInt(1));
+				student.setUserId(rs.getInt(1));
 				student.setUsername(rs.getString("name"));
 				student.setBranch(rs.getString("branch"));
+				student.setIsApproved(rs.getBoolean("is_approved"));
 				students.add(student);
-		
 			}
 		} catch (SQLException se){
 			logger.error(se.getMessage());
@@ -61,12 +61,12 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 		
 	}
 
-	public List<Course> getAssignedCourses (int userid){
+	public List<Course> getAssignedCourses (int userId){
 		List<Course> courses=new ArrayList<Course>();
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(SQLQueriesConstants.GET_ASSIGNED_COURSES);
-			stmt.setInt(1, userid);
+			stmt.setInt(1, userId);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				Course course=new Course();
@@ -99,12 +99,12 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 	}
 
 	@Override
-	public boolean checkCanGradeCourse(int userid, int courseId) {
+	public boolean checkCanGradeCourse(int userId, int courseId) {
 		
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(SQLQueriesConstants.VALID_COURSE_FOR_PROFESSOR);
-			stmt.setInt(1, userid);
+			stmt.setInt(1, userId);
 			stmt.setInt(2, courseId);
 			ResultSet rs = stmt.executeQuery();
 
@@ -136,16 +136,16 @@ public class ProfessorDAOOperations implements ProfessorDAOInterface {
 		
 	}
 	@Override
-	public Professor getProfessorDetails(int userid) {
+	public Professor getProfessorDetails(int userId) {
 
 		PreparedStatement stmt=null;
 		Professor professor = new Professor();
 		try {
 			stmt=connection.prepareStatement(SQLQueriesConstants.PROFESSOR_DETAILS_QUERY);
-			stmt.setInt(1, userid);
+			stmt.setInt(1, userId);
 			ResultSet rs=stmt.executeQuery();
 			rs.next();
-				professor.setProfessorId(userid);
+				professor.setProfessorId(userId);
 				professor.setDepartment(rs.getString(1));
 				professor.setUsername(rs.getString(2));
 				professor.setGender(rs.getString(3));

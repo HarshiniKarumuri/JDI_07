@@ -7,6 +7,9 @@ import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
+import com.flipkart.exception.AlreadyRegisteredUserException;
+import com.flipkart.exception.RegistrationFailedException;
+import com.flipkart.exception.UserNotFoundException;
 
 public interface AdminDAOInterface {
 
@@ -19,10 +22,9 @@ public interface AdminDAOInterface {
 	 * Register a professor user into CRS
 	 *
 	 * @param professor represents a new professor to be added into DB
-	 * @param password password for professor account
 	 * @return returns professor Id
 	 */
-	int addProfessor(Professor professor, String password);
+	int addProfessor(Professor professor) throws RegistrationFailedException, AlreadyRegisteredUserException;
 
 	/**
 	 * Assign a professor to a course offered
@@ -36,17 +38,17 @@ public interface AdminDAOInterface {
 	 * Delete an existing account of a user in CRS
 	 *
 	 * @param userId unique identifier of user to be deleted
+	 * @return
 	 */
-	void deleteUser(int userId);
+	void deleteUser(int userId) throws UserNotFoundException;
 
 	/**
 	 * Register an admin user in CRS
 	 *
 	 * @param admin admin object which is added into DB
-	 * @param password password for professor account
 	 * @return returns the admin Id
 	 */
-	int addAdmin(Admin admin, String password);
+	int addAdmin(Admin admin) throws AlreadyRegisteredUserException, RegistrationFailedException;
 
 	/**
 	 * fetch details of admin
@@ -104,7 +106,7 @@ public interface AdminDAOInterface {
 	 * To approve a student for the registration
 	 * @param studentId unique student identifier
 	 */
-	int approveStudent(int studentId);
+	void approveStudent(int studentId) throws UserNotFoundException;
 	
 	ArrayList<Student> viewPendingApprovalStudent();
 }

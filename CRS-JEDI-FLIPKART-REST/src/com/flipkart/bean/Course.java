@@ -1,5 +1,6 @@
 package com.flipkart.bean;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.flipkart.constants.ValidationConstants;
 
 import javax.validation.constraints.NotNull;
@@ -9,6 +10,7 @@ import javax.validation.constraints.Size;
 /**
  * Course bean class
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Course {
 
 	@NotNull

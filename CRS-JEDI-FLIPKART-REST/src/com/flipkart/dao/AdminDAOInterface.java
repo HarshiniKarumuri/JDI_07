@@ -7,22 +7,24 @@ import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
+import com.flipkart.exception.AlreadyRegisteredUserException;
+import com.flipkart.exception.RegistrationFailedException;
+import com.flipkart.exception.UserNotFoundException;
 
 public interface AdminDAOInterface {
 
 	/**
 	 * To get the list of user registered in CRS
 	 */
-	public ArrayList<User> viewUser();
+	ArrayList<User> viewUser();
 
 	/**
 	 * Register a professor user into CRS
 	 *
 	 * @param professor represents a new professor to be added into DB
-	 * @param password password for professor account
 	 * @return returns professor Id
 	 */
-	public int addProfessor(Professor professor, String password);
+	int addProfessor(Professor professor) throws RegistrationFailedException, AlreadyRegisteredUserException;
 
 	/**
 	 * Assign a professor to a course offered
@@ -30,31 +32,31 @@ public interface AdminDAOInterface {
 	 * @param professorId unique identifier of professor
 	 * @param courseId unique identifier of course
 	 */
-	public void assignProfessorToCourse(int professorId, int courseId);
+	void assignProfessorToCourse(int professorId, int courseId);
 
 	/**
 	 * Delete an existing account of a user in CRS
 	 *
 	 * @param userId unique identifier of user to be deleted
+	 * @return
 	 */
-	public void deleteUser(int userId);
+	void deleteUser(int userId) throws UserNotFoundException;
 
 	/**
 	 * Register an admin user in CRS
 	 *
 	 * @param admin admin object which is added into DB
-	 * @param password password for professor account
 	 * @return returns the admin Id
 	 */
-	public int addAdmin(Admin admin, String password);
+	int addAdmin(Admin admin) throws AlreadyRegisteredUserException, RegistrationFailedException;
 
 	/**
 	 * fetch details of admin
 	 *
-	 * @param username unique identifier of the admin user
+	 * @param userId unique identifier of the admin user
 	 * @return admin object whose username matches the input
 	 */
-	public Admin getAdminDetails(int userId);
+	Admin getAdminDetails(int userId);
 	
 	/**
 	 * Adds a new catalog 
@@ -62,13 +64,13 @@ public interface AdminDAOInterface {
 	 * @param catlogId unique identifier of catalog
 	 * @param catalogName catalog name
 	 */
-	public int addCatalog(int catlogId,String catalogName);
+	int addCatalog(int catlogId, String catalogName);
 	
 	/**
 	 * 
 	 * @param catalogId unique catalog identifier
 	 */
-	public void removeCatalog(int catalogId);
+	void removeCatalog(int catalogId);
 	
 	/**
 	 * Adds a new course into catalog
@@ -76,35 +78,35 @@ public interface AdminDAOInterface {
 	 * @param course a new course to add into catalog
 	 * @param catalogId unique catalog identifier
 	 */
-	public int addCourseIntoCatalog(Course course,int catalogId);
+	int addCourseIntoCatalog(Course course, int catalogId);
 	
 	/**
 	 * Removes a course from catalog
 	 * 
 	 * @param courseId a unique course identifier
-	 * @param catalogId unique catalog identifier
 	 */
-	public void removeCourseFromCatalog(int courseId);
-	
+	void removeCourseFromCatalog(int courseId);
+
 	/**
 	 * Remove an offered course
 	 *
-	 * @param course course to add into offered Courses 
+	 * @param courseId course to add into offered Courses
+	 * @param catalogId unique catalog identifier
 	 */
-	public int addCourseToOffer(int courseId,int catalogId);
+	int addCourseToOffer(int courseId, int catalogId);
 
 	/**
 	 * Add course to offered courses from courses catalog
 	 *
 	 * @param courseId unique identifier of the course to be removed from offered courses 
 	 */
-	public void removeOfferedCourse(int courseId,int catalogId);
+	void removeOfferedCourse(int courseId, int catalogId);
 	
 	/**
 	 * To approve a student for the registration
 	 * @param studentId unique student identifier
 	 */
-	public int approveStudent(int studentId);
+	void approveStudent(int studentId) throws UserNotFoundException;
 	
-	public ArrayList<Student> viewPendingApprovalStudent();
+	ArrayList<Student> viewPendingApprovalStudent();
 }
