@@ -69,10 +69,8 @@ public class NotificationDAOOperation implements NotificationDAOInterface{
 			}
 			int rows = notifications.size();
 			logger.info(rows + " notification fetched");
-		}catch(SQLException se) {
+		} catch(Exception se) {
 			logger.error(se.getMessage());
-		}catch(Exception e) {
-			logger.error(e.getMessage());
 		}
 		return notifications;
 	}

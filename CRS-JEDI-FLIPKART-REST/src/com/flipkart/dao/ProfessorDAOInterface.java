@@ -14,19 +14,19 @@ public interface ProfessorDAOInterface {
 	/**
 	 * fetch students data enrolled in course of professor in CRS
 	 *
-	 * @param professorId unique identifier of the professor of course
+	 * @param userId unique identifier of the professor of course
 	 * @param courseId unique identifier of the course to get enrolled students
 	 * @return list of students enrolled in given course and professor
 	 */
-    List<Student> getRegisteredStudentsInCourse(int userid, int courseId);
+    List<Student> getRegisteredStudentsInCourse(int userId, int courseId);
 
 	/**
 	 * fetch courses data taught by professor in CRS
 	 *
-	 * @param professorId unique identifier of the professor
+	 * @param userId unique identifier of the professor
 	 * @return list of courses assigned to the professor to teach
 	 */
-	List<Course> getAssignedCourses(int userid);
+	List<Course> getAssignedCourses(int userId);
 
 	/**
 	 * update grade data of a student in a course
@@ -40,11 +40,11 @@ public interface ProfessorDAOInterface {
 	/**
 	 * Checks whether the professor is grading only the course he/she is teaching
 	 *
-	 * @param professorId unique identifier of the professor grading the course
+	 * @param userId unique identifier of the professor grading the course
 	 * @param courseID unique identifier of course for which professor is grading
 	 * @return true if professor is teaching that course else false
 	 */
-	boolean checkCanGradeCourse(int userid, int courseID);
+	boolean checkCanGradeCourse(int userId, int courseID);
 
 	/**
 	 * Checks whether the student is in the course so that professor can grade him/her
@@ -57,8 +57,8 @@ public interface ProfessorDAOInterface {
 
 	/**
 	 * 
-	 * @param username unique identifier of the user
+	 * @param userId unique identifier of the user
 	 * @return returns the professor object whose username matches the input
 	 */
-	Professor getProfessorDetails(int userid);
+	Professor getProfessorDetails(int userId);
 }

@@ -3,10 +3,12 @@ package com.flipkart.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.flipkart.exception.AlreadyRegisteredUserException;
+import com.flipkart.exception.RegistrationFailedException;
+import com.flipkart.exception.UserNotFoundException;
 import org.apache.log4j.Logger;
 
 import com.flipkart.bean.Admin;
@@ -15,7 +17,6 @@ import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
 import com.flipkart.constants.SQLQueriesConstants;
-import com.flipkart.service.AdminOperations;
 import com.flipkart.utils.DBUtils;
 
 public class AdminDAOOperations implements AdminDAOInterface{
@@ -42,7 +43,7 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	@Override
 	public ArrayList<User> viewUser() {
 
-		PreparedStatement statement = null;
+		PreparedStatement statement;
 		ArrayList<User> userList = new ArrayList<User>();
 		
 		try {
@@ -62,28 +63,48 @@ public class AdminDAOOperations implements AdminDAOInterface{
 		return userList;
 	}
 
-	
+	private boolean checkIsRegisteredUser(String email) {
+		PreparedStatement stmtRequest;
+		ResultSet result;
+		try {
+			stmtRequest = connection.prepareStatement(SQLQueriesConstants.CHECK_EMAIL_EXIST_QUERY);
+			stmtRequest.setString(1, email);
+			result = stmtRequest.executeQuery();
+			if(result.next()) {
+				return true;
+			}
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return false;
+	}
+
 	@Override
-	public int addProfessor(Professor professor,String password) {
-		
-		PreparedStatement statement = null;
-		int id = -1;
+	public int addProfessor(Professor professor) throws RegistrationFailedException, AlreadyRegisteredUserException {
+
+		PreparedStatement statement;
+		ResultSet result;
+
+		if(checkIsRegisteredUser(professor.getEmail())) {
+			throw new AlreadyRegisteredUserException(professor.getEmail());
+		}
+
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.ADD_USER_QUERY);
-			statement.setString(1,professor.getEmail());
-			statement.setString(2,password);
-			statement.setString(3,professor.getRole());
+			statement.setString(1, professor.getEmail());
+			statement.setString(2, professor.getPassword());
+			statement.setString(3, professor.getRole());
 			int rows = statement.executeUpdate();
-			logger.info(rows + " added in User");
-			
+			if (rows <= 0) {
+				throw new RegistrationFailedException(professor.getEmail());
+			}
+
 			statement = connection.prepareStatement(SQLQueriesConstants.FETCH_USER_ID);
 			statement.setString(1, professor.getEmail());
-			statement.setString(2, password);
-			ResultSet rs = statement.executeQuery();
-			rs.next();
-			professor.setUserId(rs.getInt(1));
-			id = professor.getUserId();
-			
+			result = statement.executeQuery();
+			result.next();
+			professor.setUserId(result.getInt(1));
+
 			statement = connection.prepareStatement(SQLQueriesConstants.ADD_PROFESSOR_QUERY);
 			statement.setInt(1, professor.getUserId());
 			statement.setString(2, professor.getDepartment());
@@ -91,14 +112,14 @@ public class AdminDAOOperations implements AdminDAOInterface{
 			statement.setString(4, professor.getGender());
 			statement.setString(5, professor.getAddress());
 			rows = statement.executeUpdate();
-			logger.info(rows + " added in Professor");
-		}catch(SQLException se) {
+
+		} catch (RegistrationFailedException e) {
+			throw e;
+		} catch(Exception se) {
 			logger.error(se.getMessage());
-		}catch(Exception e) {
-			logger.error(e.getMessage());
 		}
-		
-		return id;
+
+		return professor.getUserId();
 	}
 
 	@Override
@@ -120,56 +141,63 @@ public class AdminDAOOperations implements AdminDAOInterface{
 	}
 
 	@Override
-	public void deleteUser(int userId) {
+	public void deleteUser(int userId) throws UserNotFoundException {
 		PreparedStatement statement = null;
 		try {
 			int rows;
 			statement = connection.prepareStatement(SQLQueriesConstants.DELETE_USER_QUERY);
 			statement.setInt(1, userId);
 			rows = statement.executeUpdate();
-			logger.info(rows + " deleted form Users Table");
-		}catch(SQLException se) {
+			if(rows <= 0) {
+				throw new UserNotFoundException(userId, "delete");
+			}
+		} catch (UserNotFoundException e)  {
+			throw e;
+		} catch(Exception se) {
 			logger.error(se.getMessage());
-		}catch(Exception e) {
-			logger.error(e.getMessage());
 		}
 	}
 
 	@Override
-	public int addAdmin(Admin admin, String password) {
+	public int addAdmin(Admin admin) throws AlreadyRegisteredUserException, RegistrationFailedException {
 
-		PreparedStatement statement = null;
-		int id = -1;
+		PreparedStatement statement;
+		ResultSet result;
+
+		if(checkIsRegisteredUser(admin.getEmail())) {
+			throw new AlreadyRegisteredUserException(admin.getEmail());
+		}
+
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.ADD_USER_QUERY);
 			statement.setString(1, admin.getEmail());
-			statement.setString(2, password);
+			statement.setString(2, admin.getPassword());
 			statement.setString(3, admin.getRole());
 			int rows = statement.executeUpdate();
-			logger.info(rows + " added in User");
-			
+			if (rows <= 0) {
+				throw new RegistrationFailedException(admin.getEmail());
+			}
+
 			statement = connection.prepareStatement(SQLQueriesConstants.FETCH_USER_ID);
 			statement.setString(1, admin.getEmail());
-			statement.setString(2, password);
-			ResultSet rs = statement.executeQuery();
-			rs.next();
-			admin.setUserId(rs.getInt(1));
-			id = admin.getUserId();
-			
-			statement = connection.prepareStatement(SQLQueriesConstants.ADD_ADMIN_QUERY);
+			result = statement.executeQuery();
+			result.next();
+			admin.setUserId(result.getInt(1));
+
+			statement = connection.prepareStatement(SQLQueriesConstants.ADD_PROFESSOR_QUERY);
 			statement.setInt(1, admin.getUserId());
 			statement.setString(2, admin.getGender());
 			statement.setString(3, admin.getAddress());
 			statement.setString(4, admin.getUsername());
 			rows = statement.executeUpdate();
-			logger.info(rows + " added in Admin");
-		}catch(SQLException se) {
+
+		} catch (RegistrationFailedException e) {
+			throw e;
+		} catch(Exception se) {
 			logger.error(se.getMessage());
-		}catch(Exception e) {
-			logger.error(e.getMessage());
 		}
-		
-		return id;
+
+		return admin.getUserId();
 	}
 
 	@Override
@@ -310,21 +338,21 @@ public class AdminDAOOperations implements AdminDAOInterface{
 
 
 	@Override
-	public int approveStudent(int studentId) {
-		PreparedStatement statement = null;
-		int studentid=-1;
+	public void approveStudent(int studentId) throws UserNotFoundException {
+		PreparedStatement statement;
 		try {
 			statement = connection.prepareStatement(SQLQueriesConstants.APPROVE_STUDENT);
 			statement.setInt(1, studentId);
 			int rows = statement.executeUpdate();
-			logger.info(rows + " approved student");
-			studentid=studentId;
-		}catch(SQLException se) {
+			if(rows <= 0) {
+				throw new UserNotFoundException(studentId, "approval");
+			}
+			statement.close();
+		} catch (UserNotFoundException e) {
+			throw e;
+		} catch(Exception se) {
 			logger.error(se.getMessage());
-		}catch(Exception e) {
-			logger.error(e.getMessage());
 		}
-		return studentid;
 	}
 
 	@Override
