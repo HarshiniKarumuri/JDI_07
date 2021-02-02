@@ -48,8 +48,6 @@ public class AdminOperations implements AdminInterface {
 	
 	@Override
 	public void viewUser() {
-		logger.info("In viewUser");
-		
 		ArrayList<User> users = adminDAOOperations.viewUser();
 		
 		logger.info("Admin");

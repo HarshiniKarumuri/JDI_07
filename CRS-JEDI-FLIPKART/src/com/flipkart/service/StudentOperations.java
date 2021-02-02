@@ -8,9 +8,12 @@ import com.flipkart.constants.UIConstants;
 import com.flipkart.dao.StudentDAOInterface;
 import com.flipkart.dao.StudentDAOOperations;
 import com.flipkart.exception.*;
+import com.flipkart.utils.PrintTabularInterface;
+import com.flipkart.utils.StringFormatUtil;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -63,14 +66,19 @@ public class StudentOperations implements StudentInterface {
         }
     }
 
+    private List<String> getAsList(Course course) {
+        return new ArrayList<>(Arrays.asList(Integer.toString(course.getCourseId()), course.getCourseName(), course.getDescription()));
+    }
+
     @Override
     public void viewRegisteredCourses(int studentId) {
         ArrayList<Course> courses = studentDAOOperations.viewRegisteredCourses(studentId);
         if (courses.size() == 0) {
             logger.info(UIConstants.NO_COURSE_REGISTERED_MESSAGE);
         } else {
-            logger.info("Course Id\tCourse Name");
-            courses.forEach(course -> logger.info(course.getCourseId() + "\t\t " + course.getCourseName()));
+            List<String> columnNames = Arrays.asList("Course ID", "Course Name", "Course Description");
+            PrintTabularInterface fn = param -> getAsList((Course) param);
+            StringFormatUtil.printTabular(logger, columnNames, courses, fn);
         }
     }
 
@@ -82,8 +90,9 @@ public class StudentOperations implements StudentInterface {
         if (grades.size() == 0) {
             logger.info(UIConstants.NO_COURSE_REGISTERED_MESSAGE);
         } else {
-            logger.info(String.format("%-15s%-15s%-15s", "Course Id", "Course Name", "Grade"));
-            grades.forEach(course -> logger.info(String.format("%-15s%-15s%-15s", course.get(0), course.get(1), course.get(2))));
+            List<String> columnNames = Arrays.asList("Course Id", "Course Name", "Grade");
+            PrintTabularInterface fn = (param) -> (List<String>) param;
+            StringFormatUtil.printTabular(logger, columnNames, grades, fn);
         }
     }
 
@@ -97,6 +106,7 @@ public class StudentOperations implements StudentInterface {
     @Override
     public void makePayment(int studentId, int payModeChoice, int fees) {
     	Payment payment = studentDAOOperations.makePayment(studentId, payModeChoice, fees);
+        logger.info(UIConstants.PAYMENT_SUCCESSFUL_MESSAGE);
         logger.info(payment.toString());
         Notification notification = new Notification();
         notification.setDescription("You paid " + payment.getFeesPaid() + "/-");
@@ -106,20 +116,23 @@ public class StudentOperations implements StudentInterface {
     }
 
 	@Override
-	public void addStudent(Student student, String password) {
-		logger.info("in add student");
-		int id = studentDAOOperations.addStudent(student, password);
-		if(id != -1) {
-			logger.info("Your userId is " + id);
-			NotificationOperations notificationOperations = NotificationOperations.getInstance();
-			Notification notification = new Notification();
-			notification.setDescription("You are Succesfully registered in system");
-			notification.setUserId(student.getStudentId());
-			notificationOperations.sendNotification(notification);
-			notificationOperations.getNotification(student.getStudentId());
-		}else {
-			logger.info("Registration failed");
-		}
+	public void registerStudent(Student student, String password) {
+        int userId;
+
+        try {
+            userId = studentDAOOperations.registerStudent(student, password);
+            logger.info(UIConstants.SUCCESS_USER_ID_MESSAGE + userId + "\n");
+        } catch (AlreadyRegisteredUserException | RegistrationFailedException e) {
+            logger.error(e.getMessage());
+            return;
+        }
+
+        NotificationOperations notificationOperations = NotificationOperations.getInstance();
+        Notification notification = new Notification();
+        notification.setDescription("You are Successfully registered in system");
+        notification.setUserId(student.getUserId());
+        notificationOperations.sendNotification(notification);
+        notificationOperations.getNotification(student.getUserId());
 		
 	}
 

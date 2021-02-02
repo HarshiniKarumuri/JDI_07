@@ -101,7 +101,7 @@ public class UserCRSMenu {
         student.setHasScholarship(Boolean.parseBoolean(scanner.nextLine()));
 
         StudentOperations studentOperations = StudentOperations.getInstance();
-        studentOperations.addStudent(student, password);
+        studentOperations.registerStudent(student, password);
 
     }
 

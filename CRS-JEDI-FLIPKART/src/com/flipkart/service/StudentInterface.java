@@ -60,7 +60,7 @@ public interface StudentInterface {
      * @param student  student object
      * @param password student password
      */
-    void addStudent(Student student, String password);
+    void registerStudent(Student student, String password);
 
     /**
      * Approve student profile

@@ -277,44 +277,64 @@ public class StudentDAOOperations implements StudentDAOInterface {
         return courses;
     }
 
-	@Override
-	public int addStudent(Student student, String password) {
+    private boolean checkIsRegisteredUser(String email) {
+        PreparedStatement stmtRequest;
+        ResultSet result;
+        try {
+            stmtRequest = connection.prepareStatement(SQLQueriesConstants.CHECK_EMAIL_EXIST_QUERY);
+            stmtRequest.setString(1, email);
+            result = stmtRequest.executeQuery();
+            if(result.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return false;
+    }
 
-		PreparedStatement statement = null;
-		int id = -1;
-		try {
-			statement = connection.prepareStatement(SQLQueriesConstants.ADD_USER_QUERY);
-			statement.setString(1, student.getEmail());
-			statement.setString(2, password);
-			statement.setString(3, student.getRole());
-			int rows = statement.executeUpdate();
-			logger.info(rows + " added in User");
-			
-			statement = connection.prepareStatement(SQLQueriesConstants.FETCH_USER_ID);
-			statement.setString(1, student.getEmail());
-			statement.setString(2, password);
-			ResultSet rs = statement.executeQuery();
-			rs.next();
-			student.setUserId(rs.getInt(1));
-			id = student.getUserId();
-			
-			statement = connection.prepareStatement(SQLQueriesConstants.ADD_STUDENT);
-			statement.setInt(1, student.getUserId());
-			statement.setString(2,student.getBranch());
-			statement.setBoolean(3, student.getHasScholarship());
-			statement.setBoolean(4, student.getIsApproved());
-			statement.setString(5,student.getUsername());
-			statement.setString(6,student.getGender());
-			statement.setString(7, student.getAddress());
-			rows = statement.executeUpdate();
-			logger.info(rows + " added in student");
-		}catch(SQLException se) {
-			logger.error(se.getMessage());
-		}catch(Exception e) {
-			logger.error(e.getMessage());
-		}
-		
-		return id;
+	@Override
+	public int registerStudent(Student student, String password) throws AlreadyRegisteredUserException, RegistrationFailedException {
+        PreparedStatement statement;
+        ResultSet result;
+
+        if(checkIsRegisteredUser(student.getEmail())) {
+            throw new AlreadyRegisteredUserException(student.getEmail());
+        }
+
+        try {
+            statement = connection.prepareStatement(SQLQueriesConstants.ADD_USER_QUERY);
+            statement.setString(1, student.getEmail());
+            statement.setString(2, student.getPassword());
+            statement.setString(3, student.getRole());
+            int rows = statement.executeUpdate();
+            if(rows <= 0) {
+                throw new RegistrationFailedException(student.getEmail());
+            }
+
+            statement = connection.prepareStatement(SQLQueriesConstants.FETCH_USER_ID);
+            statement.setString(1, student.getEmail());
+            result = statement.executeQuery();
+            result.next();
+            student.setUserId(result.getInt(1));
+
+            statement = connection.prepareStatement(SQLQueriesConstants.ADD_STUDENT);
+            statement.setInt(1, student.getUserId());
+            statement.setString(2,student.getBranch());
+            statement.setBoolean(3, student.getHasScholarship());
+            statement.setBoolean(4, student.getIsApproved());
+            statement.setString(5,student.getUsername());
+            statement.setString(6,student.getGender());
+            statement.setString(7, student.getAddress());
+            rows = statement.executeUpdate();
+
+        } catch (RegistrationFailedException e) {
+            throw e;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        return student.getUserId();
 	}
 
 	@Override
@@ -327,11 +347,9 @@ public class StudentDAOOperations implements StudentDAOInterface {
 			ResultSet rs = statement.executeQuery();
 			rs.next();
 			isApproved = rs.getBoolean(1);
-		}catch(SQLException se) {
+		} catch(Exception se) {
 			logger.error(se.getMessage());
-		}catch(Exception e) {
-			logger.error(e.getMessage());
 		}
-		return isApproved;
+        return isApproved;
 	}
 }
