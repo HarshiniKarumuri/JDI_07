@@ -5,23 +5,25 @@ package com.flipkart.bean;
  */
 public class Admin extends User {
 
-	private int adminId;
+    private int adminId;
 
-	/**
-	 * get the Admin ID
-	 * @return the adminId
-	 */
+    /**
+     * get the Admin ID
+     *
+     * @return the adminId
+     */
 
-	public int getAdminId() {
-		return adminId;
-	}
+    public int getAdminId() {
+        return adminId;
+    }
 
-	/**
-	 * set the Admin Id
-	 * @param adminId the adminId to set
-	 */
-	public void setAdminId(int adminId) {
-		this.adminId = adminId;
-	}
+    /**
+     * set the Admin Id
+     *
+     * @param adminId the adminId to set
+     */
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
+    }
 
 }

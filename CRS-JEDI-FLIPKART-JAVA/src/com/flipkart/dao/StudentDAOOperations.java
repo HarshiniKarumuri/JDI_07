@@ -23,14 +23,14 @@ public class StudentDAOOperations implements StudentDAOInterface {
     private final CatalogDAOInterface catalogDAOOperations = CatalogDAOOperations.getInstance();
 
     private static volatile StudentDAOOperations instance = null;
-	 
+
     // private constructor
     private StudentDAOOperations() {
     }
- 
+
     public static StudentDAOOperations getInstance() {
         if (instance == null) {
-        	// This is a synchronized block, when multiple threads will access this instance
+            // This is a synchronized block, when multiple threads will access this instance
             synchronized (StudentDAOOperations.class) {
                 instance = new StudentDAOOperations();
             }
@@ -210,7 +210,7 @@ public class StudentDAOOperations implements StudentDAOInterface {
     @Override
     public Payment makePayment(int studentId, int payModeChoice, int fees) {
 
-    	PreparedStatement stmtRequest, stmtReConfirm;
+        PreparedStatement stmtRequest, stmtReConfirm;
         ResultSet result;
         Payment payment = null;
 
@@ -221,7 +221,7 @@ public class StudentDAOOperations implements StudentDAOInterface {
             stmtRequest.setString(3, UIConstants.PAYMENT_MODE[payModeChoice - 1]);
             stmtRequest.executeUpdate();
             stmtRequest = connection.prepareStatement(SQLQueriesConstants.GET_LATEST_PAYMENT_DETAILS);
-            stmtRequest.setInt(1,studentId);
+            stmtRequest.setInt(1, studentId);
             result = stmtRequest.executeQuery();
             result.next();
             payment = new Payment();
@@ -248,7 +248,7 @@ public class StudentDAOOperations implements StudentDAOInterface {
         }
         return payment;
     }
-    
+
 
     @Override
     public Student getStudentDetails(int userId) {
@@ -275,7 +275,7 @@ public class StudentDAOOperations implements StudentDAOInterface {
 
         return student;
     }
-    
+
     @Override
     public ArrayList<Course> viewRegisteredCourses(int studentId) {
 
@@ -306,7 +306,10 @@ public class StudentDAOOperations implements StudentDAOInterface {
             stmtRequest = connection.prepareStatement(SQLQueriesConstants.CHECK_EMAIL_EXIST_QUERY);
             stmtRequest.setString(1, email);
             result = stmtRequest.executeQuery();
-            if(result.next()) {
+//            if (result.next()) {
+//                return true;
+//            }
+            if (result.getInt(1) != 0) {
                 return true;
             }
         } catch (Exception e) {
@@ -315,12 +318,12 @@ public class StudentDAOOperations implements StudentDAOInterface {
         return false;
     }
 
-	@Override
-	public int addStudent(Student student, String password) throws AlreadyRegisteredUserException, RegistrationFailedException {
+    @Override
+    public int addStudent(Student student, String password) throws AlreadyRegisteredUserException, RegistrationFailedException {
         PreparedStatement statement;
         ResultSet result;
 
-        if(checkIsRegisteredUser(student.getEmail())) {
+        if (checkIsRegisteredUser(student.getEmail())) {
             throw new AlreadyRegisteredUserException(student.getEmail());
         }
 
@@ -330,7 +333,7 @@ public class StudentDAOOperations implements StudentDAOInterface {
             statement.setString(2, student.getPassword());
             statement.setString(3, student.getRole());
             int rows = statement.executeUpdate();
-            if(rows <= 0) {
+            if (rows <= 0) {
                 throw new RegistrationFailedException(student.getEmail());
             }
 
@@ -342,11 +345,11 @@ public class StudentDAOOperations implements StudentDAOInterface {
 
             statement = connection.prepareStatement(SQLQueriesConstants.ADD_STUDENT);
             statement.setInt(1, student.getUserId());
-            statement.setString(2,student.getBranch());
+            statement.setString(2, student.getBranch());
             statement.setBoolean(3, student.getHasScholarship());
             statement.setBoolean(4, student.getIsApproved());
-            statement.setString(5,student.getUsername());
-            statement.setString(6,student.getGender());
+            statement.setString(5, student.getUsername());
+            statement.setString(6, student.getGender());
             statement.setString(7, student.getAddress());
             rows = statement.executeUpdate();
 
@@ -357,21 +360,21 @@ public class StudentDAOOperations implements StudentDAOInterface {
         }
 
         return student.getUserId();
-	}
+    }
 
-	@Override
-	public boolean isStudentProfileApproved(int studentId) {
-		PreparedStatement statement = null;
-		boolean isApproved = false;
-		try {
-			statement = connection.prepareStatement(SQLQueriesConstants.IS_STUDENT_APPROVED);
-			statement.setInt(1, studentId);
-			ResultSet rs = statement.executeQuery();
-			rs.next();
-			isApproved = rs.getBoolean(1);
-		} catch(Exception se) {
-			logger.error(se.getMessage());
-		}
+    @Override
+    public boolean isStudentProfileApproved(int studentId) {
+        PreparedStatement statement = null;
+        boolean isApproved = false;
+        try {
+            statement = connection.prepareStatement(SQLQueriesConstants.IS_STUDENT_APPROVED);
+            statement.setInt(1, studentId);
+            ResultSet rs = statement.executeQuery();
+            rs.next();
+            isApproved = rs.getBoolean(1);
+        } catch (Exception se) {
+            logger.error(se.getMessage());
+        }
         return isApproved;
-	}
+    }
 }

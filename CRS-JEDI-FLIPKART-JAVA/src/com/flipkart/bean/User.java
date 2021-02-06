@@ -5,124 +5,138 @@ package com.flipkart.bean;
  */
 public class User {
 
-	int userId;
-	String username;
-	String email;
-	String address;
-	String password;
-	String role;
-	String gender;
+    int userId;
+    String username;
+    String email;
+    String address;
+    String password;
+    String role;
+    String gender;
 
-	/**
-	 * get the email of the email
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
+    /**
+     * get the email of the email
+     *
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
 
-	/**
-	 * set the email of the email
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    /**
+     * set the email of the email
+     *
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	/**
-	 * get the address of the user
-	 * @return the address
-	 */
-	public String getAddress() {
-		return address;
-	}
+    /**
+     * get the address of the user
+     *
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }
 
-	/**
-	 * set the address of the user
-	 * @param address the address to set
-	 */
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    /**
+     * set the address of the user
+     *
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	/**
-	 * get the password of the user
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
-	}
+    /**
+     * get the password of the user
+     *
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
 
-	/**
-	 * set the password of the user
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    /**
+     * set the password of the user
+     *
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	/**
-	 * get the role of the user
-	 * @return the role
-	 */
-	public String getRole() {
-		return role;
-	}
+    /**
+     * get the role of the user
+     *
+     * @return the role
+     */
+    public String getRole() {
+        return role;
+    }
 
-	/**
-	 * get the role of the user
-	 * @param role the role to set
-	 */
-	public void setRole(String role) {
-		this.role = role;
-	}
+    /**
+     * get the role of the user
+     *
+     * @param role the role to set
+     */
+    public void setRole(String role) {
+        this.role = role;
+    }
 
-	/**
-	 * get the gender of the user
-	 * @return the gender
-	 */
-	public String getGender() {
-		return gender;
-	}
+    /**
+     * get the gender of the user
+     *
+     * @return the gender
+     */
+    public String getGender() {
+        return gender;
+    }
 
-	/**
-	 * set the gender of the user
-	 * @param gender the gender to set
-	 */
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    /**
+     * set the gender of the user
+     *
+     * @param gender the gender to set
+     */
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-	/**
-	 * get the user Id
-	 * @return the userId
-	 */
-	public int getUserId() {
-		return userId;
-	}
+    /**
+     * get the user Id
+     *
+     * @return the userId
+     */
+    public int getUserId() {
+        return userId;
+    }
 
-	/**
-	 * set the user Id
-	 * @param userId the userId to set
-	 */
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+    /**
+     * set the user Id
+     *
+     * @param userId the userId to set
+     */
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
-	/**
-	 * get the username 
-	 * @return the username
-	 */
-	public String getUsername() {
-		return username;
-	}
+    /**
+     * get the username
+     *
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
 
-	/**
-	 * set the username
-	 * @param username the username to set
-	 */
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    /**
+     * set the username
+     *
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
 }

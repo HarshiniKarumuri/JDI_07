@@ -15,6 +15,7 @@ public interface StudentDAOInterface {
 
     /**
      * for the student to register for a course
+     *
      * @param studentId
      * @param courseId
      */
@@ -22,6 +23,7 @@ public interface StudentDAOInterface {
 
     /**
      * for the student to drop a course
+     *
      * @param studentId
      * @param courseId
      */
@@ -29,6 +31,7 @@ public interface StudentDAOInterface {
 
     /**
      * to view all the grades for a particular student
+     *
      * @param studentId
      * @return
      */
@@ -36,6 +39,7 @@ public interface StudentDAOInterface {
 
     /**
      * Calculate the total fees
+     *
      * @param studentId
      * @return
      */
@@ -56,22 +60,24 @@ public interface StudentDAOInterface {
      * @return the details of the student
      */
     Student getStudentDetails(int userId);
-    
+
     /**
      * view all the courses registered by a student
-     * @param studentId
+     *
+     * @param studentId unique identifier for student
      * @return the list of all the registered courses
      */
     ArrayList<Course> viewRegisteredCourses(int studentId);
+
     /**
-     * 
-     * @param student
-     * @param password
+     * @param student  student object
+     * @param password student password
      * @return the userid of the student
      */
     int addStudent(Student student, String password) throws AlreadyRegisteredUserException, RegistrationFailedException;
+
     /**
-     * @param studentId
+     * @param studentId unique identifier for student
      * @return the status of the approval of the student profile
      */
     boolean isStudentProfileApproved(int studentId);

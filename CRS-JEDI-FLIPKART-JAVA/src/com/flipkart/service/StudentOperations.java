@@ -105,7 +105,7 @@ public class StudentOperations implements StudentInterface {
 
     @Override
     public void makePayment(int studentId, int payModeChoice, int fees) {
-    	Payment payment = studentDAOOperations.makePayment(studentId, payModeChoice, fees);
+        Payment payment = studentDAOOperations.makePayment(studentId, payModeChoice, fees);
         logger.info(UIConstants.PAYMENT_SUCCESSFUL_MESSAGE);
         logger.info(payment.toString());
 
@@ -116,8 +116,8 @@ public class StudentOperations implements StudentInterface {
         notificationOperations.getNotification(studentId);
     }
 
-	@Override
-	public void addStudent(Student student, String password) {
+    @Override
+    public void addStudent(Student student, String password) {
         int userId;
 
         try {
@@ -128,13 +128,13 @@ public class StudentOperations implements StudentInterface {
             return;
         }
 
-        NotificationOperations notificationOperations = NotificationOperations.getInstance();
+//        NotificationOperations notificationOperations = NotificationOperations.getInstance();
         Notification notification = new Notification();
         notification.setDescription("You are Successfully registered in system");
         notification.setUserId(student.getUserId());
         notificationOperations.sendNotification(notification);
         notificationOperations.getNotification(student.getUserId());
-	}
+    }
 
     @Override
     public boolean isStudentProfileApproved(int studentId) {
